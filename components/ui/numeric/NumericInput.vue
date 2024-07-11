@@ -3,7 +3,6 @@ import type { NumberFieldRootEmits, NumberFieldRootProps } from 'radix-vue'
 import { NumberFieldRoot, NumberFieldInput, NumberFieldDecrement, NumberFieldIncrement, useForwardPropsEmits } from 'radix-vue'
 import type { HTMLAttributes } from 'vue'
 import { type InputVariants, inputVariants } from '.'
-import { cn } from '@/lib/utils'
 import { Icon } from '@iconify/vue'
 
 const props = defineProps<NumberFieldRootProps & { 

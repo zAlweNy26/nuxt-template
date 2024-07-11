@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { type InputVariants, inputVariants } from '.'
-import { cn } from '@/lib/utils'
 
 const props = defineProps<{
   id?: HTMLAttributes['id']

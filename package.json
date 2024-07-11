@@ -2,6 +2,9 @@
   "name": "nuxt-template",
   "private": true,
   "type": "module",
+  "version": "0.0.1",
+  "author": "zAlweNy26",
+  "license": "MIT",
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
@@ -44,6 +47,5 @@
     "changelogen": "^0.5.5",
     "eslint-plugin-security": "^3.0.1",
     "typescript": "^5.5.3"
-  },
-  "version": "0.0.1"
+  }
 }

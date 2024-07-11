@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'vue'
 import type { CheckboxRootEmits, CheckboxRootProps } from 'radix-vue'
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'radix-vue'
 import { type CheckboxVariants, checkboxVariants } from '.'
-import { cn } from '@/lib/utils'
 import { Icon } from '@iconify/vue'
 
 interface Props extends CheckboxRootProps {
