@@ -1,0 +1,13 @@
+{
+    "theme": {
+        "light": "Chiaro",
+        "dark": "Scuro",
+        "toggle": "Cambia tema"
+    },
+    "language": {
+        "toggle": "Cambia lingua"
+    },
+    "headers": {
+        "home": "Home"
+    }
+}

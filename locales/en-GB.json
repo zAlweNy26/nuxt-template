@@ -1,0 +1,13 @@
+{
+    "theme": {
+        "light": "Light",
+        "dark": "Dark",
+        "toggle": "Toggle theme"
+    },
+    "language": {
+        "toggle": "Toggle language"
+    },
+    "headers": {
+        "home": "Home"
+    }
+}
