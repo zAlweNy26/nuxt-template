@@ -14,6 +14,9 @@ export default <Partial<Config>>{
       },
     },
     extend: {
+      fontSize: {
+        "2xs": ["0.625rem", "0.75rem"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
