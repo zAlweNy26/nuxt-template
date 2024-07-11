@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { type BadgeVariants, badgeVariants } from '.'
-import { cn } from '@/utils/css'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   variant?: BadgeVariants['variant']
   size?: BadgeVariants['size']
   class?: HTMLAttributes['class']
-}>()
+}>(), {
+  variant: 'primary',
+  size: 'sm',
+  class: undefined
+})
 </script>
 
 <template>

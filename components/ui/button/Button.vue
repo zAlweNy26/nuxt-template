@@ -12,16 +12,16 @@ interface Props extends PrimitiveProps {
 
 const props = withDefaults(defineProps<Props>(), {
   as: 'button',
-  size: 'md'
+  size: 'sm',
+  variant: 'primary',
+  square: undefined,
+  class: undefined
 })
 </script>
 
 <template>
-  <Primitive
-    :as="as"
-    :as-child="asChild"
-    :class="cn(buttonVariants({ variant, size, square: square ? size : undefined }), props.class)"
-  >
+  <Primitive :as="as" :as-child="asChild"
+    :class="cn(buttonVariants({ variant, size, square: square ? size : undefined }), props.class)">
     <slot />
   </Primitive>
 </template>

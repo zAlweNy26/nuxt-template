@@ -4,4 +4,10 @@ import securityPlugin from 'eslint-plugin-security'
 
 const { configs } = securityPlugin
 
-export default withNuxt([configs.recommended])
+export default withNuxt([configs.recommended, {
+    rules: {
+        "vue/v-on-event-hyphenation": "off",
+        "vue/attribute-hyphenation": "off",
+        "vue/first-attribute-linebreak": "off",
+    }
+}])

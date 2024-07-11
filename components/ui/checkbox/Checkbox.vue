@@ -13,7 +13,12 @@ interface Props extends CheckboxRootProps {
   text: string
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'primary',
+  size: 'sm',
+  class: undefined,
+  labelClass: undefined,
+})
 const emits = defineEmits<CheckboxRootEmits>()
 
 const delegatedProps = computed(() => {

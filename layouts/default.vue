@@ -7,7 +7,7 @@ const head = useLocaleHead({
 </script>
 
 <template>
-  <div>
+	<div>
 		<NuxtLoadingIndicator :duration="3000" :throttle="300"
 			color="repeating-linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" />
 		<Html :lang="head.htmlAttrs?.lang" :dir="head.htmlAttrs?.dir">
