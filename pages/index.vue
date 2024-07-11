@@ -4,6 +4,13 @@ const { t } = useI18n()
 useHead({
 	title: () => t('headers.home'),
 })
+
+const radioItems = [
+  { name: 'Text', value: 'text' },
+  { name: 'Example', value: 'example' },
+  { name: 'Bar', value: 'bar' },
+  { name: 'Foo', value: 'foo' },
+]
 </script>
 
 <template>
@@ -38,5 +45,6 @@ useHead({
     <InputBox label="Username" color="warning" size="md" />
     <InputBox label="Username" color="success" size="lg" />
     <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
+    <RadioGroup :items="radioItems" />
   </div>
 </template>
