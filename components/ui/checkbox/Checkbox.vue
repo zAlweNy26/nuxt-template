@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'vue'
 import type { CheckboxRootEmits, CheckboxRootProps } from 'radix-vue'
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'radix-vue'
 import { type CheckboxVariants, checkboxVariants } from '.'
-import { Icon } from '@iconify/vue'
 
 interface Props extends CheckboxRootProps {
   variant?: CheckboxVariants['variant']
@@ -34,7 +33,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <CheckboxRoot v-bind="forwarded" :class="cn(checkboxVariants({ variant, size }), props.class)">
       <CheckboxIndicator class="flex h-full w-full items-center justify-center text-current">
         <slot>
-          <Icon icon="ph:check-bold" class="size-4" />
+          <Icon name="ph:check-bold" class="size-4" />
         </slot>
       </CheckboxIndicator>
     </CheckboxRoot>

@@ -9,9 +9,9 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 ## Features
 
 - 💨 Tailwind CSS
-- 📏 ESLint
+- 📏 ESLint rules
 - ✨ Shadcn & Radix Vue components
-- 🔔 Nuxt Icon & Iconify
+- 🔔 Nuxt Icon component
 - 🛹 State & Store Management (Pinia)
 - 📦 Vue Composition Collection (VueUse)
 - 🌙 Theme Switcher (Color Mode)

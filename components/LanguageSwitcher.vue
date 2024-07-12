@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -15,7 +14,7 @@ const { locale, locales, changeLocale } = useSettingsStore()
   <DropdownMenu>
     <template #trigger>
       <Button variant="outline" square>
-        <Icon icon="ph:globe-hemisphere-east" class="size-5" />
+        <Icon name="ph:globe-hemisphere-east" class="size-5" />
         <span class="sr-only">{{ $t('language.toggle') }}</span>
       </Button>
     </template>

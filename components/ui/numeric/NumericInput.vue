@@ -3,7 +3,6 @@ import type { NumberFieldRootEmits, NumberFieldRootProps } from 'radix-vue'
 import { NumberFieldRoot, NumberFieldInput, NumberFieldDecrement, NumberFieldIncrement, useForwardPropsEmits } from 'radix-vue'
 import type { HTMLAttributes } from 'vue'
 import { type InputVariants, inputVariants } from '.'
-import { Icon } from '@iconify/vue'
 
 const props = defineProps<NumberFieldRootProps & { 
   class?: HTMLAttributes['class']
@@ -29,13 +28,13 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <div class="relative">
       <ClientOnly> <!-- Workaround for `window is not defined` bug -->
         <NumberFieldDecrement :class="cn('absolute top-0 left-0 p-2 disabled:cursor-not-allowed disabled:opacity-20')">
-          <Icon icon="ph:minus" class="size-4" />
+          <Icon name="ph:minus" class="size-4" />
         </NumberFieldDecrement>
       </ClientOnly>
       <NumberFieldInput :class="cn(inputVariants({ color, size }), props.inputClass)" />
       <ClientOnly> <!-- Workaround for `window is not defined` bug -->
         <NumberFieldIncrement :class="cn('absolute top-0 right-0 p-2 disabled:cursor-not-allowed disabled:opacity-20')">
-          <Icon icon="ph:plus" class="size-4" />
+          <Icon name="ph:plus" class="size-4" />
         </NumberFieldIncrement>
       </ClientOnly>
     </div>
