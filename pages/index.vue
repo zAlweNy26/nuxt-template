@@ -18,14 +18,35 @@ const radioItems = [
     <ThemeButton />
     <LanguageSwitcher />
     <DialogBox title="Example title" description="Example description">
-      <Button variant="primary" size="xs">Primary</Button>
+      <Button variant="primary">DialogBox</Button>
       <template #content>
         <p>Example content</p>
       </template>
     </DialogBox>
-    <Button variant="primary" size="sm">Primary</Button>
-    <Button variant="primary" size="md">Primary</Button>
-    <Button variant="primary" size="lg">Primary</Button>
+    <SideSheet title="Example title" side="bottom" description="Example description">
+      <Button variant="primary">Bottom Sheet</Button>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </SideSheet>
+    <SideSheet title="Example title" side="left" description="Example description">
+      <Button variant="primary" size="md">Left Sheet</Button>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </SideSheet>
+    <SideSheet title="Example title" side="right" description="Example description">
+      <Button variant="primary" size="lg">Right Sheet</Button>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </SideSheet>
+    <SideSheet title="Example title" side="top" description="Example description">
+      <Button variant="primary" size="xs">Top Sheet</Button>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </SideSheet>
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
