@@ -10,20 +10,21 @@ export default defineNuxtConfig({
 	css: ['~/assets/globals.css'],
 	devtools: { enabled: true },
 	modules: [
-        "@nuxtjs/tailwindcss",
-        "shadcn-nuxt",
-        "@nuxtjs/color-mode",
-        "@vueuse/nuxt",
-        "nuxt-security",
-        "@nuxtjs/i18n",
-        "@pinia/nuxt",
-        "@formkit/auto-animate/nuxt",
-        "@nuxt/test-utils",
-        "@nuxt/image",
-        "@nuxt/eslint",
-        "@nuxt/fonts",
-        "@nuxt/icon"
-    ],
+		"@nuxtjs/tailwindcss",
+		"shadcn-nuxt",
+		"@nuxtjs/color-mode",
+		"@vueuse/nuxt",
+		"nuxt-security",
+		"@nuxtjs/i18n",
+		"@pinia/nuxt",
+		"@formkit/auto-animate/nuxt",
+		"@nuxt/test-utils",
+		"@nuxt/image",
+		"@nuxt/eslint",
+		"@nuxt/fonts",
+		"@nuxt/icon",
+		"nuxt-api-party"
+	],
 	components: [
 		{
 			path: '~/components',
@@ -37,6 +38,17 @@ export default defineNuxtConfig({
 		headers: {
 			crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
 		},
+	},
+	apiParty: {
+		endpoints: {
+			api: {
+				url: process.env.API_URL,
+				headers: {
+					Authorization: `Bearer ${process.env.API_TOKEN}`
+				},
+				//schema: './schema.yaml'
+			}
+		}
 	},
 	fonts: {
 		families: [

@@ -33,6 +33,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "nuxt": "^3.12.3",
+    "nuxt-api-party": "^2.0.8",
     "nuxt-security": "^2.0.0-rc.9",
     "radix-vue": "^1.9.1",
     "shadcn-nuxt": "^0.10.4",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.1.13",
+    "@types/bun": "^1.1.6",
     "@types/eslint-plugin-security": "^3.0.0",
     "@vueuse/core": "^10.11.0",
     "changelogen": "^0.5.5",
