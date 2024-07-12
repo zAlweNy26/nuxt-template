@@ -41,10 +41,10 @@ const radioItems = [
     <Checkbox id="terms3" size="md" text="Accept terms and conditions" />
     <Checkbox id="terms4" size="lg" text="Accept terms and conditions" />
     <InputBox label="Username" color="primary" size="xs" />
-    <InputBox label="Username" color="info" size="sm" />
     <InputBox label="Username" color="warning" size="md" />
-    <InputBox label="Username" color="success" size="lg" />
-    <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
+    <InputBox label="Username" color="info" size="sm" />
     <RadioGroup :items="radioItems" />
+    <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
+    <InputBox label="Username" color="success" size="lg" />
   </div>
 </template>
