@@ -21,7 +21,8 @@ export default defineNuxtConfig({
         "@nuxt/test-utils",
         "@nuxt/image",
         "@nuxt/eslint",
-        "@nuxt/fonts"
+        "@nuxt/fonts",
+        "@nuxt/icon"
     ],
 	components: [
 		{
@@ -36,6 +37,11 @@ export default defineNuxtConfig({
 		headers: {
 			crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
 		},
+	},
+	fonts: {
+		families: [
+			{ name: 'Poppins', global: true, provider: 'google', weights: [400, 500, 600, 700, 800] }
+		]
 	},
 	i18n: {
 		baseUrl: 'http://localhost:3000',

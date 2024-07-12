@@ -25,3 +25,9 @@ const head = useLocaleHead({
 		</Html>
 	</div>
 </template>
+
+<style>
+body {
+	font-family: Poppins, sans-serif;
+}
+</style>
