@@ -21,6 +21,7 @@
         }
     },
     "button": {
-        "backHome": "Go back to @:headers.home"
+        "backHome": "Go back to @:headers.home",
+        "close": "Close"
     }
 }

@@ -17,7 +17,12 @@ const radioItems = [
   <div class="flex flex-wrap gap-4">
     <ThemeButton />
     <LanguageSwitcher />
-    <Button variant="primary" size="xs">Primary</Button>
+    <DialogBox title="Example title" description="Example description">
+      <Button variant="primary" size="xs">Primary</Button>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </DialogBox>
     <Button variant="primary" size="sm">Primary</Button>
     <Button variant="primary" size="md">Primary</Button>
     <Button variant="primary" size="lg">Primary</Button>
