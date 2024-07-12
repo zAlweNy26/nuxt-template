@@ -16,10 +16,10 @@ export const inputVariants = cva(
                 info: 'focus-visible:ring-info',
             },
             size: {
-                xs: 'text-xs h-7 px-8 shadow',
-                sm: 'text-sm h-8 px-9 shadow-sm',
-                md: 'text-base h-9 px-10 shadow-sm',
-                lg: 'text-lg h-10 px-11 shadow-md'
+                xs: 'h-7 px-8 text-xs shadow',
+                sm: 'h-8 px-9 text-sm shadow-sm',
+                md: 'h-9 px-10 text-base shadow-sm',
+                lg: 'h-10 px-11 text-lg shadow-md'
             }
         },
         defaultVariants: {

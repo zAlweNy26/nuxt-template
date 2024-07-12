@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full max-w-sm gap-1">
+  <div class="flex w-full max-w-sm flex-col gap-1">
     <Label v-if="label" :for="id" :size :class="cn('ps-1', props.labelClass)">{{ label }}</Label>
     <input v-model="model" :class="cn(inputVariants({ color, size }), props.class)">
   </div>

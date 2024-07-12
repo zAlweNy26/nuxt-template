@@ -3,7 +3,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 export { default as RadioGroup } from './RadioGroup.vue'
 
 export const radioVariants = cva(
-  'aspect-square rounded-full border transition-[border-width] shadow focus:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
+  'aspect-square rounded-full border shadow transition-[border-width] focus:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -14,7 +14,7 @@ export const radioVariants = cva(
         info: 'border-info text-info',
       },
       size: {
-        xs: 'size-3 data-[state=checked]:border-[4px]',
+        xs: 'size-3 data-[state=checked]:border-4',
         sm: 'size-4 data-[state=checked]:border-[5px]',
         md: 'size-5 data-[state=checked]:border-[6px]',
         lg: 'size-6 data-[state=checked]:border-[7px]'

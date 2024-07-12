@@ -17,6 +17,9 @@ export default <Partial<Config>>{
       fontSize: {
         "2xs": ["0.625rem", "0.75rem"],
       },
+      spacing: {
+        'screen': '100vh'
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -31,7 +31,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 <template>
   <div class="flex items-center space-x-2">
     <CheckboxRoot v-bind="forwarded" :class="cn(checkboxVariants({ variant, size }), props.class)">
-      <CheckboxIndicator class="flex h-full w-full items-center justify-center text-current">
+      <CheckboxIndicator class="flex size-full items-center justify-center text-current">
         <slot>
           <Icon name="ph:check-bold" class="size-4" />
         </slot>
