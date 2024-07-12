@@ -9,5 +9,18 @@
     },
     "headers": {
         "home": "Home"
+    },
+    "errors": {
+        "routes": {
+            "notAccessible": "Pagina non accessibile",
+            "fallback": "Si è verificato un errore durante il tentativo di accesso a questa pagina.\nRiprova più tardi.",
+            "401": "Non sei autenticato, quindi non puoi accedere a questa pagina.",
+            "403": "Non sei autorizzato ad accedere a questa pagina.",
+            "404": "La pagina che stai cercando non è stata trovata.",
+            "500": "Qualcosa è andato storto. Riprova più tardi."
+        }
+    },
+    "button": {
+        "backHome": "Torna alla @:headers.home"
     }
 }
