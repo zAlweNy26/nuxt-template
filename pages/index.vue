@@ -12,6 +12,13 @@ const radioItems = [
   { name: 'Foo', value: 'foo' },
 ]
 
+const selectItems = [
+  { label: 'Text', value: 'text' },
+  { label: 'Example', value: 'example' },
+  { label: 'Bar', value: 'bar' },
+  { label: 'Foo', value: 'foo' },
+]
+
 const progress = ref(50)
 </script>
 
@@ -53,6 +60,7 @@ const progress = ref(50)
     <ProgressBar v-model="progress" :max="60" />
     <Slider :max="100" :step="5" :modelValue="[50]" />
     <Switch id="test-switch" label="Test Switch" />
+    <SelectBox placeholder="Select an item" :items="selectItems" />
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
