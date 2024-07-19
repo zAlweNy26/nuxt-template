@@ -52,6 +52,7 @@ const progress = ref(50)
     <Separator class="my-4" label="Or" />
     <ProgressBar v-model="progress" :max="60" />
     <Slider :max="100" :step="5" :modelValue="[50]" />
+    <Switch id="test-switch" label="Test Switch" />
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>

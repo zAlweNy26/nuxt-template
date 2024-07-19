@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
+import type { HTMLAttributes } from 'vue'
 import { Separator, type SeparatorProps } from 'radix-vue'
-import { cn } from '@/utils/css'
 
 const props = defineProps<SeparatorProps & {
   class?: HTMLAttributes['class'],
