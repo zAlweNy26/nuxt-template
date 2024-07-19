@@ -51,6 +51,7 @@ const progress = ref(50)
     </SideSheet>
     <Separator class="my-4" label="Or" />
     <ProgressBar v-model="progress" :max="60" />
+    <Slider :max="100" :step="5" :modelValue="[50]" />
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
