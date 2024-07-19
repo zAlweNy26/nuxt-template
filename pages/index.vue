@@ -11,6 +11,8 @@ const radioItems = [
   { name: 'Bar', value: 'bar' },
   { name: 'Foo', value: 'foo' },
 ]
+
+const progress = ref(50)
 </script>
 
 <template>
@@ -47,6 +49,8 @@ const radioItems = [
         <p>Example content</p>
       </template>
     </SideSheet>
+    <Separator class="my-4" label="Or" />
+    <ProgressBar v-model="progress" :max="60" />
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
