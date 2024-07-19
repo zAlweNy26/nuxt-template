@@ -17,12 +17,12 @@ const radioItems = [
   <div class="flex flex-wrap gap-4">
     <ThemeButton />
     <LanguageSwitcher />
-    <DialogBox title="Example title" description="Example description">
+    <ResponsiveDialog title="Example title" description="Example description">
       <Button variant="primary">DialogBox</Button>
       <template #content>
         <p>Example content</p>
       </template>
-    </DialogBox>
+    </ResponsiveDialog>
     <SideSheet title="Example title" side="bottom" description="Example description">
       <Button variant="primary">Bottom Sheet</Button>
       <template #content>
