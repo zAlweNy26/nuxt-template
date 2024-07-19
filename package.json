@@ -21,7 +21,7 @@
     "@formkit/auto-animate": "^0.8.2",
     "@nuxt/eslint": "^0.3.13",
     "@nuxt/fonts": "^0.7.1",
-    "@nuxt/icon": "^1.0.0",
+    "@nuxt/icon": "^1.2.0",
     "@nuxt/image": "^1.7.0",
     "@nuxt/test-utils": "^3.13.1",
     "@nuxtjs/color-mode": "^3.4.2",
@@ -32,14 +32,14 @@
     "@vueuse/nuxt": "^10.11.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "nuxt": "^3.12.3",
+    "nuxt": "^3.12.4",
     "nuxt-api-party": "^2.0.8",
     "nuxt-security": "^2.0.0-rc.9",
     "radix-vue": "^1.9.1",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "vue": "^3.4.31"
+    "vue": "^3.4.33"
   },
   "devDependencies": {
     "@iconify-json/ph": "^1.1.13",
