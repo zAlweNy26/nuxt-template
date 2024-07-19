@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.4...v0.0.5)
+
+### 🚀 Enhancements
+
+- **Component:** Add ResponsiveDialog ([32d77b9](https://github.com/zAlweNy26/nuxt-template/commit/32d77b9))
+- **Component:** Add Separator ([125cfb0](https://github.com/zAlweNy26/nuxt-template/commit/125cfb0))
+- **Component:** Add ProgressBar ([4953134](https://github.com/zAlweNy26/nuxt-template/commit/4953134))
+- **Component:** Add Slider ([15547f1](https://github.com/zAlweNy26/nuxt-template/commit/15547f1))
+- **Component:** Add Switch ([ab28bc9](https://github.com/zAlweNy26/nuxt-template/commit/ab28bc9))
+- **Component:** Add SelectBox ([9498999](https://github.com/zAlweNy26/nuxt-template/commit/9498999))
+
+### 🩹 Fixes
+
+- **Component:** Simplify DialogBox and SideSheet ([0c3856b](https://github.com/zAlweNy26/nuxt-template/commit/0c3856b))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.4
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.3...v0.0.4)
