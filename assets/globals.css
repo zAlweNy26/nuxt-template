@@ -94,3 +94,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .screen-vp {
+    @apply h-[calc(100dvh-0.5rem)] md:h-[calc(100dvh-1rem)] w-[calc(100dvw-0.5rem)] md:w-[calc(100dvw-1rem)];
+  }
+}

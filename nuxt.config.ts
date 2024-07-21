@@ -69,7 +69,6 @@ export default defineNuxtConfig({
 				code: 'it',
 				iso: 'it-IT',
 				name: 'Italiano',
-				isCatchallLocale: true,
 				domain: '🇮🇹'
 			}
 		],

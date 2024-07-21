@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SelectItems } from '~/components/ui/select'
+
 const { t } = useI18n()
 
 useHead({
@@ -12,7 +14,7 @@ const radioItems = [
   { name: 'Foo', value: 'foo' },
 ]
 
-const selectItems = [
+const selectItems: SelectItems = [
   { label: 'Text', value: 'text' },
   { label: 'Example', value: 'example' },
   { label: 'Bar', value: 'bar' },
@@ -20,10 +22,11 @@ const selectItems = [
 ]
 
 const progress = ref(50)
+const slider = ref([50])
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-4">
+  <div class="screen-vp flex flex-wrap gap-4">
     <ThemeButton />
     <LanguageSwitcher />
     <ResponsiveDialog title="Example title" description="Example description">
@@ -56,10 +59,10 @@ const progress = ref(50)
         <p>Example content</p>
       </template>
     </SideSheet>
+    <Switch id="test-switch" label="Test Switch" />
     <Separator class="my-4" label="Or" />
     <ProgressBar v-model="progress" :max="60" />
-    <Slider :max="100" :step="5" :modelValue="[50]" />
-    <Switch id="test-switch" label="Test Switch" />
+    <Slider v-model="slider" :max="100" :min="10" />
     <SelectBox placeholder="Select an item" :items="selectItems" />
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>

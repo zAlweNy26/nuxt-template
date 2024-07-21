@@ -13,9 +13,7 @@ const useIdMethod = () => useId()
 <template>
 	<ConfigProvider :use-id="useIdMethod">
 		<NuxtLayout>
-			<main id="main" class="flex grow flex-col p-1 md:p-2">
-				<NuxtPage />
-			</main>
+			<NuxtPage />
 		</NuxtLayout>
 	</ConfigProvider>
 </template>

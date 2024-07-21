@@ -19,7 +19,7 @@ const head = useLocaleHead({
 					<Meta :id="meta.id" :property="meta.property" :content="meta.content" />
 				</template>
 			</Head>
-			<Body class="flex min-h-screen flex-col scroll-smooth antialiased transition-colors">
+			<Body class="flex min-h-dvh flex-col scroll-smooth p-1 antialiased transition-colors selection:bg-primary md:p-2">
 				<slot />
 			</Body>
 		</Html>
