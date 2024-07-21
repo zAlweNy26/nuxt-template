@@ -8,8 +8,6 @@ const props = defineProps<{
   color?: InputVariants['color']
   size?: InputVariants['size']
   class?: HTMLAttributes['class']
-  labelClass?: HTMLAttributes['class']
-  label?: string
 }>()
 
 const model = defineModel<string | number>()
@@ -20,8 +18,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex w-full max-w-sm flex-col gap-1">
-    <Label v-if="label" :for="id" :size :class="cn('ps-1', props.labelClass)">{{ label }}</Label>
-    <input v-model="model" :class="cn(inputVariants({ color, size }), props.class)">
-  </div>
+  <input v-model="model" :class="cn(inputVariants({ color, size }), props.class)">
 </template>
