@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.0.6
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.5...v0.0.6)
+
+### 🚀 Enhancements
+
+- Add Form components and zod i18n translations ([531dff3](https://github.com/zAlweNy26/nuxt-template/commit/531dff3))
+
+### 🩹 Fixes
+
+- **Component:** Improve SelectBox ([4ba2a5a](https://github.com/zAlweNy26/nuxt-template/commit/4ba2a5a))
+- Update CSS styling and more ([129fd40](https://github.com/zAlweNy26/nuxt-template/commit/129fd40))
+- Remove default label from components ([011d086](https://github.com/zAlweNy26/nuxt-template/commit/011d086))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.5
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.4...v0.0.5)
