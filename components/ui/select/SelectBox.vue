@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
+import { type SelectVariants, type SelectItems, selectVariants } from '.'
 import type { SelectRootEmits, SelectRootProps } from 'radix-vue'
 import {
   SelectRoot, SelectTrigger, SelectIcon, SelectValue, SelectScrollUpButton, 
@@ -7,16 +8,13 @@ import {
   SelectScrollDownButton, SelectContent, SelectPortal, SelectViewport, useForwardPropsEmits
 } from 'radix-vue'
 
-type SelectItem = {
-  label: string
-  value: string
-}
-
 const props = defineProps<SelectRootProps & {
   class?: HTMLAttributes['class']
   placeholder: string
   disabled?: boolean
-  items: SelectItem[]
+  color?: SelectVariants['color']
+  size?: SelectVariants['size']
+  items: SelectItems
 }>()
 const emits = defineEmits<SelectRootEmits>()
 
@@ -31,17 +29,14 @@ const forwarded = useForwardPropsEmits(() => rootProps, emits)
 
 <template>
   <SelectRoot v-bind="forwarded">
-    <SelectTrigger v-bind="$attrs" :class="cn(
-      'flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
-      props.class,
-    )">
+    <SelectTrigger v-bind="$attrs" :class="cn(selectVariants({ color, size }), props.class)">
       <SelectValue :placeholder />
       <SelectIcon asChild>
         <Icon name="ph:caret-up-down" class="size-4 opacity-50" />
       </SelectIcon>
     </SelectTrigger>
     <SelectPortal>
-      <SelectContent position="item-aligned" :class="cn(
+      <SelectContent position="popper" :class="cn(
         'relative z-50 max-h-96 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
         'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',)">
         <SelectScrollUpButton class="flex cursor-default items-center justify-center py-1">
