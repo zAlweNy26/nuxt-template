@@ -15,6 +15,7 @@ export default defineNuxtConfig({
 		"@nuxtjs/color-mode",
 		"@vueuse/nuxt",
 		"nuxt-security",
+		"nuxt-zod-i18n",
 		"@nuxtjs/i18n",
 		"@pinia/nuxt",
 		"@formkit/auto-animate/nuxt",
@@ -23,8 +24,15 @@ export default defineNuxtConfig({
 		"@nuxt/eslint",
 		"@nuxt/fonts",
 		"@nuxt/icon",
-		"nuxt-api-party"
+		"nuxt-api-party",
+		"@formkit/auto-animate/nuxt",
+		"nuxt-lodash"
 	],
+	vite: {
+		optimizeDeps: {
+			include: ["lodash-es"],
+		},
+	},
 	components: [
 		{
 			path: '~/components',
@@ -34,10 +42,12 @@ export default defineNuxtConfig({
 	colorMode: {
 		classSuffix: ''
 	},
+	lodash: {
+		prefix: '_',
+	},
 	security: {
-		headers: {
-			crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
-		},
+		nonce: true,
+		csrf: true,
 	},
 	apiParty: {
 		endpoints: {
@@ -54,6 +64,18 @@ export default defineNuxtConfig({
 		families: [
 			{ name: 'Poppins', global: true, provider: 'google', weights: [400, 500, 600, 700, 800] }
 		]
+	},
+	zodI18n: {
+		dateFormat: {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+		},
+		localeCodesMapping: {
+			'en-GB': 'en',
+			'en-US': 'en',
+			'it-IT': 'it',
+		},
 	},
 	i18n: {
 		baseUrl: 'http://localhost:3000',
@@ -95,4 +117,18 @@ export default defineNuxtConfig({
 		'/box/**': { ssr: false },
 		'/guide/**': { swr: true },
 	},
+	$development: {
+		security: {
+			headers: {
+				crossOriginEmbedderPolicy: 'unsafe-none',
+			}
+		},
+	},
+	$production: {
+		security: {
+			headers: {
+				crossOriginEmbedderPolicy: 'require-corp',
+			}
+		},
+	}
 })

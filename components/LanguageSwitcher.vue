@@ -1,12 +1,4 @@
 <script lang="ts" setup>
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem
-} from '@/components/ui/dropdown-menu'
-
 const { locale, locales, changeLocale } = useSettingsStore()
 </script>
 

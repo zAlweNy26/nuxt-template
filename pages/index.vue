@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { z } from 'zod'
 import type { SelectItems } from '~/components/ui/select'
 
 const { t } = useI18n()
@@ -23,6 +24,11 @@ const selectItems: SelectItems = [
 
 const progress = ref(50)
 const slider = ref([50])
+
+const zodSchema = z.object({
+  username: z.string().min(3).describe('This is your public display name.'),
+  password: z.string().min(8).describe('This is your private password.'),
+})
 </script>
 
 <template>
@@ -64,6 +70,21 @@ const slider = ref([50])
     <ProgressBar v-model="progress" :max="60" />
     <Slider v-model="slider" :max="100" :min="10" />
     <SelectBox placeholder="Select an item" :items="selectItems" />
+    <Form :schema="zodSchema" @submit="(e) => console.log('valid',e)" 
+      @error="(e) => console.log('error', e)" @reset="() => console.log('reset')">
+      <FormField v-slot="{ field }" name="username" label="Username" 
+        description="Your public display name." help="A name you want to use to be recognized.">
+        <InputBox type="text" placeholder="Your username..." v-bind="field" />
+      </FormField>
+      <FormField v-slot="{ field }" name="password" label="Password" 
+        description="Your private password." help="Must be at least 8 characters long.">
+        <InputBox type="text" placeholder="A long password..." v-bind="field" />
+      </FormField>
+      <div class="flex gap-2">
+        <Button type="submit" variant="primary">Submit</Button>
+        <Button type="reset" variant="primary">Reset</Button>
+      </div>
+    </Form>
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
