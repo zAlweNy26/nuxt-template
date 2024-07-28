@@ -44,16 +44,20 @@ const forwarded = useForwardPropsEmits(() => rootProps, emits)
         :class="cn('fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', props.class)" />
       <DialogContent :class="cn(sheetVariants({ side }), props.contentClass)"
         @pointerDownOutside="(e) => !closable && e.preventDefault()">
-        <div class="flex flex-col gap-y-1.5 text-center sm:text-left">
+        <div class="flex items-start justify-between gap-2">
           <slot name="header" :title :description>
-            <DialogTitle class="text-lg font-semibold leading-none tracking-tight">
-              {{ title }}
-            </DialogTitle>
-            <DialogDescription class="text-sm text-muted-foreground">
-              {{ description }}
-            </DialogDescription>
+            <div class="flex flex-col">
+              <DialogTitle class="text-lg font-semibold leading-none tracking-tight">
+                {{ title }}
+              </DialogTitle>
+              <DialogDescription class="text-sm text-muted-foreground">
+                {{ description }}
+              </DialogDescription>
+            </div>
+          </slot>
+          <slot name="close">
             <DialogClose
-              class="absolute right-4 top-4 grid place-content-center rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+              class="grid place-content-center rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
               <Icon name="ph:x-bold" class="size-4" />
               <span class="sr-only">{{ $t('button.close') }}</span>
             </DialogClose>
