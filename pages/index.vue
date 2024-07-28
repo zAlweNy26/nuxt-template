@@ -70,6 +70,10 @@ const zodSchema = z.object({
     <ProgressBar v-model="progress" :max="60" />
     <Slider v-model="slider" :max="100" :min="10" />
     <SelectBox placeholder="Select an item" :items="selectItems" />
+    <Avatar src="https://github.com/radix-vue.png" size="xs" />
+    <Avatar src="https://github.com/radix-vue.png" size="sm" />
+    <Avatar src="https://github.com/radix-vue.png" size="md" />
+    <Avatar src="https://github.com/radix-vue.png" size="lg" />
     <Form :schema="zodSchema" @submit="(e) => console.log('valid',e)" 
       @error="(e) => console.log('error', e)" @reset="() => console.log('reset')">
       <FormField v-slot="{ field }" name="username" label="Username" 
