@@ -93,10 +93,23 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-@layer components {
-  .screen-vp {
-    @apply h-[calc(100dvh-0.5rem)] md:h-[calc(100dvh-1rem)] w-[calc(100dvw-0.5rem)] md:w-[calc(100dvw-1rem)];
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: theme('backgroundColor.primary.DEFAULT') theme('backgroundColor.primary.foreground');
+  }
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-primary-foreground;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-md;
+  }
+  [contenteditable="true"], [contenteditable=""] {
+    @apply outline outline-1 outline-primary rounded-md;
+  }
+  [contenteditable="true"]:focus, [contenteditable=""]:focus {
+    @apply outline-2;
   }
 }

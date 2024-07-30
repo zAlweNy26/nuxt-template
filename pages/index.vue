@@ -32,7 +32,7 @@ const zodSchema = z.object({
 </script>
 
 <template>
-  <div class="screen-vp flex flex-wrap gap-4">
+  <div class="flex flex-wrap gap-4">
     <ThemeButton />
     <LanguageSwitcher />
     <ResponsiveDialog title="Example title" description="Example description">
