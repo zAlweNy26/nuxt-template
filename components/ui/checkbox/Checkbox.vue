@@ -1,32 +1,11 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { CheckboxRootEmits, CheckboxRootProps } from 'radix-vue'
-import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'radix-vue'
-import { type CheckboxVariants, checkboxVariants } from '.'
+import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits, type CheckboxRootEmits } from 'radix-vue'
+import { type CheckboxProps, checkboxVariants } from '.'
 
-interface Props extends CheckboxRootProps {
-  variant?: CheckboxVariants['variant']
-  size?: CheckboxVariants['size']
-  class?: HTMLAttributes['class']
-  labelClass?: HTMLAttributes['class']
-  text?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  variant: 'primary',
-  size: 'sm',
-  text: undefined,
-  class: undefined,
-  labelClass: undefined,
-})
+const props = defineProps<CheckboxProps>()
 const emits = defineEmits<CheckboxRootEmits>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
-})
-
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
@@ -38,7 +17,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
         </slot>
       </CheckboxIndicator>
     </CheckboxRoot>
-    <Label v-if="text" :for="id" :size :class="props.labelClass">
+    <Label v-if="text" :for="root?.id" :size :class="props.labelClass">
       {{ text }}
     </Label>
   </div>

@@ -5,6 +5,7 @@ import type { SelectItems } from '~/components/ui/select'
 import { z } from 'zod'
 import { Button, Checkbox, DataTable, Icon } from '#components'
 import type { DataColumnDef } from '~/components/DataTable.vue'
+import type { RadioItems } from '~/components/ui/radio-group'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
@@ -13,7 +14,7 @@ useHead({
 	title: () => t('headers.home'),
 })
 
-const radioItems = [
+const radioItems: RadioItems = [
   { name: 'Text', value: 'text' },
   { name: 'Example', value: 'example' },
   { name: 'Bar', value: 'bar' },

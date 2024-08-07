@@ -1,6 +1,17 @@
 import { type VariantProps, cva } from 'class-variance-authority'
+import type { ClassValue } from 'clsx'
+import type { CheckboxRootProps } from 'radix-vue'
 
 export { default as Checkbox } from './Checkbox.vue'
+
+export interface CheckboxProps {
+  variant?: CheckboxVariants['variant']
+  size?: CheckboxVariants['size']
+  root?: CheckboxRootProps
+  class?: ClassValue
+  labelClass?: ClassValue
+  text?: string
+}
 
 export const checkboxVariants = cva(
   'peer size-4 shrink-0 rounded-sm shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',

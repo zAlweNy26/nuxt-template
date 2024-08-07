@@ -1,24 +1,21 @@
 <script setup lang="ts">
-import type { NumberFieldRootEmits, NumberFieldRootProps } from 'radix-vue'
-import { NumberFieldRoot, NumberFieldInput, NumberFieldDecrement, NumberFieldIncrement, useForwardPropsEmits } from 'radix-vue'
-import type { HTMLAttributes } from 'vue'
-import { type InputVariants, inputVariants } from '.'
+import { NumberFieldRoot, NumberFieldInput, NumberFieldDecrement, NumberFieldIncrement, 
+  useForwardPropsEmits, type NumberFieldRootEmits, type NumberFieldRootProps } from 'radix-vue'
+import type { ClassValue } from 'clsx'
+import { type NumericInputVariants, numericInputVariants } from '.'
 
-const props = defineProps<NumberFieldRootProps & { 
-  class?: HTMLAttributes['class']
-  buttonClass?: HTMLAttributes['class']
-  wrapperClass?: HTMLAttributes['class']
-  size?: InputVariants['size']
-  color?: InputVariants['color']
+const props = defineProps<{
+  root?: NumberFieldRootProps
+  class?: ClassValue
+  color?: NumericInputVariants['color']
+  size?: NumericInputVariants['size']
+  buttonClass?: ClassValue
+  wrapperClass?: ClassValue
 }>()
+
 const emits = defineEmits<NumberFieldRootEmits>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
-})
-
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
@@ -34,7 +31,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
           </div>
         </template>
       </ClientOnly>
-      <NumberFieldInput :class="cn(inputVariants({ color, size }), props.class)" />
+      <NumberFieldInput :class="cn(numericInputVariants({ color, size }), props.class)" />
       <ClientOnly> <!-- Workaround for `window is not defined` bug -->
         <NumberFieldIncrement :class="cn('absolute top-0 inline-flex right-0 p-2 disabled:cursor-not-allowed disabled:opacity-20', props.buttonClass)">
           <Icon name="ph:plus" class="size-4" />

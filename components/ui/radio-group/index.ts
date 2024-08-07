@@ -1,4 +1,5 @@
 import { type VariantProps, cva } from 'class-variance-authority'
+import type { RadioGroupItemProps } from 'radix-vue'
 
 export { default as RadioGroup } from './RadioGroup.vue'
 
@@ -26,5 +27,9 @@ export const radioVariants = cva(
     },
   },
 )
+
+export type RadioItem = Required<Pick<RadioGroupItemProps, 'name' | 'value'>> & Omit<RadioGroupItemProps, 'name' | 'id'>
+
+export type RadioItems = [RadioItem, ...RadioItem[]]
 
 export type RadioVariants = VariantProps<typeof radioVariants>

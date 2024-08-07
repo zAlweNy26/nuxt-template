@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import {
-  DropdownMenuItemIndicator,
-  DropdownMenuRadioItem,
-  type DropdownMenuRadioItemEmits,
-  type DropdownMenuRadioItemProps,
-  useForwardPropsEmits,
-} from 'radix-vue'
-import { DotFilledIcon } from '@radix-icons/vue'
+import type { ClassValue } from 'clsx'
+import { useForwardPropsEmits, DropdownMenuItemIndicator, DropdownMenuRadioItem,
+  type DropdownMenuRadioItemEmits, type DropdownMenuRadioItemProps } from 'radix-vue'
 
-const props = defineProps<DropdownMenuRadioItemProps & { class?: HTMLAttributes['class'] }>()
+const props = defineProps<DropdownMenuRadioItemProps & { class?: ClassValue }>()
 
 const emits = defineEmits<DropdownMenuRadioItemEmits>()
 
@@ -30,7 +24,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <slot />
     <span class="absolute right-2 flex size-3.5 items-center justify-center">
       <DropdownMenuItemIndicator>
-        <DotFilledIcon class="size-4 fill-current" />
+        <Icon name="ph:dot-bold" class="size-4 fill-current" />
       </DropdownMenuItemIndicator>
     </span>
   </DropdownMenuRadioItem>

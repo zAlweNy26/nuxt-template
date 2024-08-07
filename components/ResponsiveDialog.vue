@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue'
+import type { ClassValue } from 'clsx'
 import { useForwardPropsEmits, type DialogRootEmits, type DialogRootProps } from 'radix-vue'
 
 const props = withDefaults(defineProps<DialogRootProps & {
   title?: string
   description?: string
   closable?: boolean
-  class?: HTMLAttributes['class']
-  contentClass?: HTMLAttributes['class']
+  class?: ClassValue
+  contentClass?: ClassValue
 }>(), {
   title: undefined,
   description: undefined,

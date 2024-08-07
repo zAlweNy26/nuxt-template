@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {
-  DropdownMenuRoot, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, type DropdownMenuContentProps,
-  type DropdownMenuRootEmits, type DropdownMenuRootProps, type DropdownMenuTriggerProps, useForwardPropsEmits
-} from 'radix-vue'
+import { DropdownMenuRoot, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, type DropdownMenuContentProps,
+  type DropdownMenuRootEmits, type DropdownMenuRootProps, type DropdownMenuTriggerProps, useForwardPropsEmits, } from 'radix-vue'
 
 const props = defineProps<{
   root?: DropdownMenuRootProps
@@ -10,17 +8,16 @@ const props = defineProps<{
   content?: DropdownMenuContentProps
 }>()
 
-const rootProps = computed<DropdownMenuRootProps>(() => ({ ...props.root }))
-const triggerProps = computed<DropdownMenuTriggerProps>(() => ({ asChild: true, ...props.trigger }))
+const triggerProps = computed<DropdownMenuContentProps>(() => ({ asChild: true, ...props.trigger }))
 const contentProps = computed<DropdownMenuContentProps>(() => ({ align: 'center', sideOffset: 8, ...props.content }))
 
 const emits = defineEmits<DropdownMenuRootEmits>()
 
-const forwarded = useForwardPropsEmits(rootProps, emits)
+const forwardedRoot = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
-  <DropdownMenuRoot v-bind="forwarded">
+  <DropdownMenuRoot v-bind="forwardedRoot">
     <DropdownMenuTrigger class="outline-none" v-bind="triggerProps">
       <slot name="trigger" />
     </DropdownMenuTrigger>

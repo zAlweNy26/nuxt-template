@@ -1,20 +1,13 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import {
-  DropdownMenuCheckboxItem,
-  type DropdownMenuCheckboxItemEmits,
-  type DropdownMenuCheckboxItemProps,
-  DropdownMenuItemIndicator,
-  useForwardPropsEmits,
-} from 'radix-vue'
-import { CheckIcon } from '@radix-icons/vue'
+import type { ClassValue } from 'clsx'
+import { useForwardPropsEmits, DropdownMenuCheckboxItem, DropdownMenuItemIndicator,
+  type DropdownMenuCheckboxItemEmits, type DropdownMenuCheckboxItemProps } from 'radix-vue'
 
-const props = defineProps<DropdownMenuCheckboxItemProps & { class?: HTMLAttributes['class'] }>()
+const props = defineProps<DropdownMenuCheckboxItemProps & { class?: ClassValue }>()
 const emits = defineEmits<DropdownMenuCheckboxItemEmits>()
 
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props
-
   return delegated
 })
 
@@ -29,7 +22,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <slot />
     <span class="absolute right-2 flex size-3.5 items-center justify-center">
       <DropdownMenuItemIndicator>
-        <CheckIcon class="size-4" />
+        <Icon name="ph:check-bold" class="size-4" />
       </DropdownMenuItemIndicator>
     </span>
   </DropdownMenuCheckboxItem>

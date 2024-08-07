@@ -1,6 +1,6 @@
 import { type VariantProps, cva } from 'class-variance-authority'
+import type { ClassValue } from 'clsx'
 import type { PrimitiveProps } from 'radix-vue'
-import type { HTMLAttributes } from 'vue'
 
 export { default as Button } from './Button.vue'
 
@@ -8,7 +8,7 @@ export interface ButtonProps extends PrimitiveProps {
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
   square?: boolean
-  class?: HTMLAttributes['class']
+  class?: ClassValue
 }
 
 export const buttonVariants = cva(

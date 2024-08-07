@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { ClassValue } from 'clsx'
 
 const props = defineProps<{
-  class?: HTMLAttributes['class']
+  class?: ClassValue
 }>()
 </script>
 

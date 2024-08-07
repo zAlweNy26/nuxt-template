@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
 import { type SheetVariants, sheetVariants } from '.'
 import {
   DialogRoot, type DialogRootEmits, DialogTrigger, DialogOverlay, DialogContent,
   DialogPortal, type DialogRootProps, useForwardPropsEmits,
   DialogClose, DialogTitle, DialogDescription
 } from 'radix-vue'
+import type { ClassValue } from 'clsx'
 
-const props = withDefaults(defineProps<DialogRootProps & {
+const props = withDefaults(defineProps<{
+  root?: DialogRootProps
   title?: string
   description?: string
   closable?: boolean
-  class?: HTMLAttributes['class']
-  contentClass?: HTMLAttributes['class']
+  class?: ClassValue
+  contentClass?: ClassValue
   side?: SheetVariants['side']
 }>(), {
+  root: undefined,
   title: undefined,
   description: undefined,
   closable: true,
@@ -29,9 +31,7 @@ defineOptions({
 
 const emits = defineEmits<DialogRootEmits>()
 
-const { title, description, closable, contentClass, side, ...rootProps } = toReactive(props)
-
-const forwarded = useForwardPropsEmits(() => rootProps, emits)
+const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
@@ -40,8 +40,10 @@ const forwarded = useForwardPropsEmits(() => rootProps, emits)
       <slot />
     </DialogTrigger>
     <DialogPortal>
-      <DialogOverlay
-        :class="cn('fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', props.class)" />
+      <DialogOverlay :class="cn(
+        'fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', 
+        props.class
+      )" />
       <DialogContent :class="cn(sheetVariants({ side }), props.contentClass)"
         @pointerDownOutside="(e) => !closable && e.preventDefault()">
         <div class="flex items-start justify-between gap-2">

@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import {
-  DropdownMenuSeparator,
-  type DropdownMenuSeparatorProps,
-} from 'radix-vue'
+import type { ClassValue } from 'clsx'
+import { DropdownMenuSeparator, type DropdownMenuSeparatorProps } from 'radix-vue'
 
-const props = defineProps<DropdownMenuSeparatorProps & {
-  class?: HTMLAttributes['class']
-}>()
+const props = defineProps<DropdownMenuSeparatorProps & { class?: ClassValue }>()
 
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props
-
   return delegated
 })
 </script>

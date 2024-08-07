@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { ClassValue } from 'clsx'
 import { type InputVariants, inputVariants } from '.'
 
 const props = defineProps<{
-  id?: HTMLAttributes['id']
   defaultValue?: string | number
+  class?: ClassValue
   color?: InputVariants['color']
   size?: InputVariants['size']
-  class?: HTMLAttributes['class']
 }>()
 
 const model = defineModel<string | number>()

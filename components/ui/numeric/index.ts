@@ -3,7 +3,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 
 export { default as NumericInput } from './NumericInput.vue'
 
-export const inputVariants = cva(
+export const numericInputVariants = cva(
     'w-full rounded-md border border-input bg-transparent py-1 text-center transition-shadow placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50',
     {
         variants: {
@@ -29,4 +29,4 @@ export const inputVariants = cva(
     }
 )
 
-export type InputVariants = VariantProps<typeof inputVariants>
+export type NumericInputVariants = VariantProps<typeof numericInputVariants>

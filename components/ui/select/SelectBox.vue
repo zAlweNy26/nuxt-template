@@ -1,30 +1,29 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue'
 import { type SelectVariants, type SelectItems, selectVariants } from '.'
-import type { SelectRootEmits, SelectRootProps } from 'radix-vue'
-import {
+import { type SelectRootEmits, type SelectRootProps,
   SelectRoot, SelectTrigger, SelectIcon, SelectValue, SelectScrollUpButton, 
   SelectGroup, SelectItem, SelectItemIndicator, SelectItemText,
   SelectScrollDownButton, SelectContent, SelectPortal, SelectViewport, useForwardPropsEmits
 } from 'radix-vue'
+import type { ClassValue } from 'clsx'
 
-const props = defineProps<SelectRootProps & {
-  class?: HTMLAttributes['class']
-  placeholder: string
-  disabled?: boolean
+const props = defineProps<{
+  root?: SelectRootProps
+  class?: ClassValue
   color?: SelectVariants['color']
   size?: SelectVariants['size']
+  placeholder: string
+  disabled?: boolean
   items: SelectItems
 }>()
-const emits = defineEmits<SelectRootEmits>()
 
-const { disabled, placeholder, class: _, ...rootProps } = toReactive(props)
+const emits = defineEmits<SelectRootEmits>()
 
 defineOptions({
   inheritAttrs: false
 })
 
-const forwarded = useForwardPropsEmits(() => rootProps, emits)
+const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>

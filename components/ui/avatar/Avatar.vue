@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { ClassValue } from 'clsx'
 import { AvatarRoot, AvatarImage, type AvatarImageProps, AvatarFallback, type AvatarFallbackProps } from 'radix-vue'
 import { type AvatarVariants, avatarVariant } from '.'
 
-const props = withDefaults(defineProps<{
-  class?: HTMLAttributes['class']
+const props = defineProps<AvatarImageProps & AvatarFallbackProps & {
+  class?: ClassValue
   size?: AvatarVariants['size']
   shape?: AvatarVariants['shape']
-} & AvatarImageProps & AvatarFallbackProps>(), {
-  class: undefined,
-  size: 'sm',
-  shape: 'circle',
-})
+}>()
 </script>
 
 <template>

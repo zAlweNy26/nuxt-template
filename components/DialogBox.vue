@@ -1,34 +1,34 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
 import {
   DialogRoot, type DialogRootEmits, DialogTrigger, DialogOverlay, DialogContent,
-  DialogPortal, type DialogRootProps, useForwardPropsEmits,
+  DialogPortal, type DialogRootProps, useForwardPropsEmits, type DialogContentProps,
   DialogClose, DialogTitle, DialogDescription
 } from 'radix-vue'
+import type { ClassValue } from 'clsx'
 
-const props = withDefaults(defineProps<DialogRootProps & {
+const props = withDefaults(defineProps<{
+  root?: DialogRootProps
+  class?: ClassValue
   title?: string
   description?: string
   closable?: boolean
-  class?: HTMLAttributes['class']
-  contentClass?: HTMLAttributes['class']
+  content?: DialogContentProps & { contentClass?: ClassValue }
 }>(), {
+  root: undefined,
+  class: undefined,
   title: undefined,
   description: undefined,
   closable: true,
-  class: undefined,
-  contentClass: undefined
+  content: undefined
 })
 
-defineOptions({
-  inheritAttrs: false
-})
+defineOptions({ inheritAttrs: false })
+
+const contentProps = computed<DialogContentProps & { contentClass?: ClassValue }>(() => ({ ...props.content }))
 
 const emits = defineEmits<DialogRootEmits>()
 
-const { title, description, closable, contentClass, ...rootProps } = toReactive(props)
-
-const forwarded = useForwardPropsEmits(() => rootProps, emits)
+const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
@@ -37,11 +37,13 @@ const forwarded = useForwardPropsEmits(() => rootProps, emits)
       <slot />
     </DialogTrigger>
     <DialogPortal>
-      <DialogOverlay
-        :class="cn('fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', props.class)" />
+      <DialogOverlay :class="cn(
+        'fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', 
+        props.class
+      )" />
       <DialogContent :class="cn(
         'fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border bg-background p-4 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg',
-        props.contentClass,
+        contentProps.contentClass,
       )" @pointerDownOutside="(e) => !closable && e.preventDefault()">
         <div class="flex items-start justify-between gap-2">
           <slot name="header" :title :description>

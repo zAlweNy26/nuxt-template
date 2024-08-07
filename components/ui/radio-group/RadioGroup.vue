@@ -1,31 +1,27 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { type RadioVariants, radioVariants } from '.'
+import type { ClassValue } from 'clsx'
+import { type RadioVariants, type RadioItems, radioVariants } from '.'
 import { RadioGroupRoot, type RadioGroupRootEmits, RadioGroupIndicator,
-  RadioGroupItem, type RadioGroupRootProps, type RadioGroupItemProps, useForwardPropsEmits } from 'radix-vue'
+  RadioGroupItem, type RadioGroupRootProps, useForwardPropsEmits } from 'radix-vue'
 
-type RadioGroupItem = Required<Pick<RadioGroupItemProps, 'name' | 'value'>> & Omit<RadioGroupItemProps, 'name' | 'id'>
-
-const props = withDefaults(defineProps<RadioGroupRootProps & {
-  items: RadioGroupItem[]
-  class?: HTMLAttributes['class']
-  itemClass?: HTMLAttributes['class']
+const props = withDefaults(defineProps<{
+  root?: RadioGroupRootProps
+  items: RadioItems
+  class?: ClassValue
   variant?: RadioVariants['variant']
   size?: RadioVariants['size']
+  itemClass?: ClassValue
 }>(), {
   variant: 'primary',
   size: 'sm',
+  root: undefined,
   class: undefined,
   itemClass: undefined,
 })
+
 const emits = defineEmits<RadioGroupRootEmits>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
-})
-
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
