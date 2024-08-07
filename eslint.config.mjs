@@ -8,6 +8,7 @@ const { configs } = securityPlugin
 export default withNuxt([configs.recommended, ...tailwind.configs["flat/recommended"], {
     rules: {
         "@typescript-eslint/no-explicit-any": "warn",
+        "tailwindcss/no-custom-classname": "off",
         "vue/multi-word-component-names": "off",
         "vue/v-on-event-hyphenation": "off",
         "vue/attribute-hyphenation": "off",

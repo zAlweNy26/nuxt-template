@@ -7,6 +7,7 @@ import { Button, Checkbox, DataTable, Icon } from '#components'
 import type { DataColumnDef } from '~/components/DataTable.vue'
 import type { RadioItems } from '~/components/ui/radio-group'
 import type { BreadcrumbItems } from '~/components/ui/breadcrumb'
+import type { AccordionItems } from '~/components/ui/accordion'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
@@ -20,6 +21,12 @@ const radioItems: RadioItems = [
   { name: 'Example', value: 'example' },
   { name: 'Bar', value: 'bar' },
   { name: 'Foo', value: 'foo' },
+]
+
+const accordionItems: AccordionItems = [
+  { id: 'first', label: 'Accordion 1' },
+  { id: 'second', label: 'Accordion 2' },
+  { id: 'third', label: 'Accordion 3' },
 ]
 
 const selectItems: SelectItems = [
@@ -238,6 +245,17 @@ onMounted(async () => {
         <p>Example content</p>
       </template>
     </Tooltip>
+    <Accordion type="single" :items="accordionItems">
+      <template #first-content>
+        <p>Accordion 1 content</p>
+      </template>
+      <template #second-content>
+        <p>Accordion 2 content</p>
+      </template>
+      <template #third-content>
+        <p>Accordion 3 content</p>
+      </template>
+    </Accordion>
     <Badge variant="secondary">Secondary</Badge>
     <Badge variant="success">Success</Badge>
     <Badge variant="error" size="lg">Error</Badge>
