@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { z } from 'zod'
+import type { ComponentExposed } from 'vue-component-type-helpers'
+import type { SortingState } from '@tanstack/vue-table'
 import type { SelectItems } from '~/components/ui/select'
+import { z } from 'zod'
+import { Button, Checkbox, DataTable, Icon } from '#components'
+import type { DataColumnDef } from '~/components/DataTable.vue'
 
 const { t } = useI18n()
+const { storage, locale } = storeToRefs(useSettingsStore())
 
 useHead({
 	title: () => t('headers.home'),
@@ -28,6 +33,126 @@ const slider = ref([50])
 const zodSchema = z.object({
   username: z.string().min(3).describe('This is your public display name.'),
   password: z.string().min(8).describe('This is your private password.'),
+})
+
+interface Payment {
+  id: string
+  amount: number
+  status: 'pending' | 'processing' | 'success' | 'failed'
+  email: string
+}
+
+const columns: DataColumnDef<Payment>[] = [
+  {
+    accessorKey: 'select',
+    pinned: 'left',
+    header: ({ table }) => h(Checkbox, {
+      checked: table.getIsAllPageRowsSelected(),
+      "onUpdate:checked": (value) => table.toggleAllPageRowsSelected(!!value),
+      'ariaLabel': 'Select all',
+    }),
+    cell: ({ row }) => h(Checkbox, {
+      'checked': row.getIsSelected(),
+      'onUpdate:checked': (value: boolean) => row.toggleSelected(!!value),
+      'ariaLabel': 'Select row',
+    }),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'status',
+    header: ({ column }) => {
+      const sort = column.getIsSorted() === 'asc'
+      return h(Button, {
+        variant: 'ghost',
+        onClick: () => column.toggleSorting(sort),
+      }, () => ['Status', h(Icon, { name: sort ? 'ph:sort-ascending-bold' : 'ph:sort-descending-bold', class: 'ml-2 size-4' })])
+    },
+    cell: ({ row }) => {
+      const status = row.getValue<string>('status')
+      return h('div', { class: 'text-left' }, status)
+    },
+  },
+  {
+    accessorKey: 'amount',
+    header: ({ column }) => {
+      const sort = column.getIsSorted() === 'asc'
+      return h(Button, {
+        variant: 'ghost',
+        onClick: () => column.toggleSorting(sort),
+      }, () => ['Amount', h(Icon, { name: sort ? 'ph:sort-ascending-bold' : 'ph:sort-descending-bold', class: 'ml-2 size-4' })])
+    },
+    cell: ({ row }) => {
+      const amount = Number.parseFloat(row.getValue('amount'))
+      const formatted = new Intl.NumberFormat(locale.value, {
+        style: 'currency',
+        currency: 'USD',
+      }).format(amount)
+      return h('div', { class: 'text-left font-medium' }, formatted)
+    },
+  }, {
+    accessorKey: 'email',
+    header: ({ column }) => {
+      const sort = column.getIsSorted() === 'asc'
+      return h(Button, {
+        variant: 'ghost',
+        onClick: () => column.toggleSorting(sort),
+      }, () => ['Email', h(Icon, { name: sort ? 'ph:sort-ascending-bold' : 'ph:sort-descending-bold', class: 'ml-2 size-4' })])
+    },
+    cell: ({ row }) => {
+      const email = row.getValue<string>('email')
+      return h('div', { class: 'text-left' }, email)
+    },
+  }, {
+    accessorKey: 'actions',
+    pinned: 'right',
+    header: () => h('div'),
+    headerClass: 'w-0',
+    enableSorting: false,
+    enableHiding: false,
+  }
+]
+
+const data = ref<Payment[]>([])
+const sorting = ref<SortingState>([])
+const exampleTable = ref<ComponentExposed<typeof DataTable>>()
+
+const filterEmails = computed({
+  get: () => exampleTable.value?.table.getColumn('email')?.getFilterValue() as string,
+  set: (value) => exampleTable.value?.table.getColumn('email')?.setFilterValue(value),
+})
+
+async function getData(): Promise<Payment[]> {
+  return [
+    {
+      id: '728ed52f',
+      amount: 100,
+      status: 'pending',
+      email: 'm@example.com',
+    },
+    {
+      id: '724342f',
+      amount: 34,
+      status: 'failed',
+      email: 'fg@example.com',
+    },
+    {
+      id: 'gdfg45',
+      amount: 200,
+      status: 'success',
+      email: 'boh@test.com',
+    },
+    {
+      id: 'fgh34',
+      amount: 79,
+      status: 'success',
+      email: 'yep@wow.com',
+    }
+  ]
+}
+
+onMounted(async () => {
+  data.value = await getData()
 })
 </script>
 
@@ -104,6 +229,43 @@ const zodSchema = z.object({
     <Badge variant="warning" size="md">Warning</Badge>
     <Badge variant="info" size="sm">Info</Badge>
     <Badge variant="outline" size="xs">Outline</Badge>
+    <Paginator :total="data.length" showText :itemsPerPage="storage.pageSize" @update="exampleTable?.table.setPageIndex($event)"
+      @first="exampleTable?.table.firstPage()" @last="exampleTable?.table.lastPage()"
+      @prev="exampleTable?.table.previousPage()" @next="exampleTable?.table.nextPage()">
+      <div class="flex items-center gap-2">
+        <InputBox v-model="filterEmails" class="max-w-sm" placeholder="Filter emails..." />
+        <DropdownMenu :content="{ align: 'end' }">
+          <template #trigger>
+            <Button variant="outline" class="ml-auto">
+              Columns
+              <Icon name="ph:caret-down" class="ml-2 size-4" />
+            </Button>
+          </template>
+          <DropdownMenuCheckboxItem
+            v-for="column in exampleTable?.table.getAllColumns().filter(c => c.getCanHide())" :key="column.id"
+            class="capitalize" :checked="column.getIsVisible()" @update:checked="(value) => { column.toggleVisibility(!!value) }">
+            {{ column.id }}
+          </DropdownMenuCheckboxItem>
+        </DropdownMenu>
+      </div>
+      <DataTable ref="exampleTable" v-model:sort="sorting" 
+        :columns="columns" :rows="data" :total="data.length" loading class="caption-top">
+        <template #caption>
+          <h2 class="text-lg font-semibold">Payments</h2>
+        </template>
+        <template #actions-row="{ context }">
+          <div class="text-right">
+            <Button variant="ghost" class="size-8 p-0" @click="context.row.toggleExpanded()">
+              <span class="sr-only">Open menu</span>
+              <Icon name="ph:caret-down-bold" class="size-4 transition-transform" :class="[context.row.getIsExpanded() && 'rotate-180']" />
+            </Button>
+          </div>
+        </template>
+        <template #expanded="{ row }">
+          {{ JSON.stringify(row.original, undefined, 4) }}
+        </template>
+      </DataTable>
+    </Paginator>
     <Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
     <Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
     <Checkbox id="terms3" size="md" text="Accept terms and conditions" />

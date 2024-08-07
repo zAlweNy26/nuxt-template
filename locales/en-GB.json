@@ -23,5 +23,11 @@
     "button": {
         "backHome": "Go back to @:headers.home",
         "close": "Close"
+    },
+    "table": {
+        "pagination": "Showing {0} to {1} of {2} results",
+        "noData": "No data available",
+        "noResults": "No results found",
+        "loading": "Loading data..."
     }
 }

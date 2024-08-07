@@ -3,7 +3,9 @@ export const useSettingsStore = defineStore('Settings', () => {
   const { locale, locales, setLocale, setLocaleCookie } = useI18n()
   const switchLocalePath = useSwitchLocalePath()
 
-	const storage = useLocalStorage('settings', {}, { mergeDefaults: true })
+	const storage = useLocalStorage('settings', {
+    pageSize: 25,
+  }, { mergeDefaults: true })
 
 	const isDark = computed(() => colorMode.value === 'dark')
   const isLight = computed(() => colorMode.value === 'light')
