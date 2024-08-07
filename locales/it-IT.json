@@ -1,11 +1,15 @@
 {
+    "aria": {
+        "toggle": "Cambia",
+        "more": "Altro"
+    },
     "theme": {
         "light": "Chiaro",
         "dark": "Scuro",
-        "toggle": "Cambia tema"
+        "toggle": "@:aria.toggle tema"
     },
     "language": {
-        "toggle": "Cambia lingua"
+        "toggle": "@:aria.toggle lingua"
     },
     "headers": {
         "home": "Home"

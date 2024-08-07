@@ -1,11 +1,15 @@
 {
+    "aria": {
+        "toggle": "Toggle",
+        "more": "More"
+    },
     "theme": {
         "light": "Light",
         "dark": "Dark",
-        "toggle": "Toggle theme"
+        "toggle": "@:aria.toggle theme"
     },
     "language": {
-        "toggle": "Toggle language"
+        "toggle": "@:aria.toggle language"
     },
     "headers": {
         "home": "Home"

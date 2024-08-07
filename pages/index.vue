@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { Button, Checkbox, DataTable, Icon } from '#components'
 import type { DataColumnDef } from '~/components/DataTable.vue'
 import type { RadioItems } from '~/components/ui/radio-group'
+import type { BreadcrumbItems } from '~/components/ui/breadcrumb'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
@@ -26,6 +27,13 @@ const selectItems: SelectItems = [
   { label: 'Example', value: 'example' },
   { label: 'Bar', value: 'bar' },
   { label: 'Foo', value: 'foo' },
+]
+
+const breadcrumbItems: BreadcrumbItems = [
+  { label: 'Home', href: '/', current: true },
+  { label: 'Test', icon: 'ph:acorn-bold', onClick: () => console.log('clicked') },
+  { label: 'Products', href: '/products' },
+  { label: 'Product 1', href: '/products/1' },
 ]
 
 const progress = ref(50)
@@ -215,6 +223,7 @@ onMounted(async () => {
         <Button type="reset" variant="primary">Reset</Button>
       </div>
     </Form>
+    <Breadcrumb :items="breadcrumbItems" />
     <Button variant="error">Error</Button>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
