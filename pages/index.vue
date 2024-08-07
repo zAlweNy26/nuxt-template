@@ -232,7 +232,12 @@ onMounted(async () => {
     <Button variant="link">Link</Button>
     <Button variant="outline">Outline</Button>
     <Button variant="secondary">Secondary</Button>
-    <Badge variant="primary">Primary</Badge>
+    <Tooltip>
+      <Badge variant="primary">Primary</Badge>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </Tooltip>
     <Badge variant="secondary">Secondary</Badge>
     <Badge variant="success">Success</Badge>
     <Badge variant="error" size="lg">Error</Badge>
