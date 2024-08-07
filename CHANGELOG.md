@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.6...v0.0.7)
+
+### 🚀 Enhancements
+
+- **Component:** Add Avatar ([0ea11d2](https://github.com/zAlweNy26/nuxt-template/commit/0ea11d2))
+- **Component:** Add Skeleton ([9c45647](https://github.com/zAlweNy26/nuxt-template/commit/9c45647))
+- **Button:** Update props ([3f170cc](https://github.com/zAlweNy26/nuxt-template/commit/3f170cc))
+- **Component:** Add Paginator ([f71efea](https://github.com/zAlweNy26/nuxt-template/commit/f71efea))
+- **Component:** Add DataTable ([6c09e09](https://github.com/zAlweNy26/nuxt-template/commit/6c09e09))
+
+### 🩹 Fixes
+
+- Fix SideSheet and DialogBox components ([0d6a9f9](https://github.com/zAlweNy26/nuxt-template/commit/0d6a9f9))
+- **Component:** Update Paginator ([9239269](https://github.com/zAlweNy26/nuxt-template/commit/9239269))
+- Update some components ([e9f0313](https://github.com/zAlweNy26/nuxt-template/commit/e9f0313))
+- **Component:** Update Paginator ([30a97e7](https://github.com/zAlweNy26/nuxt-template/commit/30a97e7))
+- Improve props declarations ([e6d5ba6](https://github.com/zAlweNy26/nuxt-template/commit/e6d5ba6))
+
+### 🏡 Chore
+
+- Update dependencies ([a98ab72](https://github.com/zAlweNy26/nuxt-template/commit/a98ab72))
+- Update dependencies ([fd73b1c](https://github.com/zAlweNy26/nuxt-template/commit/fd73b1c))
+
+### 🎨 Styles
+
+- Update CSS ([dd06faa](https://github.com/zAlweNy26/nuxt-template/commit/dd06faa))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.6
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.5...v0.0.6)
