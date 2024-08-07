@@ -9,12 +9,13 @@ interface Props extends CheckboxRootProps {
   size?: CheckboxVariants['size']
   class?: HTMLAttributes['class']
   labelClass?: HTMLAttributes['class']
-  text: string
+  text?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
   size: 'sm',
+  text: undefined,
   class: undefined,
   labelClass: undefined,
 })
@@ -37,7 +38,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
         </slot>
       </CheckboxIndicator>
     </CheckboxRoot>
-    <Label :for="id" :size :class="props.labelClass">
+    <Label v-if="text" :for="id" :size :class="props.labelClass">
       {{ text }}
     </Label>
   </div>
