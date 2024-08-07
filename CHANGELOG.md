@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.0.8
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.7...v0.0.8)
+
+### 🚀 Enhancements
+
+- **Component:** Add Breadcrumb ([4e182b5](https://github.com/zAlweNy26/nuxt-template/commit/4e182b5))
+- **Component:** Add Tooltip ([2fd991b](https://github.com/zAlweNy26/nuxt-template/commit/2fd991b))
+- **Component:** Add Accordion ([73788df](https://github.com/zAlweNy26/nuxt-template/commit/73788df))
+
+### 🩹 Fixes
+
+- Add missing default props ([ac153f0](https://github.com/zAlweNy26/nuxt-template/commit/ac153f0))
+
+### 💅 Refactors
+
+- Rename Dropdown menu checkbox item ([c052652](https://github.com/zAlweNy26/nuxt-template/commit/c052652))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.7
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.6...v0.0.7)
