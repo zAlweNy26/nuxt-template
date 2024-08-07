@@ -242,11 +242,11 @@ onMounted(async () => {
               <Icon name="ph:caret-down" class="ml-2 size-4" />
             </Button>
           </template>
-          <DropdownMenuCheckboxItem
+          <DropdownMenuCheckItem
             v-for="column in exampleTable?.table.getAllColumns().filter(c => c.getCanHide())" :key="column.id"
-            class="capitalize" :checked="column.getIsVisible()" @update:checked="(value) => { column.toggleVisibility(!!value) }">
+            class="capitalize" :checked="column.getIsVisible()" @update:checked="column.toggleVisibility(!!$event)">
             {{ column.id }}
-          </DropdownMenuCheckboxItem>
+          </DropdownMenuCheckItem>
         </DropdownMenu>
       </div>
       <DataTable ref="exampleTable" v-model:sort="sorting" 
