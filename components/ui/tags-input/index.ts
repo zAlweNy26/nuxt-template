@@ -1,4 +1,3 @@
-
 import { type VariantProps, cva } from 'class-variance-authority'
 
 export { default as TagsInput } from './TagsInput.vue'

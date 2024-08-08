@@ -258,6 +258,7 @@ onMounted(async () => {
       </template>
     </Accordion>
     <TagsInput v-model="tags" />
+    <Textarea />
     <Badge variant="secondary">Secondary</Badge>
     <Badge variant="success">Success</Badge>
     <Badge variant="error" size="lg">Error</Badge>

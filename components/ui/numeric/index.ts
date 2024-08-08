@@ -1,4 +1,3 @@
-
 import { type VariantProps, cva } from 'class-variance-authority'
 
 export { default as NumericInput } from './NumericInput.vue'
