@@ -45,6 +45,7 @@ const breadcrumbItems: BreadcrumbItems = [
 
 const progress = ref(50)
 const slider = ref([50])
+const tags = ref<string[]>([])
 
 const zodSchema = z.object({
   username: z.string().min(3).describe('This is your public display name.'),
@@ -256,6 +257,7 @@ onMounted(async () => {
         <p>Accordion 3 content</p>
       </template>
     </Accordion>
+    <TagsInput v-model="tags" />
     <Badge variant="secondary">Secondary</Badge>
     <Badge variant="success">Success</Badge>
     <Badge variant="error" size="lg">Error</Badge>
