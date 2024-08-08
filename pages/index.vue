@@ -232,7 +232,12 @@ onMounted(async () => {
       </div>
     </Form>
     <Breadcrumb :items="breadcrumbItems" />
-    <Button variant="error">Error</Button>
+    <Popover>
+      <Button variant="error">Error</Button>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </Popover>
     <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
     <Button variant="info">Info</Button>
