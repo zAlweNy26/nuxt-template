@@ -245,7 +245,7 @@ onMounted(async () => {
         <p>Example content</p>
       </template>
     </Tooltip>
-    <Accordion type="single" :items="accordionItems">
+    <Accordion type="single" :items="accordionItems" class="max-w-48">
       <template #first-content>
         <p>Accordion 1 content</p>
       </template>
