@@ -1,30 +1,13 @@
 <script setup lang="ts">
-import {
-  DialogRoot, type DialogRootEmits, DialogTrigger, DialogOverlay, DialogContent,
-  DialogPortal, type DialogRootProps, useForwardPropsEmits, type DialogContentProps,
-  DialogClose, DialogTitle, DialogDescription
-} from 'radix-vue'
-import type { ClassValue } from 'clsx'
+import { DialogRoot, type DialogRootEmits, DialogTrigger, DialogOverlay, DialogContent,
+  DialogPortal, useForwardPropsEmits, DialogClose, DialogTitle, DialogDescription } from 'radix-vue'
+import type { SheetProps } from './ui/sheet'
 
-const props = withDefaults(defineProps<{
-  root?: DialogRootProps
-  class?: ClassValue
-  title?: string
-  description?: string
-  closable?: boolean
-  content?: DialogContentProps & { contentClass?: ClassValue }
-}>(), {
-  root: undefined,
-  class: undefined,
-  title: undefined,
-  description: undefined,
-  closable: true,
-  content: undefined
+const props = withDefaults(defineProps<SheetProps>(), {
+  closable: true
 })
 
 defineOptions({ inheritAttrs: false })
-
-const contentProps = computed<DialogContentProps & { contentClass?: ClassValue }>(() => ({ ...props.content }))
 
 const emits = defineEmits<DialogRootEmits>()
 
@@ -41,9 +24,9 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
         'fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', 
         props.class
       )" />
-      <DialogContent :class="cn(
+      <DialogContent v-bind="props.content" :class="cn(
         'fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border bg-background p-4 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg',
-        contentProps.contentClass,
+        props.contentClass,
       )" @pointerDownOutside="(e) => !closable && e.preventDefault()">
         <div class="flex items-start justify-between gap-2">
           <slot name="header" :title :description>

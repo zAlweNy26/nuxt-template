@@ -1,19 +1,9 @@
 <script lang="ts" setup>
-import type { ClassValue } from 'clsx'
-import { useForwardPropsEmits, type DialogRootEmits, type DialogRootProps } from 'radix-vue'
+import { useForwardPropsEmits, type DialogRootEmits } from 'radix-vue'
+import type { SheetProps } from './ui/sheet'
 
-const props = withDefaults(defineProps<DialogRootProps & {
-  title?: string
-  description?: string
-  closable?: boolean
-  class?: ClassValue
-  contentClass?: ClassValue
-}>(), {
-  title: undefined,
-  description: undefined,
+const props = withDefaults(defineProps<SheetProps>(), {
   closable: true,
-  class: undefined,
-  contentClass: undefined
 })
 
 const emits = defineEmits<DialogRootEmits>()

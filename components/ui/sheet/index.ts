@@ -1,6 +1,18 @@
 import { type VariantProps, cva } from 'class-variance-authority'
+import type { ClassValue } from 'clsx'
+import type { DialogContentProps, DialogRootProps } from 'radix-vue'
 
 export { default as SideSheet } from './SideSheet.vue'
+
+export interface SheetProps {
+  root?: DialogRootProps
+  title?: string
+  description?: string
+  closable?: boolean
+  class?: ClassValue
+  content?: DialogContentProps
+  contentClass?: ClassValue
+}
 
 export const sheetVariants = cva(
   'fixed z-50 gap-4 bg-background p-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out',

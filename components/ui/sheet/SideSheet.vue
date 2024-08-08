@@ -1,33 +1,14 @@
 <script setup lang="ts">
-import { type SheetVariants, sheetVariants } from '.'
-import {
-  DialogRoot, type DialogRootEmits, DialogTrigger, DialogOverlay, DialogContent,
-  DialogPortal, type DialogRootProps, useForwardPropsEmits,
-  DialogClose, DialogTitle, DialogDescription
-} from 'radix-vue'
-import type { ClassValue } from 'clsx'
+import { type SheetVariants, type SheetProps, sheetVariants } from '.'
+import { DialogRoot, type DialogRootEmits, DialogTrigger, DialogOverlay, DialogContent,
+  DialogPortal, useForwardPropsEmits, DialogClose, DialogTitle, DialogDescription } from 'radix-vue'
 
-const props = withDefaults(defineProps<{
-  root?: DialogRootProps
-  title?: string
-  description?: string
-  closable?: boolean
-  class?: ClassValue
-  contentClass?: ClassValue
-  side?: SheetVariants['side']
-}>(), {
-  root: undefined,
-  title: undefined,
-  description: undefined,
+const props = withDefaults(defineProps<SheetProps & { side?: SheetVariants['side'] }>(), {
   closable: true,
-  class: undefined,
-  contentClass: undefined,
   side: 'right'
 })
 
-defineOptions({
-  inheritAttrs: false
-})
+defineOptions({ inheritAttrs: false })
 
 const emits = defineEmits<DialogRootEmits>()
 
@@ -44,7 +25,7 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
         'fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0', 
         props.class
       )" />
-      <DialogContent :class="cn(sheetVariants({ side }), props.contentClass)"
+      <DialogContent v-bind="props.content" :class="cn(sheetVariants({ side }), props.contentClass)"
         @pointerDownOutside="(e) => !closable && e.preventDefault()">
         <div class="flex items-start justify-between gap-2">
           <slot name="header" :title :description>
