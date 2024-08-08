@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v0.0.9
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.8...v0.0.9)
+
+### 🚀 Enhancements
+
+- **Component:** Add TagsInput ([10e7cef](https://github.com/zAlweNy26/nuxt-template/commit/10e7cef))
+- **Component:** Add Textarea ([b581225](https://github.com/zAlweNy26/nuxt-template/commit/b581225))
+- **Component:** Add Popover ([5c656bd](https://github.com/zAlweNy26/nuxt-template/commit/5c656bd))
+- **Component:** Add Tabs ([8e438b0](https://github.com/zAlweNy26/nuxt-template/commit/8e438b0))
+
+### 🩹 Fixes
+
+- Update Dropdown menu component ([1b3f1f6](https://github.com/zAlweNy26/nuxt-template/commit/1b3f1f6))
+- Unify DialogBox and SideSheet props ([349603f](https://github.com/zAlweNy26/nuxt-template/commit/349603f))
+
+### 🎨 Styles
+
+- Update Accordion ([99f2037](https://github.com/zAlweNy26/nuxt-template/commit/99f2037))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.8
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.7...v0.0.8)
