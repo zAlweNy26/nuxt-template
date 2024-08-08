@@ -8,6 +8,7 @@ import type { DataColumnDef } from '~/components/DataTable.vue'
 import type { RadioItems } from '~/components/ui/radio-group'
 import type { BreadcrumbItems } from '~/components/ui/breadcrumb'
 import type { AccordionItems } from '~/components/ui/accordion'
+import type { TabItems } from '~/components/ui/tabs'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
@@ -27,6 +28,12 @@ const accordionItems: AccordionItems = [
   { id: 'first', label: 'Accordion 1' },
   { id: 'second', label: 'Accordion 2' },
   { id: 'third', label: 'Accordion 3' },
+]
+
+const tabsItems: TabItems = [
+  { id: 'first', label: 'First' },
+  { id: 'second', label: 'Second' },
+  { id: 'third', label: 'Third' },
 ]
 
 const selectItems: SelectItems = [
@@ -216,7 +223,7 @@ onMounted(async () => {
     <Avatar src="https://github.com/radix-vue.png" size="sm" />
     <Avatar src="https://github.com/radix-vue.png" size="md" />
     <Avatar src="https://github.com/radix-vue.png" size="lg" />
-    <Form :schema="zodSchema" @submit="(e) => console.log('valid',e)" 
+    <Form :schema="zodSchema" @submit="(e) => console.log('valid', e)" 
       @error="(e) => console.log('error', e)" @reset="() => console.log('reset')">
       <FormField v-slot="{ field }" name="username" label="Username" 
         description="Your public display name." help="A name you want to use to be recognized.">
@@ -264,6 +271,17 @@ onMounted(async () => {
     </Accordion>
     <TagsInput v-model="tags" />
     <Textarea />
+    <Tabs :items="tabsItems" :root="{ defaultValue: 'second', orientation: 'vertical' }">
+      <template #first-content>
+        <p>First content</p>
+      </template>
+      <template #second-content>
+        <p>Second content</p>
+      </template>
+      <template #third-content>
+        <p>Third content</p>
+      </template>
+    </Tabs>
     <Badge variant="secondary">Secondary</Badge>
     <Badge variant="success">Success</Badge>
     <Badge variant="error" size="lg">Error</Badge>
