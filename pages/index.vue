@@ -276,17 +276,17 @@ onMounted(async () => {
       <div class="flex items-center gap-2">
         <InputBox v-model="filterEmails" class="max-w-sm" placeholder="Filter emails..." />
         <DropdownMenu :content="{ align: 'end' }">
-          <template #trigger>
-            <Button variant="outline" class="ml-auto">
-              Columns
-              <Icon name="ph:caret-down" class="ml-2 size-4" />
-            </Button>
+          <Button variant="outline" class="ml-auto">
+            Columns
+            <Icon name="ph:caret-down" class="ml-2 size-4" />
+          </Button>
+          <template #content>
+            <DropdownMenuCheckItem
+              v-for="column in exampleTable?.table.getAllColumns().filter(c => c.getCanHide())" :key="column.id"
+              class="capitalize" :checked="column.getIsVisible()" @update:checked="column.toggleVisibility(!!$event)">
+              {{ column.id }}
+            </DropdownMenuCheckItem>
           </template>
-          <DropdownMenuCheckItem
-            v-for="column in exampleTable?.table.getAllColumns().filter(c => c.getCanHide())" :key="column.id"
-            class="capitalize" :checked="column.getIsVisible()" @update:checked="column.toggleVisibility(!!$event)">
-            {{ column.id }}
-          </DropdownMenuCheckItem>
         </DropdownMenu>
       </div>
       <DataTable ref="exampleTable" v-model:sort="sorting" 
