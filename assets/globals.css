@@ -84,31 +84,36 @@
 
     --ring: 0 0% 89.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
   }
+
   body {
     scrollbar-width: thin;
     scrollbar-color: theme('backgroundColor.primary.DEFAULT') theme('backgroundColor.primary.foreground');
   }
+
   ::-webkit-scrollbar {
     @apply w-2 h-2;
   }
+
   ::-webkit-scrollbar-track {
     @apply bg-primary-foreground;
   }
+
   ::-webkit-scrollbar-thumb {
     @apply bg-primary rounded-md;
   }
+
   [contenteditable="true"], [contenteditable=""] {
     @apply outline outline-1 outline-primary rounded-md;
   }
+
   [contenteditable="true"]:focus, [contenteditable=""]:focus {
     @apply outline-2;
   }

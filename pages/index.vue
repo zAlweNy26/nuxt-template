@@ -9,12 +9,13 @@ import type { RadioItems } from '~/components/ui/radio-group'
 import type { BreadcrumbItems } from '~/components/ui/breadcrumb'
 import type { AccordionItems } from '~/components/ui/accordion'
 import type { TabItems } from '~/components/ui/tabs'
+import type { CommandItems } from '~/components/ui/command'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
 
 useHead({
-	title: () => t('headers.home'),
+  title: () => t('headers.home'),
 })
 
 const radioItems: RadioItems = [
@@ -48,6 +49,15 @@ const breadcrumbItems: BreadcrumbItems = [
   { label: 'Test', icon: 'ph:acorn-bold', onClick: () => console.log('clicked') },
   { label: 'Products', href: '/products' },
   { label: 'Product 1', href: '/products/1' },
+]
+
+const commandItems: CommandItems<string> = [
+  { label: 'Text', value: 'text', group: 'Foo' },
+  { label: 'Example', value: 'example' },
+  { label: 'Bar', value: 'bar' },
+  { label: 'Foo', value: 'foo', group: 'Foo' },
+  { label: 'Example 2', value: 'test2' },
+  { label: 'Test', value: 'test' }
 ]
 
 const progress = ref(50)
@@ -223,14 +233,14 @@ onMounted(async () => {
     <Avatar src="https://github.com/radix-vue.png" size="sm" />
     <Avatar src="https://github.com/radix-vue.png" size="md" />
     <Avatar src="https://github.com/radix-vue.png" size="lg" />
-    <Form :schema="zodSchema" @submit="(e) => console.log('valid', e)" 
-      @error="(e) => console.log('error', e)" @reset="() => console.log('reset')">
-      <FormField v-slot="{ field }" name="username" label="Username" 
-        description="Your public display name." help="A name you want to use to be recognized.">
+    <Form :schema="zodSchema" @submit="(e) => console.log('valid', e)" @error="(e) => console.log('error', e)"
+      @reset="() => console.log('reset')">
+      <FormField v-slot="{ field }" name="username" label="Username" description="Your public display name."
+        help="A name you want to use to be recognized.">
         <InputBox type="text" placeholder="Your username..." v-bind="field" />
       </FormField>
-      <FormField v-slot="{ field }" name="password" label="Password" 
-        description="Your private password." help="Must be at least 8 characters long.">
+      <FormField v-slot="{ field }" name="password" label="Password" description="Your private password."
+        help="Must be at least 8 characters long.">
         <InputBox type="text" placeholder="A long password..." v-bind="field" />
       </FormField>
       <div class="flex gap-2">
@@ -299,9 +309,10 @@ onMounted(async () => {
         <p>Third content</p>
       </template>
     </Tabs>
-    <Paginator :total="data.length" showText :itemsPerPage="storage.pageSize" @update="exampleTable?.table.setPageIndex($event)"
-      @first="exampleTable?.table.firstPage()" @last="exampleTable?.table.lastPage()"
-      @prev="exampleTable?.table.previousPage()" @next="exampleTable?.table.nextPage()">
+    <Paginator :total="data.length" showText :itemsPerPage="storage.pageSize"
+      @update="exampleTable?.table.setPageIndex($event)" @first="exampleTable?.table.firstPage()"
+      @last="exampleTable?.table.lastPage()" @prev="exampleTable?.table.previousPage()"
+      @next="exampleTable?.table.nextPage()">
       <div class="flex items-center gap-2">
         <InputBox v-model="filterEmails" class="max-w-sm" placeholder="Filter emails..." />
         <DropdownMenu :content="{ align: 'end' }">
@@ -310,16 +321,16 @@ onMounted(async () => {
             <Icon name="ph:caret-down" class="ml-2 size-4" />
           </Button>
           <template #content>
-            <DropdownMenuCheckItem
-              v-for="column in exampleTable?.table.getAllColumns().filter(c => c.getCanHide())" :key="column.id"
-              class="capitalize" :checked="column.getIsVisible()" @update:checked="column.toggleVisibility(!!$event)">
+            <DropdownMenuCheckItem v-for="column in exampleTable?.table.getAllColumns().filter(c => c.getCanHide())"
+              :key="column.id" class="capitalize" :checked="column.getIsVisible()"
+              @update:checked="column.toggleVisibility(!!$event)">
               {{ column.id }}
             </DropdownMenuCheckItem>
           </template>
         </DropdownMenu>
       </div>
-      <DataTable ref="exampleTable" v-model:sort="sorting" 
-        :columns="columns" :rows="data" :total="data.length" loading class="caption-top">
+      <DataTable ref="exampleTable" v-model:sort="sorting" :columns="columns" :rows="data" :total="data.length" loading
+        class="caption-top">
         <template #caption>
           <h2 class="text-lg font-semibold">Payments</h2>
         </template>
@@ -327,7 +338,8 @@ onMounted(async () => {
           <div class="text-right">
             <Button variant="ghost" class="size-8 p-0" @click="context.row.toggleExpanded()">
               <span class="sr-only">Open menu</span>
-              <Icon name="ph:caret-down-bold" class="size-4 transition-transform" :class="[context.row.getIsExpanded() && 'rotate-180']" />
+              <Icon name="ph:caret-down-bold" class="size-4 transition-transform"
+                :class="[context.row.getIsExpanded() && 'rotate-180']" />
             </Button>
           </div>
         </template>
@@ -344,6 +356,9 @@ onMounted(async () => {
         <p>Example content</p>
       </template>
     </Collapsible>
+    <Command :items="commandItems" noGroupAsFirst>
+      <CommandInput />
+    </Command>
     <Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
     <Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
     <Checkbox id="terms3" size="md" text="Accept terms and conditions" />
