@@ -82,14 +82,14 @@ export default defineNuxtConfig({
 		locales: [
 			{
 				code: 'en',
-				iso: 'en-GB',
+				language: 'en-GB',
 				name: 'English',
 				isCatchallLocale: true,
 				domain: '🇬🇧'
 			},
 			{
 				code: 'it',
-				iso: 'it-IT',
+				language: 'it-IT',
 				name: 'Italiano',
 				domain: '🇮🇹'
 			}

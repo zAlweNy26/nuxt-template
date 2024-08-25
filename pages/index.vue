@@ -288,6 +288,17 @@ onMounted(async () => {
     <Badge variant="warning" size="md">Warning</Badge>
     <Badge variant="info" size="sm">Info</Badge>
     <Badge variant="outline" size="xs">Outline</Badge>
+    <Tabs :items="tabsItems" :root="{ defaultValue: 'second', orientation: 'horizontal' }">
+      <template #first-content>
+        <p>First content</p>
+      </template>
+      <template #second-content>
+        <p>Second content</p>
+      </template>
+      <template #third-content>
+        <p>Third content</p>
+      </template>
+    </Tabs>
     <Paginator :total="data.length" showText :itemsPerPage="storage.pageSize" @update="exampleTable?.table.setPageIndex($event)"
       @first="exampleTable?.table.firstPage()" @last="exampleTable?.table.lastPage()"
       @prev="exampleTable?.table.previousPage()" @next="exampleTable?.table.nextPage()">
@@ -330,10 +341,10 @@ onMounted(async () => {
     <Checkbox id="terms3" size="md" text="Accept terms and conditions" />
     <Checkbox id="terms4" size="lg" text="Accept terms and conditions" />
     <InputBox label="Username" color="primary" size="xs" />
-    <InputBox label="Username" color="warning" size="md" />
     <InputBox label="Username" color="info" size="sm" />
+    <InputBox label="Username" color="warning" size="md" />
+    <InputBox label="Username" color="success" size="lg" />
     <RadioGroup :items="radioItems" />
     <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
-    <InputBox label="Username" color="success" size="lg" />
   </div>
 </template>
