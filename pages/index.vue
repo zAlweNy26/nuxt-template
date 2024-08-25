@@ -336,6 +336,14 @@ onMounted(async () => {
         </template>
       </DataTable>
     </Paginator>
+    <Collapsible>
+      <CollapsibleTrigger>
+        <Button variant="primary">Collapsible</Button>
+      </CollapsibleTrigger>
+      <template #content>
+        <p>Example content</p>
+      </template>
+    </Collapsible>
     <Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
     <Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
     <Checkbox id="terms3" size="md" text="Accept terms and conditions" />
