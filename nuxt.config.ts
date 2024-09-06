@@ -5,7 +5,10 @@ export default defineNuxtConfig({
 		strict: true,
 		typeCheck: 'build',
 	},
-	compatibilityDate: '2024-07-03',
+	future: {
+		compatibilityVersion: 4,
+	},
+	compatibilityDate: '2024-09-06',
 	ssr: true,
 	css: ['~/assets/globals.css'],
 	devtools: { enabled: true },

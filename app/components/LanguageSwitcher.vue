@@ -19,7 +19,7 @@ const localesItems = computed(() => locales.value.map((l) => ({
     </Button>
     <template #content>
       <DropdownMenuRadioGroup v-model="locale" :items="localesItems"
-        @update:modelValue="(e) => changeLocale(e as string)" />
+        @update:modelValue="(e: string) => changeLocale(e)" />
     </template>
   </DropdownMenu>
 </template>
