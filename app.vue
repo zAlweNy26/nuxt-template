@@ -7,11 +7,11 @@ useHead({
 	titleTemplate: t => t ? `${t} - ${title}` : title,
 })
 
-const useIdMethod = () => useId()
+const useIdMethod = () => useId()!
 </script>
 
 <template>
-	<ConfigProvider :use-id="useIdMethod">
+	<ConfigProvider :useId="useIdMethod">
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
