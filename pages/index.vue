@@ -10,6 +10,7 @@ import type { AccordionItems } from '~/components/ui/accordion'
 import type { TabItems } from '~/components/ui/tabs'
 import type { CommandItems } from '~/components/ui/command'
 import type { SelectItems } from '~/components/ui/select'
+import type { DropdownMenuItems } from '~/components/ui/dropdown-menu'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
@@ -150,6 +151,13 @@ const columns: DataColumnDef<Payment>[] = [
 const data = ref<Payment[]>([])
 const sorting = ref<SortingState>([])
 const exampleTable = ref<ComponentExposed<typeof DataTable>>()
+
+const columnsItems = computed(() => (exampleTable.value?.table.getAllColumns().filter(c => c.getCanHide()).map(c => ({
+  label: c.id,
+  value: c.id,
+})) ?? []) as DropdownMenuItems<string>)
+
+const selectedColumns = computed(() => exampleTable.value?.table.getAllColumns().filter(c => c.getIsVisible()).map(c => c.id) ?? [])
 
 const filterEmails = computed({
   get: () => exampleTable.value?.table.getColumn('email')?.getFilterValue() as string,
@@ -321,11 +329,8 @@ onMounted(async () => {
             <Icon name="ph:caret-down" class="ml-2 size-4" />
           </Button>
           <template #content>
-            <DropdownMenuCheckItem v-for="column in exampleTable?.table.getAllColumns().filter(c => c.getCanHide())"
-              :key="column.id" class="capitalize" :checked="column.getIsVisible()"
-              @update:checked="column.toggleVisibility(!!$event)">
-              {{ column.id }}
-            </DropdownMenuCheckItem>
+            <DropdownMenuCheckGroup :modelValue="selectedColumns" :items="columnsItems" itemClass="capitalize" 
+              @update:checked="(v, c) => exampleTable?.table.getColumn(v)?.toggleVisibility(!!c)" />
           </template>
         </DropdownMenu>
       </div>

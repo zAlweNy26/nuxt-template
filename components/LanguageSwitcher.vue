@@ -1,5 +1,14 @@
 <script lang="ts" setup>
-const { locale, locales, changeLocale } = useSettingsStore()
+import type { DropdownMenuItems } from './ui/dropdown-menu'
+
+const settings = useSettingsStore()
+const { changeLocale } = settings
+const { locale, locales } = storeToRefs(useSettingsStore())
+
+const localesItems = computed(() => locales.value.map((l) => ({
+  label: `${l.domain} ${l.name}`,
+  value: l.code
+})) as DropdownMenuItems<string>)
 </script>
 
 <template>
@@ -9,11 +18,8 @@ const { locale, locales, changeLocale } = useSettingsStore()
       <span class="sr-only">{{ $t('language.toggle') }}</span>
     </Button>
     <template #content>
-      <DropdownMenuRadioGroup v-model="locale" @update:modelValue="(e) => changeLocale(e)">
-        <DropdownMenuRadioItem v-for="l of locales" :key="l.code" :value="l.code">
-          {{ l.domain }} {{ l.name }}
-        </DropdownMenuRadioItem>
-      </DropdownMenuRadioGroup>
+      <DropdownMenuRadioGroup v-model="locale" :items="localesItems"
+        @update:modelValue="(e) => changeLocale(e as string)" />
     </template>
   </DropdownMenu>
 </template>
