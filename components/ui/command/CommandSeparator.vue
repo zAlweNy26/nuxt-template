@@ -3,16 +3,11 @@ import type { ClassValue } from 'clsx'
 import type { ComboboxSeparatorProps } from 'radix-vue'
 import { ComboboxSeparator } from 'radix-vue'
 
-const props = defineProps<ComboboxSeparatorProps & { class?: ClassValue }>()
-
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
-})
+const { class: mainClass, ...root } = defineProps<ComboboxSeparatorProps & { class?: ClassValue }>()
 </script>
 
 <template>
-  <ComboboxSeparator v-bind="delegatedProps" :class="cn('-mx-1 h-px bg-border', props.class)">
+  <ComboboxSeparator v-bind="root" :class="cn('-mx-1 h-px bg-border', mainClass)">
     <slot />
   </ComboboxSeparator>
 </template>

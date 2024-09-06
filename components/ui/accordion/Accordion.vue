@@ -4,29 +4,19 @@ import { useForwardPropsEmits, AccordionRoot, AccordionItem, AccordionHeader, Ac
 import type { AccordionItems } from '.'
 import type { ClassValue } from 'clsx'
 
-const props = withDefaults(defineProps<AccordionRootProps & {
+const { class: mainClass, items, contentClass, type = 'single', collapsible = true, ...root } = defineProps<AccordionRootProps & {
   items: AccordionItems
   class?: ClassValue
   contentClass?: ClassValue
-}>(), {
-  type: 'single',
-  class: undefined,
-  contentClass: undefined,
-  collapsible: true
-})
+}>()
 
 const emits = defineEmits<AccordionRootEmits>()
 
-const delegatedProps = computed(() => {
-  const { items: _, class: __, contentClass: ___, ...delegated } = props
-  return delegated
-})
-
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(() => ({ ...root, type, collapsible }), emits)
 </script>
 
 <template>
-  <AccordionRoot v-bind="forwarded" :class="cn('w-full divide-y', props.class)">
+  <AccordionRoot v-bind="forwarded" :class="cn('w-full divide-y', mainClass)">
     <AccordionItem v-for="item in items" :key="item.id" :value="item.id" :class="cn('pb-2', contentClass)">
       <AccordionHeader class="flex">
         <AccordionTrigger :class="cn(

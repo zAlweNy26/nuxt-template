@@ -3,12 +3,12 @@ import type { z } from 'zod'
 import { Form as FormRoot, type InvalidSubmissionContext, type FlattenAndMapPathsValidationResult } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 
-const props = defineProps<{
+const { schema } = defineProps<{
   schema: T
 }>()
 
-const typedSchema = computed(() => toTypedSchema(props.schema))
-const form = ref<InstanceType<typeof FormRoot> | null>(null)
+const typedSchema = computed(() => toTypedSchema(schema))
+const form = useTemplateRef<InstanceType<typeof FormRoot>>('form')
 
 const emit = defineEmits<{
   submit: [value: z.infer<T>]
@@ -30,7 +30,7 @@ defineExpose({
 
 <template>
   <FormRoot ref="form" class="flex flex-col gap-2" :validationSchema="typedSchema" 
-    :initialValues="getZodDefaults(props.schema)"
+    :initialValues="getZodDefaults(schema)"
     @submit="$emit('submit', $event)" 
     @invalidSubmit="onError" 
     @reset="$emit('reset')">

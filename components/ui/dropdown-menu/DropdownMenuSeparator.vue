@@ -2,14 +2,9 @@
 import type { ClassValue } from 'clsx'
 import { DropdownMenuSeparator, type DropdownMenuSeparatorProps } from 'radix-vue'
 
-const props = defineProps<DropdownMenuSeparatorProps & { class?: ClassValue }>()
-
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
-})
+const { class: mainClass, ...root } = defineProps<DropdownMenuSeparatorProps & { class?: ClassValue }>()
 </script>
 
 <template>
-  <DropdownMenuSeparator v-bind="delegatedProps" :class="cn('-mx-1 my-1 h-px bg-muted', props.class)" />
+  <DropdownMenuSeparator v-bind="root" :class="cn('-mx-1 my-1 h-px bg-muted', mainClass)" />
 </template>

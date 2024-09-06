@@ -2,7 +2,7 @@
 import type { ClassValue } from 'clsx'
 import { type TextareaVariants, textareaVariants } from '.'
 
-const props = defineProps<{
+const { class: mainClass, defaultValue } = defineProps<{
   class?: ClassValue
   defaultValue?: string
   color?: TextareaVariants['color']
@@ -12,10 +12,10 @@ const props = defineProps<{
 const model = defineModel<string>()
 
 onMounted(() => {
-  model.value = model.value ?? props.defaultValue
+  model.value = model.value ?? defaultValue
 })
 </script>
 
 <template>
-  <textarea v-model="model" :class="cn(textareaVariants({ color, size }), props.class)" />
+  <textarea v-model="model" :class="cn(textareaVariants({ color, size }), mainClass)" />
 </template>

@@ -3,19 +3,12 @@ import { PaginationEllipsis, PaginationRoot, PaginationList, PaginationListItem,
   PaginationFirst, PaginationPrev, PaginationNext, PaginationLast, type PaginationRootProps } from 'radix-vue'
 import type { ButtonProps } from './ui/button'
 
-const props = withDefaults(defineProps<Omit<PaginationRootProps, 'as' | 'asChild' | 'page'> & { 
+const { disabled = false, defaultPage = 1, siblingCount = 1, showEdges = true, total,
+  itemsPerPage = 10, showText = false, size = 'sm' } = defineProps<Omit<PaginationRootProps, 'as' | 'asChild' | 'page'> & { 
   size?: ButtonProps['size'], 
   showText?: boolean,
   total: number 
-}>(), {
-  disabled: false,
-  defaultPage: 1,
-  siblingCount: 1,
-  showEdges: true,
-  itemsPerPage: 10,
-  showText: false,
-  size: 'sm'
-})
+}>()
 
 defineEmits<{
   first: []
@@ -27,8 +20,8 @@ defineEmits<{
 
 const model = defineModel<number>({ default: 1 })
 
-const pageFrom = computed(() => (model.value - 1) * props.itemsPerPage + 1)
-const pageTo = computed(() => Math.min(model.value * props.itemsPerPage, props.total))
+const pageFrom = computed(() => (model.value - 1) * itemsPerPage + 1)
+const pageTo = computed(() => Math.min(model.value * itemsPerPage, total))
 </script>
 
 <template>
@@ -42,7 +35,7 @@ const pageTo = computed(() => Math.min(model.value * props.itemsPerPage, props.t
           <span class="font-semibold">{{ total }}</span>
         </i18n-t>
       </slot>
-      <PaginationRoot v-slot="{ page }" v-model:page="model" v-bind="$props">
+      <PaginationRoot v-slot="{ page }" v-model:page="model" v-bind="{ ...$props, disabled, defaultPage, siblingCount, showEdges }">
         <PaginationList v-slot="{ items }" class="flex items-center gap-1">
           <PaginationFirst as-child>
             <Button square variant="outline" :size @click="$emit('first')">

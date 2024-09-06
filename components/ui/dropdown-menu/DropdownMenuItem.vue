@@ -2,21 +2,16 @@
 import type { ClassValue } from 'clsx'
 import { DropdownMenuItem, type DropdownMenuItemProps, useForwardProps } from 'radix-vue'
 
-const props = defineProps<DropdownMenuItemProps & { class?: ClassValue, inset?: boolean }>()
+const { class: mainClass, ...root } = defineProps<DropdownMenuItemProps & { class?: ClassValue, inset?: boolean }>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
-})
-
-const forwardedProps = useForwardProps(delegatedProps)
+const forwardedProps = useForwardProps(() => root)
 </script>
 
 <template>
   <DropdownMenuItem v-bind="forwardedProps" :class="cn(
     'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
     inset && 'pl-8',
-    props.class,
+    mainClass,
   )">
     <slot />
   </DropdownMenuItem>

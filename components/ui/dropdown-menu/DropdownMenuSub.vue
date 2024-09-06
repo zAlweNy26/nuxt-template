@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { useForwardPropsEmits, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuPortal, DropdownMenuSubContent,
-  type DropdownMenuSubEmits, type DropdownMenuSubProps, type DropdownMenuSubTriggerProps,
+import { useForwardPropsEmits, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuPortal, 
+  DropdownMenuSubContent, type DropdownMenuSubEmits, type DropdownMenuSubProps,
 } from 'radix-vue'
 
-const props = defineProps<DropdownMenuSubProps & DropdownMenuSubTriggerProps>()
+const { disabled, ...root } = defineProps<DropdownMenuSubProps & { disabled?: boolean }>()
 const emits = defineEmits<DropdownMenuSubEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits)
+const forwarded = useForwardPropsEmits(() => root, emits)
 </script>
 
 <template>
   <DropdownMenuSub v-bind="forwarded">
-    <DropdownMenuSubTrigger asChild class="outline-none">
+    <DropdownMenuSubTrigger asChild :disabled class="outline-none">
       <slot name="trigger" />
     </DropdownMenuSubTrigger>
     <DropdownMenuPortal>

@@ -2,15 +2,10 @@
 import { CollapsibleRoot, useForwardPropsEmits, CollapsibleContent } from 'radix-vue'
 import type { CollapsibleRootEmits, CollapsibleRootProps, CollapsibleContentProps } from 'radix-vue'
 
-const props = defineProps<CollapsibleRootProps & CollapsibleContentProps>()
+const { forceMount, ...root } = defineProps<CollapsibleRootProps & CollapsibleContentProps>()
 const emits = defineEmits<CollapsibleRootEmits>()
 
-const delegatedProps = computed(() => {
-  const { forceMount, ...delegated } = props
-  return delegated
-})
-
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(() => root, emits)
 </script>
 
 <template>

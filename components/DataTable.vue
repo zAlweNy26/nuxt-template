@@ -11,24 +11,17 @@ export type DataColumnDef<D, V = unknown> = ColumnDef<D, V> & {
   cellClass?: ClassValue
 }
 
-const props = withDefaults(defineProps<{
+const { class: mainClass, loading = false, columns, rows, total,
+  pagination = 'client', sorting = 'client' } = defineProps<{
   class?: ClassValue
   columns: DataColumnDef<TData, TValue>[]
   loading?: boolean
   total: number
-  selectable?: boolean
   pagination?: 'client' | 'server' | 'none'
   sorting?: 'client' | 'server'
   rowClass?: ClassValue
   rows: TData[]
-}>(), {
-  class: undefined,
-  loading: false,
-  selectable: false,
-  pagination: 'client',
-  sorting: 'client',
-  rowClass: undefined,
-})
+}>()
 
 function valueUpdater<T, U extends Updater<T>>(updaterOrValue: U, ref: Ref<T>) {
   ref.value = typeof updaterOrValue === 'function'
@@ -49,7 +42,7 @@ const sortingState = defineModel<SortingState>('sort', { default: [] })
 const columnVisibility = defineModel<VisibilityState>('visible', { default: {} })
 const expandedState = ref<ExpandedState>({})
 const columnFilters = ref<ColumnFiltersState>([])
-const columnPinning = ref<ColumnPinningState>(props.columns.reduce((acc, c, i) => {
+const columnPinning = ref<ColumnPinningState>(columns.reduce((acc, c, i) => {
   const left = [...acc.left ?? []]
   const right = [...acc.right ?? []]
   if (c.pinned === 'left') left.push(getColumnId(c, i))
@@ -58,16 +51,16 @@ const columnPinning = ref<ColumnPinningState>(props.columns.reduce((acc, c, i) =
 }, {} as ColumnPinningState))
 
 const table = useVueTable({
-  get data() { return props.rows },
-  get columns() { return props.columns },
+  get data() { return rows },
+  get columns() { return columns },
   getCoreRowModel: getCoreRowModel(),
-  get rowCount() { return props.total },
-  get manualPagination() { return props.pagination === 'server' },
-  get manualSorting() { return props.sorting === 'server' },
-  getPaginationRowModel: props.pagination === 'server' ? undefined : getPaginationRowModel(),
-  getSortedRowModel: props.pagination === 'server' ? undefined : getSortedRowModel(),
-  getFilteredRowModel: props.pagination === 'server' ? undefined : getFilteredRowModel(),
-  getExpandedRowModel: props.pagination === 'server' ? undefined : getExpandedRowModel(),
+  get rowCount() { return total },
+  get manualPagination() { return pagination === 'server' },
+  get manualSorting() { return sorting === 'server' },
+  getPaginationRowModel: pagination === 'server' ? undefined : getPaginationRowModel(),
+  getSortedRowModel: pagination === 'server' ? undefined : getSortedRowModel(),
+  getFilteredRowModel: pagination === 'server' ? undefined : getFilteredRowModel(),
+  getExpandedRowModel: pagination === 'server' ? undefined : getExpandedRowModel(),
   onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sortingState),
   onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
   onColumnVisibilityChange: updaterOrValue => valueUpdater(updaterOrValue, columnVisibility),
@@ -89,7 +82,7 @@ defineExpose({ table })
 
 <template>
   <div class="relative w-full overflow-x-auto overflow-y-hidden">
-    <table :class="cn('w-full caption-bottom text-sm', props.class)">
+    <table :class="cn('w-full caption-bottom text-sm', mainClass)">
       <caption v-if="$slots.caption">
         <slot name="caption" />
       </caption>

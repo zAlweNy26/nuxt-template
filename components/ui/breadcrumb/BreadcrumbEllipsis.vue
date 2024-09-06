@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { ClassValue } from 'clsx'
 
-const props = defineProps<{
+const { class: mainClass } = defineProps<{
   class?: ClassValue
 }>()
 </script>
 
 <template>
-  <span role="presentation" aria-hidden="true" :class="cn('flex size-8 items-center justify-center', props.class)">
+  <span role="presentation" aria-hidden="true" :class="cn('flex size-8 items-center justify-center', mainClass)">
     <slot>
       <Icon name="ph:dots-three-bold" class="size-4" />
     </slot>

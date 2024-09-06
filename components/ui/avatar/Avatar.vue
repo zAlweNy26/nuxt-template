@@ -3,16 +3,17 @@ import type { ClassValue } from 'clsx'
 import { AvatarRoot, AvatarImage, type AvatarImageProps, AvatarFallback, type AvatarFallbackProps } from 'radix-vue'
 import { type AvatarVariants, avatarVariant } from '.'
 
-const props = defineProps<AvatarImageProps & AvatarFallbackProps & {
+const { class: mainClass } = defineProps<AvatarImageProps & AvatarFallbackProps & {
   class?: ClassValue
+  alt?: string
   size?: AvatarVariants['size']
   shape?: AvatarVariants['shape']
 }>()
 </script>
 
 <template>
-  <AvatarRoot :class="cn(avatarVariant({ size, shape }), props.class)">
-    <AvatarImage :src class="size-full object-cover" />
+  <AvatarRoot :class="cn(avatarVariant({ size, shape }), mainClass)">
+    <AvatarImage :src :alt class="size-full object-cover" />
     <AvatarFallback :delayMs>
       <slot />
     </AvatarFallback>

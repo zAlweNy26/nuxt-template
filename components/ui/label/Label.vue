@@ -3,19 +3,14 @@ import type { ClassValue } from 'clsx'
 import { Label, type LabelProps } from 'radix-vue'
 import { type LabelVariants, labelVariants } from '.'
 
-const props = defineProps<LabelProps & {
+const { class: mainClass, size, ...root } = defineProps<LabelProps & {
   size?: LabelVariants['size'] 
   class?: ClassValue 
 }>()
-
-const delegatedProps = computed(() => {
-  const { class: _, size: __, ...delegated } = props
-  return delegated
-})
 </script>
 
 <template>
-  <Label v-bind="delegatedProps" :class="cn(labelVariants({ size }), props.class)">
+  <Label v-bind="root" :class="cn(labelVariants({ size }), mainClass)">
     <slot />
   </Label>
 </template>

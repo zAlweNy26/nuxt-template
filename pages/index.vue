@@ -150,7 +150,7 @@ const columns: DataColumnDef<Payment>[] = [
 
 const data = ref<Payment[]>([])
 const sorting = ref<SortingState>([])
-const exampleTable = ref<ComponentExposed<typeof DataTable>>()
+const exampleTable = useTemplateRef<ComponentExposed<typeof DataTable>>('table')
 
 const columnsItems = computed(() => (exampleTable.value?.table.getAllColumns().filter(c => c.getCanHide()).map(c => ({
   label: c.id,
@@ -240,7 +240,9 @@ onMounted(async () => {
     <Avatar src="https://github.com/radix-vue.png" size="xs" />
     <Avatar src="https://github.com/radix-vue.png" size="sm" />
     <Avatar src="https://github.com/radix-vue.png" size="md" />
-    <Avatar src="https://github.com/radix-vue.png" size="lg" />
+    <Chip size="lg" text="3">
+      <Avatar src="https://github.com/radix-vue.png" size="lg" />
+    </Chip>
     <Form :schema="zodSchema" @submit="(e) => console.log('valid', e)" @error="(e) => console.log('error', e)"
       @reset="() => console.log('reset')">
       <FormField v-slot="{ field }" name="username" label="Username" description="Your public display name."
@@ -334,7 +336,7 @@ onMounted(async () => {
           </template>
         </DropdownMenu>
       </div>
-      <DataTable ref="exampleTable" v-model:sort="sorting" :columns="columns" :rows="data" :total="data.length" loading
+      <DataTable ref="table" v-model:sort="sorting" :columns="columns" :rows="data" :total="data.length" loading
         class="caption-top">
         <template #caption>
           <h2 class="text-lg font-semibold">Payments</h2>

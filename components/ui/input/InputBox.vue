@@ -2,7 +2,7 @@
 import type { ClassValue } from 'clsx'
 import { type InputVariants, inputVariants } from '.'
 
-const props = defineProps<{
+const { defaultValue, class: mainClass } = defineProps<{
   defaultValue?: string
   class?: ClassValue
   color?: InputVariants['color']
@@ -12,10 +12,10 @@ const props = defineProps<{
 const model = defineModel<string>()
 
 onMounted(() => {
-  model.value = model.value ?? props.defaultValue
+  model.value = model.value ?? defaultValue
 })
 </script>
 
 <template>
-  <input v-model="model" :class="cn(inputVariants({ color, size }), props.class)">
+  <input v-model="model" :class="cn(inputVariants({ color, size }), mainClass)">
 </template>

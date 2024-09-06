@@ -2,7 +2,7 @@
 import type { ClassValue } from 'clsx'
 import { type BadgeVariants, badgeVariants } from '.'
 
-const props = defineProps<{ 
+const { class: mainClass } = defineProps<{ 
   class?: ClassValue
   variant?: BadgeVariants['variant']
   size?: BadgeVariants['size']
@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div :class="cn(badgeVariants({ variant, size }), props.class)">
+  <div :class="cn(badgeVariants({ variant, size }), mainClass)">
     <slot />
   </div>
 </template>

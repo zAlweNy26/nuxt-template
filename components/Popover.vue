@@ -3,7 +3,7 @@ import type { ClassValue } from 'clsx'
 import { useForwardPropsEmits, PopoverRoot, PopoverTrigger, PopoverPortal, PopoverContent } from 'radix-vue'
 import type { PopoverRootEmits, PopoverRootProps, PopoverContentProps } from 'radix-vue'
 
-const props = defineProps<{
+const { class: mainClass, root, content } = defineProps<{
   root?: PopoverRootProps
   content?: PopoverContentProps
   class?: ClassValue
@@ -11,9 +11,9 @@ const props = defineProps<{
 
 const emits = defineEmits<PopoverRootEmits>()
 
-const contentProps = computed<PopoverContentProps>(() => ({ sideOffset: 4, ...props.content }))
+const contentProps = computed<PopoverContentProps>(() => ({ sideOffset: 4, ...content }))
 
-const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
+const forwarded = useForwardPropsEmits(() => root ?? {}, emits)
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
       <PopoverContent v-bind="contentProps"
         :class="cn(
           'z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-          props.class
+          mainClass
         )">
         <slot name="content" />
       </PopoverContent>

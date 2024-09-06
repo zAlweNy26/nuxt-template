@@ -2,7 +2,7 @@
 import { Slot as RadixSlot } from 'radix-vue'
 import { ErrorMessage as FormError, Field as FormGroup } from 'vee-validate'
 
-const props = defineProps<{
+const { name, description, label, help } = defineProps<{
   name: string
   label?: string
   description?: string
@@ -13,7 +13,7 @@ defineOptions({
   inheritAttrs: false
 })
 
-const describedBy = computed(() => props.description ? `${props.name}-form-item-description` : undefined)
+const describedBy = computed(() => description ? `${name}-form-item-description` : undefined)
 </script>
 
 <template>

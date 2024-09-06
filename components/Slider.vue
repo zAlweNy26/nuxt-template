@@ -3,20 +3,14 @@ import type { ClassValue } from 'clsx'
 import type { SliderRootEmits, SliderRootProps } from 'radix-vue'
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from 'radix-vue'
 
-const props = defineProps<SliderRootProps & { class?: ClassValue }>()
+const { class: mainClass, ...root } = defineProps<SliderRootProps & { class?: ClassValue }>()
 const emits = defineEmits<SliderRootEmits>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-
-  return delegated
-})
-
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(() => root, emits)
 </script>
 
 <template>
-  <SliderRoot :class="cn('relative flex my-2 w-full touch-none select-none items-center', props.class)" v-bind="forwarded">
+  <SliderRoot :class="cn('relative flex my-2 w-full touch-none select-none items-center', mainClass)" v-bind="forwarded">
     <SliderTrack class="relative h-2 w-full grow overflow-hidden rounded-full bg-primary/20">
       <SliderRange class="absolute h-full bg-primary" />
     </SliderTrack>

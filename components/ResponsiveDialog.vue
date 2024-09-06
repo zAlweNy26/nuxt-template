@@ -2,9 +2,7 @@
 import { useForwardPropsEmits, type DialogRootEmits } from 'radix-vue'
 import type { SheetProps } from './ui/sheet'
 
-const props = withDefaults(defineProps<SheetProps>(), {
-  closable: true,
-})
+const props = defineProps<SheetProps>()
 
 const emits = defineEmits<DialogRootEmits>()
 

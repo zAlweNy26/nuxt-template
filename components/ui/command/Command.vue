@@ -5,7 +5,7 @@ import { ComboboxRoot, useForwardPropsEmits, ComboboxContent,
   ComboboxSeparator, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxItem } from 'radix-vue'
 import type { AcceptableValue, CommandItems } from '.'
 
-const props = defineProps<{ 
+const { class: mainClass, root, content, items, noGroupAsFirst } = defineProps<{ 
   class?: ClassValue
   contentClass?: ClassValue
   groupClass?: ClassValue
@@ -21,21 +21,21 @@ const model = defineModel<T | Array<T>>()
 
 const emits = defineEmits<ComboboxRootEmits<T>>()
 
-const rootProps = useForwardPropsEmits(() => props.root ?? {}, emits)
-const contentProps = useForwardPropsEmits(() => props.content ?? {}, emits)
+const rootProps = useForwardPropsEmits(() => root ?? {}, emits)
+const contentProps = useForwardPropsEmits(() => content ?? {}, emits)
 
 const groups = computed(() => {
-  const res = Object.entries(_GroupBy(props.items, 'group'))
-  if (props.noGroupAsFirst) res.reverse()
+  const res = Object.entries(_GroupBy(items, 'group'))
+  if (noGroupAsFirst) res.reverse()
   return res
 })
 </script>
 
 <template>
   <ComboboxRoot v-model="model" v-bind="rootProps" :displayValue="(v) => items.find((item) => item.value === v)!.label"
-    :class="cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground', props.class)">
+    :class="cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground', mainClass)">
     <CommandInput :disabled="rootProps.disabled" :placeholder="searchPlaceholder" autocomplete="off" />
-    <ComboboxContent v-bind="contentProps" :class="cn('max-h-[138px] transition-all overflow-y-auto overflow-x-hidden', props.contentClass)">
+    <ComboboxContent v-bind="contentProps" :class="cn('max-h-[138px] transition-all overflow-y-auto overflow-x-hidden', contentClass)">
       <div role="presentation">
         <ComboboxEmpty asChild>
           <slot name="empty">
@@ -47,12 +47,12 @@ const groups = computed(() => {
         <ComboboxSeparator class="-mx-1 h-px bg-border" />
         <template v-for="([heading, children], gindex) in groups" :key="gindex">
           <ComboboxGroup
-            :class="cn('overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground', props.groupClass)">
+            :class="cn('overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground', groupClass)">
             <ComboboxLabel v-if="heading && heading !== 'undefined'" class="px-2 py-1 text-xs font-medium text-muted-foreground">
               {{ heading }}
             </ComboboxLabel>
             <ComboboxItem v-for="(item, index) in children" :key="index" :value="item.value" :disabled="item.disabled"
-              :class="cn('relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50', props.itemClass)">
+              :class="cn('relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50', itemClass)">
               <slot :name="item.slot || 'item'" :item>
                 {{ item.label }}
               </slot>

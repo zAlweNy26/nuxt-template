@@ -2,15 +2,12 @@
 import { Primitive } from 'radix-vue'
 import { type ButtonProps, buttonVariants } from '.'
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  as: 'button',
-  size: 'sm',
-})
+const { class: mainClass, as = 'button', size = 'sm' } = defineProps<ButtonProps>()
 </script>
 
 <template>
   <Primitive :as :asChild
-    :class="cn(buttonVariants({ variant, size, square: square ? size : undefined }), props.class)">
+    :class="cn(buttonVariants({ variant, size, square: square ? size : undefined }), mainClass)">
     <slot />
   </Primitive>
 </template>
