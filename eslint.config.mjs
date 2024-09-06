@@ -1,5 +1,5 @@
 // @ts-nocheck
-import withNuxt from './.nuxt/eslint.config.mjs'
+import withNuxt from '.nuxt/eslint.config.mjs'
 import securityPlugin from 'eslint-plugin-security'
 import tailwind from 'eslint-plugin-tailwindcss'
 
