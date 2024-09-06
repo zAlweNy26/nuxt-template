@@ -48,7 +48,7 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
               <span class="absolute right-2 flex size-3.5 items-center justify-center">
                 <SelectItemIndicator>
                   <slot name="icon">
-                    <Icon name="ph:check" class="size-4" />
+                    <Icon name="ph:check-bold" class="size-4" />
                   </slot>
                 </SelectItemIndicator>
               </span>

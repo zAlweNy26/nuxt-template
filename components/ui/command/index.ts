@@ -9,6 +9,7 @@ export type AcceptableValue = string | number | boolean | Record<string, any>
 export type CommandItem<T extends AcceptableValue> = {
     group?: string
     label: string
+    slot?: string
 } & ComboboxItemProps<T>
 
 export type CommandItems<T extends AcceptableValue> = [CommandItem<T>, ...CommandItem<T>[]]

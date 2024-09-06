@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { ComponentExposed } from 'vue-component-type-helpers'
 import type { SortingState } from '@tanstack/vue-table'
-import type { SelectItems } from '~/components/ui/select'
 import { z } from 'zod'
 import { Button, Checkbox, DataTable, Icon } from '#components'
 import type { DataColumnDef } from '~/components/DataTable.vue'
@@ -10,6 +9,7 @@ import type { BreadcrumbItems } from '~/components/ui/breadcrumb'
 import type { AccordionItems } from '~/components/ui/accordion'
 import type { TabItems } from '~/components/ui/tabs'
 import type { CommandItems } from '~/components/ui/command'
+import type { SelectItems } from '~/components/ui/select'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
@@ -356,9 +356,8 @@ onMounted(async () => {
         <p>Example content</p>
       </template>
     </Collapsible>
-    <Command :items="commandItems" noGroupAsFirst>
-      <CommandInput />
-    </Command>
+    <Command :items="commandItems" noGroupAsFirst />
+    <ComboBox placeholder="Select an item..." :items="commandItems" />
     <Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
     <Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
     <Checkbox id="terms3" size="md" text="Accept terms and conditions" />

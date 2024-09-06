@@ -10,11 +10,14 @@ const props = defineProps<{
   contentClass?: ClassValue
   groupClass?: ClassValue
   itemClass?: ClassValue
-  root?: ComboboxRootProps<T>
+  root?: Omit<ComboboxRootProps<T>, 'modelValue' | 'displayValue'>
   content?: ComboboxContentProps
   items: CommandItems<T>
   noGroupAsFirst?: boolean
+  searchPlaceholder?: string
 }>()
+
+const model = defineModel<T | Array<T>>()
 
 const emits = defineEmits<ComboboxRootEmits<T>>()
 
@@ -29,8 +32,9 @@ const groups = computed(() => {
 </script>
 
 <template>
-  <ComboboxRoot v-bind="rootProps" :class="cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground', props.class)">
-    <slot />
+  <ComboboxRoot v-model="model" v-bind="rootProps" :displayValue="(v) => items.find((item) => item.value === v)!.label"
+    :class="cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground', props.class)">
+    <CommandInput :disabled="rootProps.disabled" :placeholder="searchPlaceholder" autocomplete="off" />
     <ComboboxContent v-bind="contentProps" :class="cn('max-h-[138px] transition-all overflow-y-auto overflow-x-hidden', props.contentClass)">
       <div role="presentation">
         <ComboboxEmpty asChild>
@@ -49,7 +53,7 @@ const groups = computed(() => {
             </ComboboxLabel>
             <ComboboxItem v-for="(item, index) in children" :key="index" :value="item.value" :disabled="item.disabled"
               :class="cn('relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50', props.itemClass)">
-              <slot name="item" :item>
+              <slot :name="item.slot || 'item'" :item>
                 {{ item.label }}
               </slot>
             </ComboboxItem>
