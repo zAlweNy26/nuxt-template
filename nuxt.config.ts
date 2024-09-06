@@ -10,23 +10,24 @@ export default defineNuxtConfig({
 	css: ['~/assets/globals.css'],
 	devtools: { enabled: true },
 	modules: [
-		"@nuxtjs/tailwindcss",
 		"shadcn-nuxt",
-		"@nuxtjs/color-mode",
-		"@vueuse/nuxt",
+		"nuxt-api-party",
+		"nuxt-lodash",
 		"nuxt-security",
 		"nuxt-zod-i18n",
 		"@nuxtjs/i18n",
-		"@pinia/nuxt",
-		"@formkit/auto-animate/nuxt",
+		"@nuxtjs/tailwindcss",
+		"@nuxtjs/color-mode",
+		'@nuxtjs/seo',
 		"@nuxt/test-utils",
 		"@nuxt/image",
 		"@nuxt/eslint",
 		"@nuxt/fonts",
 		"@nuxt/icon",
-		"nuxt-api-party",
+		'@nuxt/scripts',
+		"@vueuse/nuxt",
+		"@pinia/nuxt",
 		"@formkit/auto-animate/nuxt",
-		"nuxt-lodash"
 	],
 	vite: {
 		optimizeDeps: {
@@ -48,6 +49,9 @@ export default defineNuxtConfig({
 	security: {
 		nonce: true,
 		csrf: true,
+	},
+	ogImage: {
+		enabled: false
 	},
 	apiParty: {
 		endpoints: {
@@ -84,21 +88,23 @@ export default defineNuxtConfig({
 				code: 'en',
 				language: 'en-GB',
 				name: 'English',
+				dir: 'ltr',
+				domain: '🇬🇧',
 				isCatchallLocale: true,
-				domain: '🇬🇧'
 			},
 			{
 				code: 'it',
 				language: 'it-IT',
 				name: 'Italiano',
+				dir: 'ltr',
 				domain: '🇮🇹'
 			}
 		],
 		defaultLocale: 'en',
-		strategy: 'prefix_and_default',
+		strategy: 'prefix_except_default',
 		detectBrowserLanguage: {
 			useCookie: true,
-			cookieKey: 'i18n_redirected',
+			cookieKey: 'i18n_language',
 			redirectOn: 'root',
 		},
 	},
@@ -114,8 +120,6 @@ export default defineNuxtConfig({
 	},
 	routeRules: {
 		'/': { ssr: true },
-		'/box/**': { ssr: false },
-		'/guide/**': { swr: true },
 	},
 	$development: {
 		security: {
