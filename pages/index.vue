@@ -263,13 +263,6 @@ onMounted(async () => {
         <p>Example content</p>
       </template>
     </Popover>
-    <Button variant="warning">Warning</Button>
-    <Button variant="success">Success</Button>
-    <Button variant="info">Info</Button>
-    <Button variant="ghost">Ghost</Button>
-    <Button variant="link">Link</Button>
-    <Button variant="outline">Outline</Button>
-    <Button variant="secondary">Secondary</Button>
     <Tooltip>
       <Badge variant="primary">Primary</Badge>
       <template #content>
@@ -375,6 +368,15 @@ onMounted(async () => {
     <Toggle square>
       <Icon name="ph:text-b-bold" class="size-4" />
     </Toggle>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="link">Link</Button>
+    <Button variant="outline">Outline</Button>
+    <ComboGroup>
+      <Button variant="warning">Warning</Button>
+      <Button variant="success">Success</Button>
+      <Button variant="info">Info</Button>
+      <Button variant="secondary">Secondary</Button>
+    </ComboGroup>
     <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
   </div>
 </template>
