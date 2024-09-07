@@ -5,4 +5,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
 
     nuxtApp.vueApp.provide(modalInjectionKey, modalState)
+
+    return {
+        provide: {
+            modal: useModal()
+        }
+    }
 })

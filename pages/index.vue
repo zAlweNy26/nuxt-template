@@ -64,7 +64,6 @@ const commandItems: CommandItems<string> = [
 const progress = ref(50)
 const slider = ref([50])
 const tags = ref<string[]>([])
-const modal = useModal()
 
 const zodSchema = z.object({
   username: z.string().min(3).describe('This is your public display name.'),
@@ -386,15 +385,15 @@ onMounted(async () => {
       </ToggleGroupItem>
     </ToggleGroup>
     <ComboGroup>
-      <Button variant="warning" @click="modal.open(Avatar, {
+      <Button variant="warning" @click="$toast.warning('Toast warning')">Warning</Button>
+      <Button variant="success" @click="$toast.success('Toast success')">Success</Button>
+      <Button variant="info" @click="$toast.info('Toast info')">Info</Button>
+      <Button variant="secondary" @click="$modal.open(Avatar, {
         src: 'https://github.com/radix-vue.png'
       }, {
         title: 'Modal title',
         description: 'Modal description',
-      })">Warning</Button>
-      <Button variant="success">Success</Button>
-      <Button variant="info">Info</Button>
-      <Button variant="secondary">Secondary</Button>
+      })">Secondary</Button>
     </ComboGroup>
     <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
   </div>
