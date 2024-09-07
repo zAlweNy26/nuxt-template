@@ -372,6 +372,9 @@ onMounted(async () => {
     <InputBox label="Username" color="warning" size="md" />
     <InputBox label="Username" color="success" size="lg" />
     <RadioGroup :items="radioItems" />
+    <Toggle square>
+      <Icon name="ph:text-b-bold" class="size-4" />
+    </Toggle>
     <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
   </div>
 </template>
