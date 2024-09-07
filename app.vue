@@ -15,5 +15,6 @@ const useIdMethod = () => useId()!
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
+		<Modals />
 	</ConfigProvider>
 </template>

@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import { useForwardPropsEmits, type DialogRootEmits } from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
 import type { SheetProps } from './ui/sheet'
 
 const props = withDefaults(defineProps<SheetProps>(), {
   closable: true,
 })
 
-const emits = defineEmits<DialogRootEmits>()
+const emits = defineEmits<{
+  'update:modelValue': [value: boolean],
+}>()
 
 const forwarded = useForwardPropsEmits(props, emits)
 

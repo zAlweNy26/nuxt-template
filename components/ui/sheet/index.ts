@@ -1,17 +1,18 @@
 import { type VariantProps, cva } from 'class-variance-authority'
 import type { ClassValue } from 'clsx'
-import type { DialogContentProps, DialogRootProps } from 'radix-vue'
+import type { DialogContentProps } from 'radix-vue'
 
 export { default as SideSheet } from './SideSheet.vue'
 
 export interface SheetProps {
-  root?: DialogRootProps
   title?: string
   description?: string
   closable?: boolean
   class?: ClassValue
   content?: DialogContentProps
   contentClass?: ClassValue
+  defaultOpen?: boolean
+  modelValue?: boolean
 }
 
 export const sheetVariants = cva(

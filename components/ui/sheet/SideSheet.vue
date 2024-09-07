@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type SheetVariants, type SheetProps, sheetVariants } from '.'
-import { DialogRoot, type DialogRootEmits, DialogTrigger, DialogOverlay, DialogContent,
-  DialogPortal, useForwardPropsEmits, DialogClose, DialogTitle, DialogDescription } from 'radix-vue'
+import { DialogRoot, DialogTrigger, DialogOverlay, DialogContent,
+  DialogPortal, DialogClose, DialogTitle, DialogDescription } from 'radix-vue'
 
 const props = withDefaults(defineProps<SheetProps & { side?: SheetVariants['side'] }>(), {
   closable: true,
@@ -10,13 +10,11 @@ const props = withDefaults(defineProps<SheetProps & { side?: SheetVariants['side
 
 defineOptions({ inheritAttrs: false })
 
-const emits = defineEmits<DialogRootEmits>()
-
-const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
+const open = defineModel<boolean>()
 </script>
 
 <template>
-  <DialogRoot v-bind="forwarded">
+  <DialogRoot v-model:open="open" :defaultOpen modal>
     <DialogTrigger asChild>
       <slot />
     </DialogTrigger>

@@ -2,7 +2,7 @@
 import type { ComponentExposed } from 'vue-component-type-helpers'
 import type { SortingState } from '@tanstack/vue-table'
 import { z } from 'zod'
-import { Button, Checkbox, DataTable, Icon } from '#components'
+import { Avatar, Button, Checkbox, DataTable, Icon } from '#components'
 import type { DataColumnDef } from '~/components/DataTable.vue'
 import type { RadioItems } from '~/components/ui/radio-group'
 import type { BreadcrumbItems } from '~/components/ui/breadcrumb'
@@ -64,6 +64,7 @@ const commandItems: CommandItems<string> = [
 const progress = ref(50)
 const slider = ref([50])
 const tags = ref<string[]>([])
+const modal = useModal()
 
 const zodSchema = z.object({
   username: z.string().min(3).describe('This is your public display name.'),
@@ -385,7 +386,12 @@ onMounted(async () => {
       </ToggleGroupItem>
     </ToggleGroup>
     <ComboGroup>
-      <Button variant="warning">Warning</Button>
+      <Button variant="warning" @click="modal.open(Avatar, {
+        src: 'https://github.com/radix-vue.png'
+      }, {
+        title: 'Modal title',
+        description: 'Modal description',
+      })">Warning</Button>
       <Button variant="success">Success</Button>
       <Button variant="info">Info</Button>
       <Button variant="secondary">Secondary</Button>
