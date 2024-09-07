@@ -240,7 +240,9 @@ onMounted(async () => {
     <Avatar src="https://github.com/radix-vue.png" size="xs" />
     <Avatar src="https://github.com/radix-vue.png" size="sm" />
     <Avatar src="https://github.com/radix-vue.png" size="md" />
-    <Avatar src="https://github.com/radix-vue.png" size="lg" />
+    <Chip size="lg">
+      <Avatar src="https://github.com/radix-vue.png" size="lg" />
+    </Chip>
     <Form :schema="zodSchema" @submit="(e) => console.log('valid', e)" @error="(e) => console.log('error', e)"
       @reset="() => console.log('reset')">
       <FormField v-slot="{ field }" name="username" label="Username" description="Your public display name."
@@ -371,6 +373,17 @@ onMounted(async () => {
     <Button variant="ghost">Ghost</Button>
     <Button variant="link">Link</Button>
     <Button variant="outline">Outline</Button>
+    <ToggleGroup type="single">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold" square>
+        <Icon name="ph:text-italic-bold" class="size-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic" square>
+        <Icon name="ph:text-strikethrough-bold" class="size-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline" square>
+        <Icon name="ph:text-underline-bold" class="size-4" />
+      </ToggleGroupItem>
+    </ToggleGroup>
     <ComboGroup>
       <Button variant="warning">Warning</Button>
       <Button variant="success">Success</Button>
