@@ -52,10 +52,13 @@ const groups = computed(() => {
               {{ heading }}
             </ComboboxLabel>
             <ComboboxItem v-for="(item, index) in children" :key="index" :value="item.value" :disabled="item.disabled"
-              :class="cn('relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50', props.itemClass)">
+              :class="cn('relative flex justify-between cursor-pointer gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50', props.itemClass)">
               <slot :name="item.slot || 'item'" :item>
                 {{ item.label }}
               </slot>
+              <span v-if="item.shortcuts" class="flex gap-0.5">
+                <Shortcut v-for="(k, i) in item.shortcuts" :key="i" :cap="k" />
+              </span>
             </ComboboxItem>
           </ComboboxGroup>
           <ComboboxSeparator v-if="gindex < groups.length - 1" class="-mx-1 h-px bg-border" />

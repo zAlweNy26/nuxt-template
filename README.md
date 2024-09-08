@@ -48,3 +48,12 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Credits
+
+- [Nuxt 3](https://nuxt.com)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Shadcn Vue](https://www.shadcn-vue.com)
+- [Radix Vue](https://www.radix-vue.com)
+- [VueUse](https://vueuse.org)
+- [Nuxt UI](https://ui.nuxt.com)

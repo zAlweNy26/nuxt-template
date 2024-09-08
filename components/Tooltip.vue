@@ -8,6 +8,7 @@ const props = defineProps<{
   root?: TooltipRootProps
   provider?: TooltipProviderProps
   content?: TooltipContentProps
+  shortcuts?: Shortcuts
 }>()
 
 const emits = defineEmits<TooltipRootEmits>()
@@ -25,13 +26,18 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
         <slot />
       </TooltipTrigger>
       <TooltipPortal v-if="$slots.content">
-        <TooltipContent v-bind="contentProps" 
-          :class="cn(
-            'z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2', 
-            props.class
-          )">
+        <TooltipContent v-bind="contentProps" :class="cn(
+          'z-50 overflow-hidden rounded-md flex items-center gap-1 bg-accent px-3 py-1.5 text-xs text-accent-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2', 
+          props.class
+        )">
           <slot name="content" />
-          <TooltipArrow class="fill-primary" />
+          <template v-if="shortcuts">
+            <Icon name="ph:dot-bold" class="size-2 fill-current" />
+            <span class="flex gap-0.5">
+              <Shortcut v-for="(k, i) in shortcuts" :key="i" :cap="k" />
+            </span>
+          </template>
+          <TooltipArrow class="fill-accent" />
         </TooltipContent>
       </TooltipPortal>
     </TooltipRoot>

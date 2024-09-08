@@ -53,7 +53,7 @@ const breadcrumbItems: BreadcrumbItems = [
 ]
 
 const commandItems: CommandItems<string> = [
-  { label: 'Text', value: 'text', group: 'Foo' },
+  { label: 'Text', value: 'text', group: 'Foo', shortcuts: ['meta', 'X'] },
   { label: 'Example', value: 'example' },
   { label: 'Bar', value: 'bar' },
   { label: 'Foo', value: 'foo', group: 'Foo' },
@@ -265,7 +265,7 @@ onMounted(async () => {
         <p>Example content</p>
       </template>
     </Popover>
-    <Tooltip>
+    <Tooltip :shortcuts="['alt', 'Z']">
       <Badge variant="primary">Primary</Badge>
       <template #content>
         <p>Example content</p>
@@ -291,9 +291,9 @@ onMounted(async () => {
       </Button>
       <template #content>
         <DropdownMenuGroup>
-          <DropdownMenuItem>Item 1</DropdownMenuItem>
-          <DropdownMenuItem>Item 2</DropdownMenuItem>
-          <DropdownMenuItem>Item 3</DropdownMenuItem>
+          <DropdownMenuItem :shortcuts="['meta', 'U']" @click="() => console.log('test click')">My first item</DropdownMenuItem>
+          <DropdownMenuItem :shortcuts="['shift', 'E']">Item 2</DropdownMenuItem>
+          <DropdownMenuItem :shortcuts="['capslock', 'A']">Item 3</DropdownMenuItem>
         </DropdownMenuGroup>
       </template>
     </DropdownMenu>
