@@ -28,6 +28,10 @@
         "backHome": "Torna alla @:headers.home",
         "close": "Chiudi"
     },
+    "input": {
+        "date": "Scegli una data",
+        "dateRange": "Scegli un intervallo di date"
+    },
     "table": {
         "pagination": "Mostra da {0} a {1} di {2} risultati",
         "noData": "Nessun dato disponibile",

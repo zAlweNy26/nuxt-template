@@ -3,7 +3,7 @@ import { DateFormatter, getLocalTimeZone } from '@internationalized/date'
 import type { DateRange } from 'radix-vue'
 
 const { locale } = storeToRefs(useSettingsStore())
-
+const { t } = useI18n()
 const model = defineModel<DateRange>({ default: {} })
 
 const dateText = computed(() => {
@@ -18,7 +18,7 @@ const dateText = computed(() => {
       return `${df.format(date.start.toDate(getLocalTimeZone()))} - ${df.format(date.end.toDate(getLocalTimeZone()))}`
     }
   } else {
-    return 'Pick a date'
+    return t('input.dateRange')
   }
 })
 </script>

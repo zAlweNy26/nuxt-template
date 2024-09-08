@@ -284,6 +284,19 @@ onMounted(async () => {
     </Accordion>
     <TagsInput v-model="tags" />
     <Textarea />
+    <DropdownMenu :content="{ align: 'end' }">
+      <Button variant="outline" class="ml-auto">
+        Dropdown Menu
+        <Icon name="ph:caret-down" class="ml-2 size-4" />
+      </Button>
+      <template #content>
+        <DropdownMenuGroup>
+          <DropdownMenuItem>Item 1</DropdownMenuItem>
+          <DropdownMenuItem>Item 2</DropdownMenuItem>
+          <DropdownMenuItem>Item 3</DropdownMenuItem>
+        </DropdownMenuGroup>
+      </template>
+    </DropdownMenu>
     <Tabs :items="tabsItems" :root="{ defaultValue: 'second', orientation: 'vertical' }">
       <template #first-content>
         <p>First content</p>

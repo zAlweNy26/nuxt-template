@@ -28,6 +28,10 @@
         "backHome": "Go back to @:headers.home",
         "close": "Close"
     },
+    "input": {
+        "date": "Pick a date",
+        "dateRange": "Pick a range of dates"
+    },
     "table": {
         "pagination": "Showing {0} to {1} of {2} results",
         "noData": "No data available",

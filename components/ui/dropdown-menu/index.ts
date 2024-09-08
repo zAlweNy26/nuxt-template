@@ -1,6 +1,7 @@
 import type { DropdownMenuRadioItemProps } from 'radix-vue'
 
 export { default as DropdownMenu } from './DropdownMenu.vue'
+export { DropdownMenuGroup } from 'radix-vue'
 export { default as DropdownMenuRadioGroup } from './DropdownMenuRadioGroup.vue'
 export { default as DropdownMenuItem } from './DropdownMenuItem.vue'
 export { default as DropdownMenuCheckGroup } from './DropdownMenuCheckGroup.vue'

@@ -13,7 +13,7 @@ const props = defineProps<AvatarImageProps & AvatarFallbackProps & {
 <template>
   <AvatarRoot :class="cn(avatarVariant({ size, shape }), props.class)">
     <AvatarImage :src class="size-full object-cover" />
-    <AvatarFallback :delayMs>
+    <AvatarFallback :delayMs asChild>
       <slot />
     </AvatarFallback>
   </AvatarRoot>
