@@ -312,6 +312,7 @@ onMounted(async () => {
         <p>Third content</p>
       </template>
     </Tabs>
+    <RadioGroup :items="radioItems" />
     <Paginator :total="data.length" showText :itemsPerPage="storage.pageSize"
       @update="exampleTable?.table.setPageIndex($event)" @first="exampleTable?.table.firstPage()"
       @last="exampleTable?.table.lastPage()" @prev="exampleTable?.table.previousPage()"
@@ -366,7 +367,6 @@ onMounted(async () => {
     <InputBox label="Username" color="info" size="sm" />
     <InputBox label="Username" color="warning" size="md" />
     <InputBox label="Username" color="success" size="lg" />
-    <RadioGroup :items="radioItems" />
     <Toggle square>
       <Icon name="ph:text-b-bold" class="size-4" />
     </Toggle>
@@ -384,6 +384,8 @@ onMounted(async () => {
         <Icon name="ph:text-underline-bold" class="size-4" />
       </ToggleGroupItem>
     </ToggleGroup>
+    <DatePicker />
+    <DateRangePicker />
     <ComboGroup>
       <Button variant="warning" @click="$toast.warning('Toast warning')">Warning</Button>
       <Button variant="success" @click="$toast.success('Toast success')">Success</Button>
