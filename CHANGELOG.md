@@ -1,6 +1,42 @@
 # Changelog
 
 
+## v0.0.10
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.9...v0.0.10)
+
+### 🚀 Enhancements
+
+- **Component:** Add Collapsible ([135377e](https://github.com/zAlweNy26/nuxt-template/commit/135377e))
+- **Component:** Add Command ([c907a6c](https://github.com/zAlweNy26/nuxt-template/commit/c907a6c))
+- **Component:** Add ComboBox ([f73b78b](https://github.com/zAlweNy26/nuxt-template/commit/f73b78b))
+- Add `scripts` and `seo` modules ([46a4c61](https://github.com/zAlweNy26/nuxt-template/commit/46a4c61))
+- **Component:** Add Chip ([8cab2b2](https://github.com/zAlweNy26/nuxt-template/commit/8cab2b2))
+- **Component:** Add Toggle ([01200a8](https://github.com/zAlweNy26/nuxt-template/commit/01200a8))
+- **Component:** Add ComboGroup ([9d33ebb](https://github.com/zAlweNy26/nuxt-template/commit/9d33ebb))
+- **Component:** Add ToggleGroup ([4ce607d](https://github.com/zAlweNy26/nuxt-template/commit/4ce607d))
+- **Component:** Update ProgressBar ([04e0414](https://github.com/zAlweNy26/nuxt-template/commit/04e0414))
+- **Composable:** Add `useModal` to control programmatically ([3e5bd9c](https://github.com/zAlweNy26/nuxt-template/commit/3e5bd9c))
+- Add Toast, Toasts and programmatic control ([95eb787](https://github.com/zAlweNy26/nuxt-template/commit/95eb787))
+- **Component:** Add DatePicker and DateRangePicker ([f4e9c4a](https://github.com/zAlweNy26/nuxt-template/commit/f4e9c4a))
+
+### 💅 Refactors
+
+- **Component:** Update DropdownMenu ([aa08285](https://github.com/zAlweNy26/nuxt-template/commit/aa08285))
+
+### 🏡 Chore
+
+- Update deps ([7dc94fa](https://github.com/zAlweNy26/nuxt-template/commit/7dc94fa))
+- Update deps ([13fcbe6](https://github.com/zAlweNy26/nuxt-template/commit/13fcbe6))
+
+### 🎨 Styles
+
+- **Component:** Update Tabs css ([4cb1734](https://github.com/zAlweNy26/nuxt-template/commit/4cb1734))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.9
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.8...v0.0.9)
