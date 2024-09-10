@@ -437,7 +437,7 @@ onMounted(async () => {
         description: 'Modal description',
       })">Secondary</Button>
     </ComboGroup>
-    <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
+    <NumberInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
     <Carousel v-slot="{ item }" :items="carouselItems" arrows contentClass="w-[400px]" itemClass="basis-1/2">
       <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
         <img :src="item.image" alt="carousel image" class="size-48 object-cover" >

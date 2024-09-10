@@ -2,13 +2,13 @@
 import { NumberFieldRoot, NumberFieldInput, NumberFieldDecrement, NumberFieldIncrement, 
   useForwardPropsEmits, type NumberFieldRootEmits, type NumberFieldRootProps } from 'radix-vue'
 import type { ClassValue } from 'clsx'
-import { type NumericInputVariants, numericInputVariants } from '.'
+import { type NumberInputVariants, numberInputVariants } from '.'
 
 const props = defineProps<{
   root?: NumberFieldRootProps
   class?: ClassValue
-  color?: NumericInputVariants['color']
-  size?: NumericInputVariants['size']
+  color?: NumberInputVariants['color']
+  size?: NumberInputVariants['size']
   buttonClass?: ClassValue
   wrapperClass?: ClassValue
 }>()
@@ -31,7 +31,7 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
           </div>
         </template>
       </ClientOnly>
-      <NumberFieldInput :class="cn(numericInputVariants({ color, size }), props.class)" />
+      <NumberFieldInput :class="cn(numberInputVariants({ color, size }), props.class)" />
       <ClientOnly> <!-- Workaround for `window is not defined` bug -->
         <NumberFieldIncrement :class="cn('absolute top-0 inline-flex right-0 p-2 disabled:cursor-not-allowed disabled:opacity-20', props.buttonClass)">
           <Icon name="ph:plus" class="size-4" />

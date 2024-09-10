@@ -1,8 +1,8 @@
 import { type VariantProps, cva } from 'class-variance-authority'
 
-export { default as NumericInput } from './NumericInput.vue'
+export { default as NumberInput } from './NumberInput.vue'
 
-export const numericInputVariants = cva(
+export const numberInputVariants = cva(
     'w-full rounded-md border border-input bg-transparent py-1 text-center transition-shadow placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50',
     {
         variants: {
@@ -28,4 +28,4 @@ export const numericInputVariants = cva(
     }
 )
 
-export type NumericInputVariants = VariantProps<typeof numericInputVariants>
+export type NumberInputVariants = VariantProps<typeof numberInputVariants>
