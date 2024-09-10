@@ -14,7 +14,7 @@ const handleError = () => clearError({ redirect: localePath('/') })
 </script>
 
 <template>
-	<NuxtLayout>
+	<NuxtLayout name="default">
 		<div class="flex h-svh w-screen flex-col items-center justify-evenly gap-8 text-center">
 			<div class="flex flex-col gap-4 text-5xl font-bold">
 				<span class="text-error">{{ error.statusCode }}</span>

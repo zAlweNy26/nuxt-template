@@ -7,7 +7,7 @@ const head = useLocaleHead({
 </script>
 
 <template>
-	<div>
+	<div class="flex flex-col gap-2 md:gap-4">
 		<NuxtLoadingIndicator :duration="3000" :throttle="300"
 			color="repeating-linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%)" />
 		<Html :lang="head.htmlAttrs?.lang" :dir="head.htmlAttrs?.dir">
@@ -19,7 +19,7 @@ const head = useLocaleHead({
 					<Meta :id="meta.id" :property="meta.property" :content="meta.content" />
 				</template>
 			</Head>
-			<Body class="flex min-h-dvh flex-col scroll-smooth p-1 antialiased transition-colors selection:bg-primary md:p-2">
+			<Body class="min-h-dvh scroll-smooth p-1 antialiased transition-colors selection:bg-primary md:p-2">
 				<slot />
 			</Body>
 		</Html>

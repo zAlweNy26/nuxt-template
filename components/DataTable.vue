@@ -14,6 +14,7 @@ export type DataColumnDef<D, V = unknown> = ColumnDef<D, V> & {
 const props = withDefaults(defineProps<{
   class?: ClassValue
   columns: DataColumnDef<TData, TValue>[]
+  captionClass?: ClassValue
   loading?: boolean
   total: number
   selectable?: boolean
@@ -22,6 +23,7 @@ const props = withDefaults(defineProps<{
   rowClass?: ClassValue
   rows: TData[]
 }>(), {
+  captionClass: undefined,
   class: undefined,
   loading: false,
   selectable: false,
@@ -90,7 +92,7 @@ defineExpose({ table })
 <template>
   <div class="relative w-full overflow-x-auto overflow-y-hidden">
     <table :class="cn('w-full caption-bottom text-sm', props.class)">
-      <caption v-if="$slots.caption">
+      <caption v-if="$slots.caption" :class="captionClass">
         <slot name="caption" />
       </caption>
       <thead class="[&_tr]:border-b">

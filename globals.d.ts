@@ -3,7 +3,7 @@ declare global {
 		interface ProcessEnv {
 			NODE_ENV: 'development' | 'production' | 'test'
 			API_URL: string
-            API_TOKEN: string
+			API_TOKEN: string
 		}
 	}
 }

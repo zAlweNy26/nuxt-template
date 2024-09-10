@@ -5,10 +5,11 @@ import { Separator, type SeparatorProps } from 'radix-vue'
 const props = defineProps<SeparatorProps & {
   class?: ClassValue
   label?: string
+  labelClass?: ClassValue
 }>()
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
+  const { class: _, label, ...delegated } = props
   return delegated
 })
 </script>
@@ -20,8 +21,9 @@ const delegatedProps = computed(() => {
     props.class,
   )">
     <span v-if="props.label" :class="cn(
-      'text-xs text-muted-foreground bg-background absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center',
+      'text-xs text-muted-foreground select-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center',
       props.orientation === 'vertical' ? 'w-px px-1 py-2' : 'h-px py-1 px-2',
+      props.labelClass,
     )">
       {{ props.label }}
     </span>

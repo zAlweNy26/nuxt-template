@@ -215,7 +215,7 @@ onMounted(async () => {
       </template>
     </SideSheet>
     <SideSheet title="Example title" side="left" description="Example description">
-      <Button variant="primary" size="md">Left Sheet</Button>
+      <Button variant="primary" size="xl">Left Sheet</Button>
       <template #content>
         <p>Example content</p>
       </template>
@@ -227,7 +227,7 @@ onMounted(async () => {
       </template>
     </SideSheet>
     <SideSheet title="Example title" side="top" description="Example description">
-      <Button variant="primary" size="xs">Top Sheet</Button>
+      <Button variant="primary" size="sm">Top Sheet</Button>
       <template #content>
         <p>Example content</p>
       </template>

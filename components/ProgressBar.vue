@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import type { ClassValue } from 'clsx'
-import { ProgressIndicator, ProgressRoot, type ProgressRootProps } from 'radix-vue'
+import { ProgressIndicator, ProgressRoot, useForwardPropsEmits, type ProgressRootEmits, type ProgressRootProps } from 'radix-vue'
 
 const props = defineProps<ProgressRootProps & { 
   class?: ClassValue
   animation?: 'carousel' | 'carousel-inverse' | 'swing' | 'elastic'
+  indicatorClass?: ClassValue
 }>()
 
+const emits = defineEmits<ProgressRootEmits>()
+
 const delegatedProps = computed(() => {
-  const { class: _, animation, ...delegated } = props
+  const { class: _, indicatorClass, animation, ...delegated } = props
   return delegated
 })
+
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
 const relativeValue = computed(() => (100 * (props.modelValue ?? 0)) / (props.max ?? 100))
 
@@ -26,9 +31,9 @@ const animation = computed(() => {
 </script>
 
 <template>
-  <ProgressRoot v-bind="delegatedProps"
+  <ProgressRoot v-bind="forwarded"
     :class="cn('relative h-2 w-full overflow-hidden rounded-full bg-primary/20', props.class)">
-    <ProgressIndicator class="size-full flex-1 bg-primary transition-all" :class="animation"
+    <ProgressIndicator :class="cn('size-full flex-1 bg-primary transition-all', animation, props.indicatorClass)"
       :style="animation ? undefined : `transform: translateX(-${100 - relativeValue}%);`" />
   </ProgressRoot>
 </template>

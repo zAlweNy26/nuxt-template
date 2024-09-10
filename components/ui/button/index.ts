@@ -27,21 +27,21 @@ export const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
-        xs: 'h-7 rounded px-2 py-1 text-xs',
-        sm: 'h-8 px-3 py-1.5',
-        md: 'h-9 rounded-md px-4 py-2 text-base',
-        lg: 'h-10 rounded-lg px-8 py-4 text-lg'
+        sm: 'h-7 rounded px-2 py-1 text-xs',
+        md: 'h-8 px-3 py-1.5',
+        lg: 'h-9 rounded-md px-4 py-2 text-base',
+        xl: 'h-10 rounded-lg px-8 py-4 text-lg',
       },
       square: {
-        xs: 'w-7 p-0',
-        sm: 'w-8 p-0',
-        md: 'w-9 p-0',
-        lg: 'w-10 p-0',
+        sm: 'w-7 p-0',
+        md: 'w-8 p-0',
+        lg: 'w-9 p-0',
+        xl: 'w-10 p-0',
       }
     },
     defaultVariants: {
       variant: 'primary',
-      size: 'sm',
+      size: 'md',
     },
   },
 )

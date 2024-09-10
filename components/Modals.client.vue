@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { inject } from 'vue'
-
 const modalState = inject(modalInjectionKey)
 
 const { isOpen, reset } = useModal()

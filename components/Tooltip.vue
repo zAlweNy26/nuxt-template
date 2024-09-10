@@ -9,14 +9,15 @@ const props = defineProps<{
   provider?: TooltipProviderProps
   content?: TooltipContentProps
   shortcuts?: Shortcuts
+  arrowClass?: ClassValue
 }>()
 
 const emits = defineEmits<TooltipRootEmits>()
 
 const providerProps = computed<TooltipProviderProps>(() => ({ delayDuration: 300, ...props.provider }))
-const contentProps = computed<TooltipContentProps>(() => ({ sideOffset: 4, ...props.content }))
+const contentProps = computed<TooltipContentProps>(() => ({ sideOffset: 4, avoidCollisions: true, ...props.content }))
 
-const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
+const forwarded = useForwardPropsEmits(() => ({ delayDuration: 300, ...props.root }), emits)
 </script>
 
 <template>
@@ -37,7 +38,7 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
               <Shortcut v-for="(k, i) in shortcuts" :key="i" :cap="k" />
             </span>
           </template>
-          <TooltipArrow class="fill-accent" />
+          <TooltipArrow :class="cn('fill-accent', arrowClass)" />
         </TooltipContent>
       </TooltipPortal>
     </TooltipRoot>
