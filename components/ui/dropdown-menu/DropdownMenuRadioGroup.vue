@@ -4,7 +4,7 @@ import { useForwardPropsEmits, DropdownMenuRadioGroup, DropdownMenuItemIndicator
 import type { DropdownMenuItems } from '.'
 import type { ClassValue } from 'clsx'
 
-const { class: mainClass, items, itemClass, ...root } = defineProps<Omit<DropdownMenuRadioGroupProps, 'modelValue'> & {
+const props = defineProps<Omit<DropdownMenuRadioGroupProps, 'modelValue'> & {
   class?: ClassValue
   items: DropdownMenuItems<string>
   itemClass?: ClassValue
@@ -14,11 +14,16 @@ const emits = defineEmits<DropdownMenuRadioGroupEmits>()
 
 const model = defineModel<string>()
 
-const forwarded = useForwardPropsEmits(() => root, emits)
+const delegatedProps = computed(() => {
+  const { class: _, items, itemClass, ...rest } = props
+  return rest
+})
+
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
-  <DropdownMenuRadioGroup v-model="model" v-bind="forwarded" :class="cn('space-y-1', mainClass)">
+  <DropdownMenuRadioGroup v-model="model" v-bind="forwarded" :class="cn('space-y-1', props.class)">
     <DropdownMenuRadioItem v-for="(item, i) in items" :key="i" :value="item.value" :class="cn(
       'relative flex cursor-default justify-between w-full select-none items-center rounded-sm py-1 px-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       itemClass,

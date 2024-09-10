@@ -7,11 +7,16 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const { class: mainClass, ...delegated } = defineProps<Omit<ComboboxInputProps, 'asChild' | 'as'> & {
+const props = defineProps<Omit<ComboboxInputProps, 'asChild' | 'as'> & {
   class?: ClassValue
 }>()
 
-const forwardedProps = useForwardProps(() => delegated)
+const delegatedProps = computed(() => {
+  const { class: _, ...delegated } = props
+  return delegated
+})
+
+const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
 <template>
@@ -20,7 +25,10 @@ const forwardedProps = useForwardProps(() => delegated)
     <ComboboxInput
       v-bind="{ ...forwardedProps, ...$attrs }"
       autofocus
-      :class="cn('flex h-8 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50', mainClass)"
+      :class="cn(
+        'flex h-8 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50', 
+        props.class
+      )"
     />
   </div>
 </template>

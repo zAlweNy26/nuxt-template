@@ -2,14 +2,14 @@
 import type { ClassValue } from 'clsx'
 import { groupVariants, type GroupVariants } from '.'
 
-const { class: mainClass } = defineProps<{
+const props = defineProps<{
   class?: ClassValue
   size?: GroupVariants['size']
 }>()
 </script>
 
 <template>
-  <div :class="cn(groupVariants({ size }), mainClass)">
+  <div :class="cn(groupVariants({ size }), props.class)">
     <slot />
   </div>
 </template>
