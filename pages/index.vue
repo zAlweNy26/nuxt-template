@@ -61,6 +61,33 @@ const commandItems: CommandItems<string> = [
   { label: 'Test', value: 'test' }
 ]
 
+const carouselItems = [
+  {
+    id: '1',
+    title: 'First slide',
+    description: 'This is the first slide',
+    image: 'https://picsum.photos/800/400',
+  },
+  {
+    id: '2',
+    title: 'Second slide',
+    description: 'This is the second slide',
+    image: 'https://picsum.photos/800/400',
+  },
+  {
+    id: '3',
+    title: 'Third slide',
+    description: 'This is the third slide',
+    image: 'https://picsum.photos/800/400',
+  },
+  {
+    id: '4',
+    title: 'Fourth slide',
+    description: 'This is the fourth slide',
+    image: 'https://picsum.photos/800/400',
+  },
+]
+
 const progress = ref(50)
 const slider = ref([50])
 const tags = ref<string[]>([])
@@ -411,5 +438,12 @@ onMounted(async () => {
       })">Secondary</Button>
     </ComboGroup>
     <NumericInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
+    <Carousel v-slot="{ item }" :items="carouselItems" arrows contentClass="w-[400px]" itemClass="basis-1/2">
+      <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+        <img :src="item.image" alt="carousel image" class="size-48 object-cover" >
+        <h2 class="text-lg font-semibold">{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+      </div>
+    </Carousel>
   </div>
 </template>

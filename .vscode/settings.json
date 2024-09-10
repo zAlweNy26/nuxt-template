@@ -26,6 +26,7 @@
 	"tailwindCSS.experimental.configFile": "tailwind.config.ts",
     "tailwindCSS.classAttributes": [
 		"class",
+		".*Class"
 	],
     "tailwindCSS.experimental.classRegex": [
         ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
