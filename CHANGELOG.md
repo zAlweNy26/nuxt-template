@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v0.0.11
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.10...v0.0.11)
+
+### 🚀 Enhancements
+
+- Small components tweaks + add new i18n keys ([0e06f8d](https://github.com/zAlweNy26/nuxt-template/commit/0e06f8d))
+- Add Shortcut component and composables ([3ddec3e](https://github.com/zAlweNy26/nuxt-template/commit/3ddec3e))
+- **Component:** Add indicator animation in Tabs ([1a1e6a8](https://github.com/zAlweNy26/nuxt-template/commit/1a1e6a8))
+- **Component:** Add Carousel ([af01199](https://github.com/zAlweNy26/nuxt-template/commit/af01199))
+- **Component:** Add PinInput ([d8e9630](https://github.com/zAlweNy26/nuxt-template/commit/d8e9630))
+
+### 🩹 Fixes
+
+- Fix reactivity of props ([28baf2b](https://github.com/zAlweNy26/nuxt-template/commit/28baf2b))
+- Improve some components + small tweaks ([034eab5](https://github.com/zAlweNy26/nuxt-template/commit/034eab5))
+
+### 💅 Refactors
+
+- **Component:** Renamed NumericInput to NumberInput ([e467ff9](https://github.com/zAlweNy26/nuxt-template/commit/e467ff9))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.10
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.9...v0.0.10)
