@@ -400,20 +400,26 @@ onMounted(async () => {
     </Collapsible>
     <Command :items="commandItems" noGroupAsFirst />
     <ComboBox placeholder="Select an item..." :items="commandItems" />
-    <Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
-    <Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
-    <Checkbox id="terms3" size="md" text="Accept terms and conditions" />
-    <Checkbox id="terms4" size="lg" text="Accept terms and conditions" />
-    <InputBox label="Username" color="primary" size="xs" />
-    <InputBox label="Username" color="info" size="sm" />
-    <InputBox label="Username" color="warning" size="md" />
-    <InputBox label="Username" color="success" size="lg" />
-    <Toggle square>
-      <Icon name="ph:text-b-bold" class="size-4" />
-    </Toggle>
-    <Button variant="ghost">Ghost</Button>
-    <Button variant="link">Link</Button>
-    <Button variant="outline">Outline</Button>
+    <Card>
+      <template #header>
+        <Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
+        <Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
+        <Checkbox id="terms3" size="md" text="Accept terms and conditions" />
+        <Checkbox id="terms4" size="lg" text="Accept terms and conditions" />
+      </template>
+      <InputBox label="Username" color="primary" size="xs" />
+      <InputBox label="Username" color="info" size="sm" />
+      <InputBox label="Username" color="warning" size="md" />
+      <InputBox label="Username" color="success" size="lg" />
+      <template #footer>
+        <Toggle square>
+          <Icon name="ph:text-b-bold" class="size-4" />
+        </Toggle>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="link">Link</Button>
+        <Button variant="outline">Outline</Button>
+      </template>
+    </Card>
     <ToggleGroup type="single">
       <ToggleGroupItem value="bold" aria-label="Toggle bold" square>
         <Icon name="ph:text-italic-bold" class="size-4" />
