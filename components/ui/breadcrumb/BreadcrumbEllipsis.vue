@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<{
   class?: ClassValue

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { NumberFieldRoot, NumberFieldInput, NumberFieldDecrement, NumberFieldIncrement, 
   useForwardPropsEmits, type NumberFieldRootEmits, type NumberFieldRootProps } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 import { type NumberInputVariants, numberInputVariants } from '.'
 
 const props = defineProps<{

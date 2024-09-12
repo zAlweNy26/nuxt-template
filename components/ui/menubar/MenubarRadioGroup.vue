@@ -2,7 +2,6 @@
 import { MenubarRadioGroup, type MenubarRadioGroupEmits, MenubarItemIndicator, 
   MenubarRadioItem, type MenubarRadioGroupProps, useForwardPropsEmits } from 'radix-vue'
 import type { MenuRadioItems } from '.'
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<MenubarRadioGroupProps & {
   class?: ClassValue

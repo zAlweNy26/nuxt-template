@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import type { SliderRootEmits, SliderRootProps } from 'radix-vue'
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from 'radix-vue'
 

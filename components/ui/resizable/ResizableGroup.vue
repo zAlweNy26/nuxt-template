@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { SplitterGroup, type SplitterGroupEmits, type SplitterGroupProps, useForwardPropsEmits } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<SplitterGroupProps & { class?: ClassValue }>()
 const emits = defineEmits<SplitterGroupEmits>()

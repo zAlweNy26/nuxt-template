@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { MenubarLabel } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<{ class?: ClassValue }>()
 </script>

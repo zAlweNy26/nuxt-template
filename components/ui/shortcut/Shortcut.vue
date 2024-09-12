@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { type ShortcutVariants, shortcutVariants } from '.'
 

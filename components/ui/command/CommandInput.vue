@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { ComboboxInput, type ComboboxInputProps, useForwardProps } from 'radix-vue'
 import { cn } from '@/utils/css'
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import type { MenubarSubProps, MenubarSubEmits } from 'radix-vue'
 import { MenubarSub, MenubarPortal, MenubarSubTrigger, MenubarSubContent, useForwardPropsEmits } from 'radix-vue'
 

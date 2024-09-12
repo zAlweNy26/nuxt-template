@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { type TextareaVariants, textareaVariants } from '.'
 
 const props = defineProps<{

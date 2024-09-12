@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { AvatarRoot, AvatarImage, type AvatarImageProps, AvatarFallback, type AvatarFallbackProps } from 'radix-vue'
 import { type AvatarVariants, avatarVariant } from '.'
 

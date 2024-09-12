@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { useForwardPropsEmits, TooltipRoot, TooltipProvider, TooltipTrigger, TooltipPortal, TooltipContent, TooltipArrow,
   type TooltipProviderProps, type TooltipRootProps, type TooltipContentProps, type TooltipRootEmits } from 'radix-vue'
 

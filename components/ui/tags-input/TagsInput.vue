@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { TagsInputRoot, useForwardPropsEmits, TagsInputInput, TagsInputItem, TagsInputItemText, TagsInputItemDelete,
   type TagsInputRootEmits, type TagsInputRootProps, type TagsInputInputProps } from 'radix-vue'
 import { type TagsInputVariants, tagsInputVariants } from '.'

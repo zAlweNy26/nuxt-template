@@ -1,5 +1,4 @@
 import { type VariantProps, cva } from 'class-variance-authority'
-import type { ClassValue } from 'clsx'
 import type { PrimitiveProps } from 'radix-vue'
 
 export { default as Button } from './Button.vue'

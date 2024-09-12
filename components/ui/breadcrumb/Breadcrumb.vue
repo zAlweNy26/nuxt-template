@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ClassValue } from 'clsx'
 import { Primitive } from 'radix-vue'
 import type { BreadcrumbItems } from '.'
 

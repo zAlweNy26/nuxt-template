@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { type RadioVariants, type RadioItems, radioVariants } from '.'
 import { RadioGroupRoot, type RadioGroupRootEmits, RadioGroupIndicator,
   RadioGroupItem, type RadioGroupRootProps, useForwardPropsEmits } from 'radix-vue'

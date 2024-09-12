@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { DropdownMenuLabel } from 'radix-vue'
 
 const props = defineProps<{ class?: ClassValue }>()

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ClassValue } from 'clsx'
 import { chipVariants, type ChipVariants } from '.'
 
 const props = withDefaults(defineProps<{

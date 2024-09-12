@@ -3,7 +3,6 @@ import { RangeCalendarRoot, type RangeCalendarRootEmits, type RangeCalendarRootP
   useForwardPropsEmits, RangeCalendarCell, RangeCalendarCellTrigger, RangeCalendarGrid, 
   RangeCalendarGridBody, RangeCalendarGridHead, RangeCalendarGridRow, RangeCalendarNext,
   RangeCalendarHeadCell, RangeCalendarHeader, RangeCalendarHeading, RangeCalendarPrev } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 import { getLocalTimeZone, today } from '@internationalized/date'
 import { buttonVariants } from './ui/button'
 

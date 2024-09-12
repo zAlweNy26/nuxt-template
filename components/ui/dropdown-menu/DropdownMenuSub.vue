@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { useForwardPropsEmits, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuPortal, 
   DropdownMenuSubContent, type DropdownMenuSubEmits, type DropdownMenuSubProps } from 'radix-vue'
 

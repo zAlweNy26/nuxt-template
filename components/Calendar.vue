@@ -7,7 +7,6 @@ import { type DateValue, getLocalTimeZone, today } from '@internationalized/date
 // import { createDecade, createYear, toDate } from 'radix-vue/date'
 // import type { SelectItems } from './ui/select'
 import { buttonVariants } from './ui/button'
-import type { ClassValue } from 'clsx'
 
 const props = withDefaults(defineProps<CalendarRootProps & { class?: ClassValue }>(), {
   class: undefined,

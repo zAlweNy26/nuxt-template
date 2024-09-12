@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
 import useEmblaCarousel from 'embla-carousel-vue'
 import type { EmblaCarouselVueType } from 'embla-carousel-vue'
-import type { ClassValue } from 'clsx'
 import type { UnwrapRef } from 'vue'
 
 type CarouselApi = UnwrapRef<EmblaCarouselVueType[1]>

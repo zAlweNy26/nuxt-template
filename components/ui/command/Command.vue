@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="T extends AcceptableValue">
-import type { ClassValue } from 'clsx'
 import type { ComboboxRootEmits, ComboboxRootProps, ComboboxContentProps } from 'radix-vue'
 import { ComboboxRoot, useForwardPropsEmits, ComboboxContent, 
   ComboboxSeparator, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxItem } from 'radix-vue'

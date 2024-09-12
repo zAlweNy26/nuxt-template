@@ -3,7 +3,6 @@ import type { ColumnDef, ColumnFiltersState, RowSelectionState, ExpandedState,
   SortingState, Updater, VisibilityState, ColumnPinningState, AccessorKeyColumnDef} from '@tanstack/vue-table'
 import { FlexRender, getCoreRowModel, useVueTable, getExpandedRowModel,
   getPaginationRowModel, getSortedRowModel, getFilteredRowModel } from '@tanstack/vue-table'
-import type { ClassValue } from 'clsx'
 
 export type DataColumnDef<D, V = unknown> = ColumnDef<D, V> & {
   pinned?: 'left' | 'right'

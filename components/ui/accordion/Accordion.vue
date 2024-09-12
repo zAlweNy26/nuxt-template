@@ -2,7 +2,6 @@
 import { useForwardPropsEmits, AccordionRoot, AccordionItem, AccordionHeader, AccordionTrigger,
   AccordionContent, type AccordionRootEmits, type AccordionRootProps } from 'radix-vue'
 import type { AccordionItems } from '.'
-import type { ClassValue } from 'clsx'
 
 const props = withDefaults(defineProps<AccordionRootProps & {
   items: AccordionItems

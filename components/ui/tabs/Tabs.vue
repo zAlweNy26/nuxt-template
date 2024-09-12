@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { TabsRoot, TabsTrigger, TabsList, TabsContent, TabsIndicator, type TabsRootProps } from 'radix-vue'
 import type { TabItems } from '.'
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<{
   root?: TabsRootProps

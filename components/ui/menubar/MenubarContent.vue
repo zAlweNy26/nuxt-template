@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { MenubarContent, type MenubarContentProps, MenubarPortal, useForwardProps } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 
 const props = withDefaults(defineProps<MenubarContentProps & { class?: ClassValue }>(), {
   align: 'start',

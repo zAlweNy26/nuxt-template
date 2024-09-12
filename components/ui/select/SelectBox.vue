@@ -5,7 +5,6 @@ import { type SelectRootEmits, type SelectRootProps,
   SelectGroup, SelectItem, SelectItemIndicator, SelectItemText,
   SelectScrollDownButton, SelectContent, SelectPortal, SelectViewport, useForwardPropsEmits
 } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<{
   root?: SelectRootProps

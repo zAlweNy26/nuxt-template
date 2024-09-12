@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { PinInputRoot, type PinInputRootEmits, PinInputInput, type PinInputRootProps, useForwardPropsEmits } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<PinInputRootProps & { 
   class?: ClassValue

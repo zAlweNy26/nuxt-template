@@ -2,7 +2,6 @@
 import { ToggleGroupRoot, type ToggleGroupRootEmits, 
   type ToggleGroupRootProps, useForwardPropsEmits } from 'radix-vue'
 import { type GroupVariants, groupVariants } from '../combo-group'
-import type { ClassValue } from 'clsx'
 import { ToggleGroupKey } from '.'
 
 const props = withDefaults(defineProps<ToggleGroupRootProps & {

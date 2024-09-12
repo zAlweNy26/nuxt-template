@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { type DropdownMenuCheckboxItemEmits, DropdownMenuCheckboxItem, useForwardPropsEmits,
   DropdownMenuItemIndicator, type DropdownMenuCheckboxItemProps } from 'radix-vue'
 

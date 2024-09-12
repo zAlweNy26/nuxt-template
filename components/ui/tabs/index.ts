@@ -1,5 +1,3 @@
-import type { ClassValue } from 'clsx'
-
 export { default as Tabs } from './Tabs.vue'
 
 export type TabItem = {

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { DropdownMenuSeparator, type DropdownMenuSeparatorProps } from 'radix-vue'
 
 const props = defineProps<DropdownMenuSeparatorProps & { class?: ClassValue }>()

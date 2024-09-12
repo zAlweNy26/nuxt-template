@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { ProgressIndicator, ProgressRoot, useForwardPropsEmits, type ProgressRootEmits, type ProgressRootProps } from 'radix-vue'
 
 const props = defineProps<ProgressRootProps & { 

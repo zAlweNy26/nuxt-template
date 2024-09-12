@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { useForwardPropsEmits, PopoverRoot, PopoverTrigger, PopoverPortal, PopoverContent } from 'radix-vue'
 import type { PopoverRootEmits, PopoverRootProps, PopoverContentProps } from 'radix-vue'
 

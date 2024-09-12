@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { MenubarTrigger, type MenubarTriggerProps, useForwardProps } from 'radix-vue'
-import type { ClassValue } from 'clsx'
 
 const props = defineProps<MenubarTriggerProps & { class?: ClassValue }>()
 

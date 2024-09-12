@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import type { ComboboxSeparatorProps } from 'radix-vue'
 import { ComboboxSeparator } from 'radix-vue'
 

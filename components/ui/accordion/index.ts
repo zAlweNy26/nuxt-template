@@ -1,5 +1,3 @@
-import type { ClassValue } from 'clsx'
-
 export { default as Accordion } from './Accordion.vue'
 
 export type AccordionItem = {

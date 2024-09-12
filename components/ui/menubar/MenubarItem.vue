@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
 import { MenubarItem, type MenubarItemEmits, type MenubarItemProps, useForwardPropsEmits } from 'radix-vue'
 
 const props = defineProps<MenubarItemProps & { 

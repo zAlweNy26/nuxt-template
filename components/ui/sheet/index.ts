@@ -1,5 +1,4 @@
 import { type VariantProps, cva } from 'class-variance-authority'
-import type { ClassValue } from 'clsx'
 import type { DialogContentProps } from 'radix-vue'
 
 export { default as SideSheet } from './SideSheet.vue'

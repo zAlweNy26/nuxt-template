@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { ClassValue } from 'clsx'
 import { groupVariants, type GroupVariants } from '.'
 
 const props = defineProps<{
