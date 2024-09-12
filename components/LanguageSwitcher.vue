@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { DropdownMenuItems } from './ui/dropdown-menu'
+import type { DropdownRadioItems } from './ui/dropdown-menu'
 
 const settings = useSettingsStore()
 const { changeLocale } = settings
@@ -8,7 +8,7 @@ const { locale, locales } = storeToRefs(useSettingsStore())
 const localesItems = computed(() => locales.value.map((l) => ({
   label: `${l.domain} ${l.name}`,
   value: l.code
-})) as DropdownMenuItems<string>)
+})) as DropdownRadioItems)
 </script>
 
 <template>

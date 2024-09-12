@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import type { ClassValue } from 'clsx'
 import { DropdownMenuRoot, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, type DropdownMenuContentProps,
-  type DropdownMenuRootEmits, type DropdownMenuRootProps, type DropdownMenuTriggerProps, useForwardPropsEmits, } from 'radix-vue'
+  type DropdownMenuRootEmits, type DropdownMenuRootProps, useForwardPropsEmits } from 'radix-vue'
 
 const props = defineProps<{
+  disabled?: boolean
   root?: DropdownMenuRootProps
-  trigger?: DropdownMenuTriggerProps
   content?: DropdownMenuContentProps
   class?: ClassValue
 }>()
 
-const triggerProps = computed<DropdownMenuTriggerProps>(() => ({ asChild: true, ...props.trigger }))
 const contentProps = computed<DropdownMenuContentProps>(() => ({ sideOffset: 4, ...props.content }))
 
 const emits = defineEmits<DropdownMenuRootEmits>()
@@ -20,7 +19,7 @@ const forwardedRoot = useForwardPropsEmits(() => props.root ?? {}, emits)
 
 <template>
   <DropdownMenuRoot v-bind="forwardedRoot">
-    <DropdownMenuTrigger class="outline-none" v-bind="triggerProps">
+    <DropdownMenuTrigger :disabled asChild>
       <slot />
     </DropdownMenuTrigger>
     <DropdownMenuPortal v-if="$slots.content">
