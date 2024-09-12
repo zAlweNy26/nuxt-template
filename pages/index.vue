@@ -470,5 +470,102 @@ onMounted(async () => {
         </ResizableGroup>
       </ResizablePanel>
     </ResizableGroup>
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem :shortcuts="['meta', 'T']">
+            New Tab
+          </MenubarItem>
+          <MenubarItem :shortcuts="['meta', 'N']">
+            New Window
+          </MenubarItem>
+          <MenubarItem disabled>
+            New Incognito Window
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarSub>
+            Share
+            <template #content>
+              <MenubarItem>Email link</MenubarItem>
+              <MenubarItem>Messages</MenubarItem>
+              <MenubarItem>Notes</MenubarItem>
+            </template>
+          </MenubarSub>
+          <MenubarSeparator />
+          <MenubarItem :shortcuts="['meta', 'P']">
+            Print...
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem :shortcuts="['meta', 'Z']">
+            Undo
+          </MenubarItem>
+          <MenubarItem :shortcuts="['meta', 'Z']">
+            Redo
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarSub>
+            Find
+            <template #content>
+              <MenubarItem>Search the web</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem>Find...</MenubarItem>
+              <MenubarItem>Find Next</MenubarItem>
+              <MenubarItem>Find Previous</MenubarItem>
+            </template>
+          </MenubarSub>
+          <MenubarSeparator />
+          <MenubarItem>Cut</MenubarItem>
+          <MenubarItem>Copy</MenubarItem>
+          <MenubarItem>Paste</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+          <MenubarCheckItem>Always Show Bookmarks Bar</MenubarCheckItem>
+          <MenubarCheckItem checked>
+            Always Show Full URLs
+          </MenubarCheckItem>
+          <MenubarSeparator />
+          <MenubarItem :shortcuts="['meta', 'R']">
+            Reload
+          </MenubarItem>
+          <MenubarItem disabled :shortcuts="['shift', 'meta', 'R']">
+            Force Reload
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>
+            Toggle Fullscreen
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>
+            Hide Sidebar
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Profiles</MenubarTrigger>
+        <MenubarContent>
+          <MenubarRadioGroup :items="[
+            { label: 'Andy', value: 'andy' },
+            { label: 'Benoit', value: 'benoit' },
+            { label: 'Luis', value: 'luis' },
+          ]" modelValue="benoit" />
+          <MenubarSeparator />
+          <MenubarItem>
+            Edit...
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>
+            Add Profile...
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
   </div>
 </template>
