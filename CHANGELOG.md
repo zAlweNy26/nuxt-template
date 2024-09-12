@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.0.12
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.11...v0.0.12)
+
+### 🚀 Enhancements
+
+- **Component:** Add Resizable ([e892da5](https://github.com/zAlweNy26/nuxt-template/commit/e892da5))
+- **Component:** Add Menubar ([790c711](https://github.com/zAlweNy26/nuxt-template/commit/790c711))
+- **Component:** Add Card ([d3c0eca](https://github.com/zAlweNy26/nuxt-template/commit/d3c0eca))
+- **Component:** Add ContextMenu ([33299c7](https://github.com/zAlweNy26/nuxt-template/commit/33299c7))
+
+### 🩹 Fixes
+
+- Correct id for Checkbox and Toggle components ([8b53eea](https://github.com/zAlweNy26/nuxt-template/commit/8b53eea))
+
+### 💅 Refactors
+
+- **Component:** Change DropdownMenu elements ([453d60b](https://github.com/zAlweNy26/nuxt-template/commit/453d60b))
+- Merge Menubar components ([ccac70b](https://github.com/zAlweNy26/nuxt-template/commit/ccac70b))
+
+### 🏡 Chore
+
+- Global import `ClassValue` type ([4bb421f](https://github.com/zAlweNy26/nuxt-template/commit/4bb421f))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.11
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.10...v0.0.11)
