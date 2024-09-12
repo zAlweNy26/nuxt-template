@@ -478,8 +478,8 @@ onMounted(async () => {
     </ResizableGroup>
     <Menubar>
       <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
-        <MenubarContent>
+        File
+        <template #content>
           <MenubarItem :shortcuts="['meta', 'T']">
             New Tab
           </MenubarItem>
@@ -502,11 +502,11 @@ onMounted(async () => {
           <MenubarItem :shortcuts="['meta', 'P']">
             Print...
           </MenubarItem>
-        </MenubarContent>
+        </template>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>Edit</MenubarTrigger>
-        <MenubarContent>
+        Edit
+        <template #content>
           <MenubarItem :shortcuts="['meta', 'Z']">
             Undo
           </MenubarItem>
@@ -528,11 +528,11 @@ onMounted(async () => {
           <MenubarItem>Cut</MenubarItem>
           <MenubarItem>Copy</MenubarItem>
           <MenubarItem>Paste</MenubarItem>
-        </MenubarContent>
+        </template>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>View</MenubarTrigger>
-        <MenubarContent>
+        View
+        <template #content>
           <MenubarCheckItem>Always Show Bookmarks Bar</MenubarCheckItem>
           <MenubarCheckItem checked>
             Always Show Full URLs
@@ -552,11 +552,11 @@ onMounted(async () => {
           <MenubarItem>
             Hide Sidebar
           </MenubarItem>
-        </MenubarContent>
+        </template>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>Profiles</MenubarTrigger>
-        <MenubarContent>
+        Profiles
+        <template #content>
           <MenubarRadioGroup :items="[
             { label: 'Andy', value: 'andy' },
             { label: 'Benoit', value: 'benoit' },
@@ -570,7 +570,7 @@ onMounted(async () => {
           <MenubarItem>
             Add Profile...
           </MenubarItem>
-        </MenubarContent>
+        </template>
       </MenubarMenu>
     </Menubar>
   </div>

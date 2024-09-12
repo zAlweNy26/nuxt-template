@@ -30,7 +30,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       </slot>
       <DropdownMenuItemIndicator asChild>
         <slot name="icon">
-          <Icon name="ph:dot-bold" class="size-4 fill-current" />
+          <Icon name="ph:circle-fill" class="size-2 fill-current" />
         </slot>
       </DropdownMenuItemIndicator>
     </DropdownMenuRadioItem>

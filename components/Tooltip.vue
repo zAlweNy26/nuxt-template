@@ -32,7 +32,7 @@ const forwarded = useForwardPropsEmits(() => ({ delayDuration: 300, ...props.roo
         )">
           <slot name="content" />
           <template v-if="shortcuts">
-            <Icon name="ph:dot-bold" class="size-2 fill-current" />
+            <Icon name="ph:circle-fill" class="size-1 fill-current" />
             <span class="flex gap-0.5">
               <Shortcut v-for="(k, i) in shortcuts" :key="i" :cap="k" />
             </span>
