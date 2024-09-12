@@ -2,7 +2,9 @@
 import { Toggle, type ToggleProps, useForwardProps } from 'radix-vue'
 import { buttonVariants, type ButtonProps } from './ui/button'
 
-const props = defineProps<Omit<ToggleProps, 'pressed'> & Omit<ButtonProps, 'variant'>>()
+const props = withDefaults(defineProps<Omit<ToggleProps, 'pressed'> & Omit<ButtonProps, 'variant'>>(), {
+  size: 'md',
+})
 
 const delegatedProps = computed(() => {
   const { class: _, size, square, ...rest } = props

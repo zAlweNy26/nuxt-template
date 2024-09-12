@@ -6,7 +6,7 @@ export { default as Checkbox } from './Checkbox.vue'
 export interface CheckboxProps {
   variant?: CheckboxVariants['variant']
   size?: CheckboxVariants['size']
-  root?: CheckboxRootProps
+  root?: Omit<CheckboxRootProps, 'id'>
   class?: ClassValue
   labelClass?: ClassValue
   text?: string
