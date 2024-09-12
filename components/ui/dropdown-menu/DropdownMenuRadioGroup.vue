@@ -21,6 +21,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
 <template>
   <DropdownMenuRadioGroup v-bind="forwarded" :class="cn('space-y-1', props.class)">
+    <slot />
     <DropdownMenuRadioItem v-for="(item, i) in items" :key="i" :value="item.value" :class="cn(
       'relative flex justify-between cursor-pointer gap-2 select-none items-center rounded-sm py-1 px-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       itemClass,

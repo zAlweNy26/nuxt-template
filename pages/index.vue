@@ -573,5 +573,49 @@ onMounted(async () => {
         </template>
       </MenubarMenu>
     </Menubar>
+    <ContextMenu class="w-64">
+      <Card class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+        Right click here
+      </Card>
+      <template #content>
+        <ContextMenuItem :shortcuts="['meta', '[']">
+          Back
+        </ContextMenuItem>
+        <ContextMenuItem disabled :shortcuts="['meta', ']']">
+          Forward
+        </ContextMenuItem>
+        <ContextMenuItem :shortcuts="['meta', 'R']">
+          Reload
+        </ContextMenuItem>
+        <ContextMenuSub class="w-48">
+          More Tools
+          <template #content>
+            <ContextMenuItem :shortcuts="['meta', 'S']">
+              Save Page As...
+            </ContextMenuItem>
+            <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+            <ContextMenuItem>Name Window...</ContextMenuItem>
+            <ContextMenuSeparator />
+            <ContextMenuItem>Developer Tools</ContextMenuItem>
+          </template>
+        </ContextMenuSub>
+        <ContextMenuSeparator />
+        <ContextMenuCheckItem checked>
+          Show Bookmarks Bar
+        </ContextMenuCheckItem>
+        <ContextMenuCheckItem>Show Full URLs</ContextMenuCheckItem>
+        <ContextMenuSeparator />
+        <ContextMenuRadioGroup :items="[
+          { label: 'People', value: 'people' },
+          { label: 'Places', value: 'places' },
+          { label: 'Things', value: 'things' },
+        ]" modelValue="people">
+          <ContextMenuLabel>
+            Choose
+          </ContextMenuLabel>
+          <ContextMenuSeparator />
+        </ContextMenuRadioGroup>
+      </template>
+    </ContextMenu>
   </div>
 </template>
