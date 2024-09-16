@@ -43,6 +43,7 @@
     --ring: 0 0% 14.9%;
 
     --radius: 0.5rem;
+    --gap: 0.5rem;
   }
 
   .dark {

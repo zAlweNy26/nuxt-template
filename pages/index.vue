@@ -617,5 +617,31 @@ onMounted(async () => {
         </ContextMenuRadioGroup>
       </template>
     </ContextMenu>
+    <Marquee pauseOnHover :duration="3" class="[--gap:2rem] w-[576px]">
+      <MarqueeItem>
+        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+          <h2 class="text-lg font-semibold">Marquee Item 1</h2>
+        </div>
+      </MarqueeItem>
+      <MarqueeItem>
+        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+          <h2 class="text-lg font-semibold">Marquee Item 2</h2>
+        </div>
+      </MarqueeItem>
+      <MarqueeItem>
+        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+          <h2 class="text-lg font-semibold">Marquee Item 3</h2>
+        </div>
+      </MarqueeItem>
+      <MarqueeItem>
+        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+          <h2 class="text-lg font-semibold">Marquee Item 4</h2>
+        </div>
+      </MarqueeItem>
+    </Marquee>
   </div>
 </template>
