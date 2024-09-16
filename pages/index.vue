@@ -617,7 +617,7 @@ onMounted(async () => {
         </ContextMenuRadioGroup>
       </template>
     </ContextMenu>
-    <Marquee pauseOnHover :duration="3" class="[--gap:2rem] w-[576px]">
+    <Marquee pauseOnHover :duration="3" class="w-[576px] [--gap:2rem]">
       <MarqueeItem>
         <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
           <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
@@ -643,5 +643,32 @@ onMounted(async () => {
         </div>
       </MarqueeItem>
     </Marquee>
+    <Stepper :items="[
+      { title: 'First step', description: 'This is the first step', icon: 'ph:acorn-bold' },
+      { title: 'Second step', description: 'This is the second step', icon: 'ph:airplane-bold' },
+      { title: 'Third step', description: 'This is the third step', icon: 'ph:alarm-bold' },
+      { title: 'Fourth step', description: 'This is the fourth step', icon: 'ph:anchor-bold' },
+    ]">
+      <template #step-1>
+        <div class="flex items-center justify-center">
+          <p>Step 1 content</p>
+        </div>
+      </template>
+      <template #step-2>
+        <div class="flex items-center justify-center">
+          <p>Step 2 content</p>
+        </div>
+      </template>
+      <template #step-3>
+        <div class="flex items-center justify-center">
+          <p>Step 3 content</p>
+        </div>
+      </template>
+      <template #step-4>
+        <div class="flex items-center justify-center">
+          <p>Step 4 content</p>
+        </div>
+      </template>
+    </Stepper>
   </div>
 </template>
