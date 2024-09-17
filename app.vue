@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { ConfigProvider } from 'radix-vue'
+import { ConfigProvider, useId as useRadixId } from 'radix-vue'
 
 const { title } = useAppConfig()
+const textDirection = useTextDirection({ initialValue: 'ltr' })
+const configDirection = computed(() => textDirection.value === 'rtl' ? 'rtl' : 'ltr')
 
 useHead({
 	titleTemplate: t => t ? `${t} - ${title}` : title,
 })
 
-const useIdMethod = () => useId()!
+const useIdFn = () => useId() ?? useRadixId()
 </script>
 
 <template>
-	<ConfigProvider :useId="useIdMethod">
+	<ConfigProvider :useId="useIdFn" :dir="configDirection">
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
