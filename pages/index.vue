@@ -87,6 +87,44 @@ const carouselItems = [
   },
 ]
 
+const navigationItems = [
+  {
+    title: 'Alert Dialog',
+    href: '/docs/primitives/alert-dialog',
+    description:
+      'A modal dialog that interrupts the user with important content and expects a response.',
+  },
+  {
+    title: 'Hover Card',
+    href: '/docs/primitives/hover-card',
+    description:
+      'For sighted users to preview content available behind a link.',
+  },
+  {
+    title: 'Progress',
+    href: '/docs/primitives/progress',
+    description:
+      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+  },
+  {
+    title: 'Scroll-area',
+    href: '/docs/primitives/scroll-area',
+    description: 'Visually or semantically separates content.',
+  },
+  {
+    title: 'Tabs',
+    href: '/docs/primitives/tabs',
+    description:
+      'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
+  },
+  {
+    title: 'Tooltip',
+    href: '/docs/primitives/tooltip',
+    description:
+      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
+  },
+]
+
 const progress = ref(50)
 const slider = ref([50])
 const tags = ref<string[]>([])
@@ -317,7 +355,8 @@ onMounted(async () => {
       </Button>
       <template #content>
         <DropdownMenuGroup>
-          <DropdownMenuItem :shortcuts="['meta', 'U']" @click="() => console.log('test click')">My first item</DropdownMenuItem>
+          <DropdownMenuItem :shortcuts="['meta', 'U']" @click="() => console.log('test click')">My first item
+          </DropdownMenuItem>
           <DropdownMenuItem :shortcuts="['shift', 'E']">Item 2</DropdownMenuItem>
           <DropdownMenuItem :shortcuts="['capslock', 'A']">Item 3</DropdownMenuItem>
         </DropdownMenuGroup>
@@ -364,7 +403,8 @@ onMounted(async () => {
             <Icon name="ph:caret-down" class="ml-2 size-4" />
           </Button>
           <template #content>
-            <DropdownMenuCheckItem v-for="col in columnsItems" :key="col.value" :checked="selectedColumns.includes(col.value)" class="capitalize"
+            <DropdownMenuCheckItem v-for="col in columnsItems" :key="col.value"
+              :checked="selectedColumns.includes(col.value)" class="capitalize"
               @update:checked="(v) => exampleTable?.table.getColumn(col.value)?.toggleVisibility(v)">
               {{ col.label }}
             </DropdownMenuCheckItem>
@@ -447,8 +487,9 @@ onMounted(async () => {
     <NumberInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
     <PinInput :digits="4" placeholder="○" @complete="(v) => console.log(v)" />
     <Carousel v-slot="{ item }" :items="carouselItems" arrows contentClass="w-[400px]" itemClass="basis-1/2">
-      <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-        <img :src="item.image" alt="carousel image" class="size-48 object-cover" >
+      <div
+        class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+        <img :src="item.image" alt="carousel image" class="size-48 object-cover">
         <h2 class="text-lg font-semibold">{{ item.title }}</h2>
         <p>{{ item.description }}</p>
       </div>
@@ -573,6 +614,74 @@ onMounted(async () => {
         </template>
       </MenubarMenu>
     </Menubar>
+    <NavigationMenu>
+      <NavigationMenuItem>
+        Getting started
+        <template #content>
+          <ul class="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[minmax(0,.75fr)_minmax(0,1fr)]">
+            <li class="row-span-3">
+              <a class="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                href="/">
+                <img src="https://www.radix-vue.com/logo.svg" class="size-6">
+                <div class="mb-2 mt-4 text-lg font-medium">
+                  shadcn/ui
+                </div>
+                <p class="text-sm leading-tight text-muted-foreground">
+                  Beautifully designed components built with Radix UI and
+                  Tailwind CSS.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a href="/docs"
+                class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div class="text-sm font-medium leading-none">Introduction</div>
+                <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  Re-usable components built using Radix UI and Tailwind CSS.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a href="/docs/installation"
+                class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div class="text-sm font-medium leading-none">Installation</div>
+                <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  How to install dependencies and structure your app.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a href="/docs/primitives/typography"
+                class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div class="text-sm font-medium leading-none">Typography</div>
+                <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  Styles for headings, paragraphs, lists...etc
+                </p>
+              </a>
+            </li>
+          </ul>
+        </template>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        Components
+        <template #content>
+          <ul class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <li v-for="component in navigationItems" :key="component.title">
+              <a :href="component.href"
+                class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div class="text-sm font-medium leading-none">{{ component.title }}</div>
+                <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  {{ component.description }}
+                </p>
+              </a>
+            </li>
+          </ul>
+        </template>
+      </NavigationMenuItem>
+      <NavigationMenuItem :link="{ href: '/docs' }">
+        Documentation
+      </NavigationMenuItem>
+    </NavigationMenu>
     <ContextMenu class="w-64">
       <Card class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
         Right click here
@@ -619,26 +728,30 @@ onMounted(async () => {
     </ContextMenu>
     <Marquee pauseOnHover :duration="3" class="w-[576px] [--gap:2rem]">
       <MarqueeItem>
-        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+        <div
+          class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
           <h2 class="text-lg font-semibold">Marquee Item 1</h2>
         </div>
       </MarqueeItem>
       <MarqueeItem>
-        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+        <div
+          class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
           <h2 class="text-lg font-semibold">Marquee Item 2</h2>
         </div>
       </MarqueeItem>
       <MarqueeItem>
-        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+        <div
+          class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
           <h2 class="text-lg font-semibold">Marquee Item 3</h2>
         </div>
       </MarqueeItem>
       <MarqueeItem>
-        <div class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover" >
+        <div
+          class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+          <img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
           <h2 class="text-lg font-semibold">Marquee Item 4</h2>
         </div>
       </MarqueeItem>
