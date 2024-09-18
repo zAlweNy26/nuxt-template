@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.0.13
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.12...v0.0.13)
+
+### 🚀 Enhancements
+
+- **Component:** Add Marquee ([065f7d8](https://github.com/zAlweNy26/nuxt-template/commit/065f7d8))
+- **Component:** Add Stepper ([f285540](https://github.com/zAlweNy26/nuxt-template/commit/f285540))
+- **Component:** Add NavigationMenu ([74ec508](https://github.com/zAlweNy26/nuxt-template/commit/74ec508))
+
+### 🏡 Chore
+
+- Update deps ([d7312e2](https://github.com/zAlweNy26/nuxt-template/commit/d7312e2))
+- Add text direction in config ([b144929](https://github.com/zAlweNy26/nuxt-template/commit/b144929))
+- Small components tweaks ([1739eea](https://github.com/zAlweNy26/nuxt-template/commit/1739eea))
+- Update `nuxt-zod-i18n` package ([2fde760](https://github.com/zAlweNy26/nuxt-template/commit/2fde760))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.12
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.11...v0.0.12)
