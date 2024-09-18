@@ -10,6 +10,9 @@ export const useSettingsStore = defineStore('Settings', () => {
 	const isDark = computed(() => colorMode.value === 'dark')
   const isLight = computed(() => colorMode.value === 'light')
 
+  const direction = useTextDirection({ initialValue: 'ltr' })
+  const textDirection = computed(() => direction.value === 'rtl' ? 'rtl' : 'ltr')
+
   const toggleTheme = () => {
     colorMode.preference = colorMode.value === 'light' ? 'dark' : 'light'
   }
@@ -26,6 +29,7 @@ export const useSettingsStore = defineStore('Settings', () => {
     isLight,
     locale,
     locales,
+    textDirection,
     toggleTheme,
     changeLocale,
   }
