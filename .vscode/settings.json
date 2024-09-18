@@ -1,11 +1,11 @@
 {
-    "eslint.useFlatConfig": true,
+	"eslint.useFlatConfig": true,
 	"editor.formatOnSave": false,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit",
 		"source.organizeImports": "never"
 	},
-    "eslint.validate": [
+	"eslint.validate": [
 		"javascript",
 		"typescript",
 		"vue",
@@ -24,13 +24,35 @@
 		"strings": true
 	},
 	"tailwindCSS.experimental.configFile": "tailwind.config.ts",
-    "tailwindCSS.classAttributes": [
+	"tailwindCSS.classAttributes": [
 		"class",
-		".*Class"
+		".*Class",
+		"ui"
 	],
-    "tailwindCSS.experimental.classRegex": [
-        ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-        ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
-        ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-    ]
+	"tailwindCSS.experimental.classRegex": [
+		[
+			"cva\\(([^)]*)\\)",
+			"[\"'`]([^\"'`]*).*?[\"'`]"
+		],
+		[
+			"cx\\(([^)]*)\\)",
+			"(?:'|\"|`)([^']*)(?:'|\"|`)"
+		],
+		[
+			"cn\\(([^)]*)\\)",
+			"(?:'|\"|`)([^']*)(?:'|\"|`)"
+		],
+		[
+			"([\"'`][^\"'`]*.*?[\"'`])",
+			"[\"'`]([^\"'`]*).*?[\"'`]"
+		],
+		[
+			"ui:\\s*{([^)]*)\\s*}",
+			"[\"'`]([^\"'`]*).*?[\"'`]"
+		],
+		[
+			"/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}",
+			":\\s*[\"'`]([^\"'`]*).*?[\"'`]"
+		]
+	]
 }

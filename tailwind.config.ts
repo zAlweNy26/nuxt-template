@@ -1,7 +1,8 @@
-import type { Config } from "tailwindcss"
 import animate from 'tailwindcss-animate'
+import { withTV } from "tailwind-variants/transformer"
 
-export default <Partial<Config>>{
+export default withTV({
+  content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue'],
   darkMode: ["class"],
   safelist: ["dark"],
   prefix: "",
@@ -110,4 +111,4 @@ export default <Partial<Config>>{
     },
   },
   plugins: [animate],
-}
+})
