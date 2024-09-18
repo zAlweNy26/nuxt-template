@@ -42,7 +42,7 @@
     "nuxt-api-party": "^2.0.9",
     "nuxt-lodash": "^2.5.3",
     "nuxt-security": "^2.0.0-rc.9",
-    "nuxt-zod-i18n": "^1.9.0",
+    "nuxt-zod-i18n": "^1.10.0",
     "radix-vue": "^1.9.5",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.5.2",
