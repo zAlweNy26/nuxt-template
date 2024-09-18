@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import type { NuxtLinkProps } from '#app'
-import { NavigationMenuItem, type NavigationMenuItemProps, NavigationMenuLink,
-  NavigationMenuTrigger, NavigationMenuContent } from 'radix-vue'
+import { NavigationMenuItem, type NavigationMenuItemProps, NavigationMenuTrigger, NavigationMenuContent } from 'radix-vue'
 
 const props = defineProps<NavigationMenuItemProps & { 
   class?: ClassValue
   contentClass?: ClassValue
-  link?: NuxtLinkProps
   disabled?: boolean
 }>()
 
@@ -18,15 +15,7 @@ const delegatedProps = computed(() => {
 
 <template>
   <NavigationMenuItem v-bind="delegatedProps">
-    <NuxtLink v-if="link" v-bind="link">
-      <NavigationMenuLink :class="cn(
-        'group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50', 
-        props.class
-      )">
-        <slot />
-      </NavigationMenuLink>
-    </NuxtLink>
-    <NavigationMenuTrigger v-else :disabled :class="cn(
+    <NavigationMenuTrigger :disabled :class="cn(
       'group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50', 
       props.class
     )">

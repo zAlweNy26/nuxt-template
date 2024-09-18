@@ -678,9 +678,9 @@ onMounted(async () => {
           </ul>
         </template>
       </NavigationMenuItem>
-      <NavigationMenuItem :link="{ href: '/docs' }">
+      <NavigationMenuLink to="/docs">
         Documentation
-      </NavigationMenuItem>
+      </NavigationMenuLink>
     </NavigationMenu>
     <ContextMenu class="w-64">
       <Card class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
