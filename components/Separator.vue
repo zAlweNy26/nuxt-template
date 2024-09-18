@@ -5,26 +5,29 @@ const props = defineProps<SeparatorProps & {
   class?: ClassValue
   label?: string
   labelClass?: ClassValue
+  dividerClass?: ClassValue
 }>()
 
 const delegatedProps = computed(() => {
-  const { class: _, label, ...delegated } = props
+  const { class: _, label, labelClass, dividerClass, ...delegated } = props
   return delegated
 })
 </script>
 
 <template>
   <Separator v-bind="delegatedProps" :class="cn(
-    'shrink-0 bg-border relative',
-    props.orientation === 'vertical' ? 'w-px h-full' : 'h-px w-full',
+    'flex items-center align-center text-center',
+    props.orientation === 'vertical' ? 'flex-col' : 'w-full flex-row',
+    props.label && 'gap-1',
     props.class,
   )">
+    <div :class="cn('h-px grow bg-muted-foreground', props.dividerClass)" />
     <span v-if="props.label" :class="cn(
-      'text-xs text-muted-foreground select-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center',
-      props.orientation === 'vertical' ? 'w-px px-1 py-2' : 'h-px py-1 px-2',
+      'text-xs text-foreground font-medium select-none flex justify-center items-center',
       props.labelClass,
     )">
       {{ props.label }}
     </span>
+    <div :class="cn('h-px grow bg-muted-foreground', props.dividerClass)" />
   </Separator>
 </template>
