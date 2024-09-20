@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { AvatarRoot, AvatarImage, type AvatarImageProps, AvatarFallback, type AvatarFallbackProps } from 'radix-vue'
-import { type AvatarVariants, avatarVariant } from '.'
+import { Avatar } from 'radix-vue/namespaced'
+import { type AvatarProps, avatarVariants } from '.'
 
-const props = defineProps<AvatarImageProps & AvatarFallbackProps & {
-  class?: ClassValue
-  size?: AvatarVariants['size']
-  shape?: AvatarVariants['shape']
-}>()
+const props = defineProps<AvatarProps>()
+
+const { root, image, icon } = avatarVariants()
 </script>
 
 <template>
-  <AvatarRoot :class="cn(avatarVariant({ size, shape }), props.class)">
-    <AvatarImage :src class="size-full object-cover" />
-    <AvatarFallback :delayMs asChild>
-      <slot />
-    </AvatarFallback>
-  </AvatarRoot>
+  <Avatar.Root :class="cn(root({ size, shape }), props.class)">
+    <Avatar.Image :src :class="cn(image(), ui?.image)" />
+    <Avatar.Fallback :delayMs asChild>
+      <slot>
+        <Icon name="ph:arrow-clockwise" :class="cn(icon({ size }), ui?.icon)" />
+      </slot>
+    </Avatar.Fallback>
+  </Avatar.Root>
 </template>
