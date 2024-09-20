@@ -1,10 +1,19 @@
 import animate from 'tailwindcss-animate'
 import { withTV } from "tailwind-variants/transformer"
 
+const colors = ['primary', 'secondary', 'error', 'warning', 'info', 'success', 'muted', 'accent', 'foreground', 'background']
+
 export default withTV({
   content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue'],
   darkMode: ["class"],
-  safelist: ["dark"],
+  safelist: [
+    'dark',
+    ...colors.map(color => `bg-${color}`),
+    ...colors.map(color => `text-${color}`),
+    ...colors.filter(c => !c.includes('ground')).map(color => `text-${color}-foreground`),
+    ...colors.map(color => `ring-${color}`),
+    ...colors.map(color => `border-${color}`),
+  ],
   prefix: "",
   theme: {
     container: {
@@ -24,7 +33,6 @@ export default withTV({
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -58,14 +66,6 @@ export default withTV({
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
         },
       },
       backgroundColor: {
@@ -103,20 +103,6 @@ export default withTV({
           DEFAULT: "hsl(var(--accent) / var(--tw-bg-opacity, 1))",
           foreground: "hsl(var(--accent-foreground) / var(--tw-bg-opacity, 1))",
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover) / var(--tw-bg-opacity, 1))",
-          foreground: "hsl(var(--popover-foreground) / var(--tw-bg-opacity, 1))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card) / var(--tw-bg-opacity, 1))",
-          foreground: "hsl(var(--card-foreground) / var(--tw-bg-opacity, 1))",
-        },
-      },
-      borderRadius: {
-        xl: "calc(var(--radius) + 4px)",
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {
@@ -137,11 +123,11 @@ export default withTV({
         },
         "marquee": {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+          to: { transform: "translateX(calc(-100% - var(--gap, 1)))" },
         },
         "marquee-vertical": {
           from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+          to: { transform: "translateY(calc(-100% - var(--gap, 1)))" },
         },
       },
       animation: {
@@ -149,8 +135,8 @@ export default withTV({
         "accordion-up": "accordion-up 0.2s ease-out",
         "collapsible-down": "collapsible-down 0.2s ease-in-out",
         "collapsible-up": "collapsible-up 0.2s ease-in-out",
-        "marquee": "marquee var(--duration) linear infinite",
-        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        "marquee": "marquee var(--duration, 1s) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration, 1s) linear infinite",
       },
     },
   },

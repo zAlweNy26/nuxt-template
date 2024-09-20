@@ -10,6 +10,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const colors = ['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const
+export const colors = ['primary', 'secondary', 'error', 'warning', 'info', 'success', 'foreground', 'background'] as const
 
 export const colorsRecord = colors.reduce((acc, color) => ({ ...acc, [color]: '' }), {} as Record<typeof colors[number], string>)
