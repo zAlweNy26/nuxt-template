@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { type BadgeVariants, badgeVariants } from '.'
+import { type BadgeProps, badgeVariants } from '.'
 
-const props = defineProps<{ 
-  class?: ClassValue
-  variant?: BadgeVariants['variant']
-  size?: BadgeVariants['size']
-}>()
+const { class: rootClass, variant = 'solid', color = 'primary', size = 'sm' } = defineProps<BadgeProps>()
 </script>
 
 <template>
-  <div :class="cn(badgeVariants({ variant, size }), props.class)">
+  <div :class="cn(badgeVariants({ variant, size, color }), rootClass)">
     <slot />
   </div>
 </template>
