@@ -1,18 +1,17 @@
 <script lang="ts" setup>
 import { Primitive } from 'radix-vue'
-import type { BreadcrumbItems } from '.'
+import { breadcrumbVariants, type BreadcrumbProps } from '.'
 
-defineProps<{
-  listClass?: ClassValue
-  items: BreadcrumbItems
-}>()
+const props = defineProps<BreadcrumbProps>()
+
+const { list, separator, item: element } = breadcrumbVariants()
 </script>
 
 <template>
-  <nav aria-label="breadcrumb">
-    <ol :class="cn('flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5', listClass)">
+  <nav aria-label="breadcrumb" :class="props.class">
+    <ol :class="cn(list(), ui?.list)">
       <template v-for="(item, index) in items" :key="index">
-        <li :class="cn('inline-flex items-center gap-1.5', item.class)">
+        <li :class="cn(element(), ui?.item, item.class)">
           <slot :item>
             <Primitive :as="item.href ? 'a' : 'p'" 
               :class="cn(
@@ -25,7 +24,7 @@ defineProps<{
             </Primitive>
           </slot>
         </li>
-        <li v-if="index < items.length - 1" role="presentation" aria-hidden="true" :class="cn('inline-flex items-center gap-1.5', item.class)">
+        <li v-if="index < items.length - 1" role="presentation" aria-hidden="true" :class="cn(separator(), ui?.separator)">
           <slot name="separator">
             <Icon name="ph:caret-right-bold" class="size-4" />
           </slot>
