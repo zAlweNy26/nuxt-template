@@ -68,6 +68,50 @@ export default withTV({
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundColor: {
+        background: "hsl(var(--background) / var(--tw-bg-opacity, 1))",
+        foreground: "hsl(var(--foreground) / var(--tw-bg-opacity, 1))",
+        primary: {
+          DEFAULT: "hsl(var(--primary) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--primary-foreground) / var(--tw-bg-opacity, 1))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--secondary-foreground)  / var(--tw-bg-opacity, 1))",
+        },
+        error: {
+          DEFAULT: "hsl(var(--error)  / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--error-foreground)  / var(--tw-bg-opacity, 1))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--warning-foreground) / var(--tw-bg-opacity, 1))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--info-foreground) / var(--tw-bg-opacity, 1))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--success-foreground) / var(--tw-bg-opacity, 1))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--muted-foreground) / var(--tw-bg-opacity, 1))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--accent-foreground) / var(--tw-bg-opacity, 1))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--popover-foreground) / var(--tw-bg-opacity, 1))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card) / var(--tw-bg-opacity, 1))",
+          foreground: "hsl(var(--card-foreground) / var(--tw-bg-opacity, 1))",
+        },
+      },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
         lg: "var(--radius)",
