@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<AccordionProps>(), {
   collapsible: true
 })
 
-const rootProps = reactivePick(props, (v, k) => !['items', 'class', 'ui'].includes(k))
+const rootProps = reactiveOmit(props, 'items', 'class', 'ui')
 
 const { trigger, icon, content, item: element } = accordionVariants()
 
