@@ -13,7 +13,7 @@ const localesItems = computed(() => locales.value.map((l) => ({
 
 <template>
   <DropdownMenu :content="{ align: 'start' }">
-    <Button variant="outline" square>
+    <Button color="foreground" variant="outline" square>
       <Icon name="ph:globe-hemisphere-east" class="size-5" />
       <span class="sr-only">{{ $t('language.toggle') }}</span>
     </Button>
