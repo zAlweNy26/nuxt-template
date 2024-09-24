@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import scrollbar from 'tailwind-scrollbar'
 import animate from 'tailwindcss-animate'
 
 export default <Partial<Config>>{
@@ -109,5 +110,11 @@ export default <Partial<Config>>{
 			},
 		},
 	},
-	plugins: [animate],
+	plugins: [
+		animate,
+		scrollbar({
+			nocompatible: true,
+			preferredStrategy: 'pseudoelements',
+		}),
+	],
 }

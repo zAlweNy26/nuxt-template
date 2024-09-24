@@ -34,7 +34,7 @@ const groups = computed(() => {
 	<ComboboxRoot v-model="model" v-bind="rootProps" :displayValue="(v) => items.find((item) => item.value === v)!.label"
 		:class="cn('flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground', props.class)">
 		<CommandInput :disabled="rootProps.disabled" :placeholder="searchPlaceholder" autocomplete="off" />
-		<ComboboxContent v-bind="contentProps" :class="cn('max-h-[138px] transition-all overflow-y-auto overflow-x-hidden', props.contentClass)">
+		<ComboboxContent v-bind="contentProps" :class="cn('max-h-32 transition-all overflow-y-auto overflow-x-hidden', props.contentClass)">
 			<div role="presentation">
 				<ComboboxEmpty asChild>
 					<slot name="empty">

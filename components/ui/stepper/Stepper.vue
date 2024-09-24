@@ -41,13 +41,13 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 				:style="{ flexBasis: `${100 / items.length}%` }">
 				<StepperTrigger class="flex shrink-0 flex-col items-center gap-2 rounded-md text-center">
 					<StepperIndicator :class="cn(
-						'grid place-content-center shrink-0 rounded-full transition-colors text-muted-foreground/50 w-8 h-8',
+						'grid place-content-center shrink-0 rounded-full transition-colors hover:bg-accent text-muted-foreground/50 w-8 h-8',
 						// Disabled
 						'group-data-[disabled]:text-muted-foreground group-data-[disabled]:opacity-50',
 						// Active
 						'group-data-[state=active]:bg-primary group-data-[state=active]:text-primary-foreground',
 						// Completed
-						'group-data-[state=completed]:bg-accent group-data-[state=completed]:text-accent-foreground',
+						'group-data-[state=completed]:bg-accent group-data-[state=completed]:hover:bg-accent/50 group-data-[state=completed]:text-accent-foreground',
 					)">
 						<slot :name="`icon-${index + 1}`" v-bind="{ ...slotProps, ...item }">
 							<Icon v-if="item.icon" :name="item.icon" class="size-4" />

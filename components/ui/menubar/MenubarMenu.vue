@@ -12,7 +12,7 @@ const props = defineProps<MenubarMenuProps & {
 const contentProps = computed<MenubarContentProps>(() => ({
 	align: 'start',
 	alignOffset: -4,
-	sideOffset: 4,
+	sideOffset: 8,
 	...props.content,
 }))
 </script>
