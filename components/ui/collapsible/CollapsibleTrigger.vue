@@ -3,7 +3,7 @@ import { CollapsibleTrigger } from 'radix-vue'
 </script>
 
 <template>
-  <CollapsibleTrigger asChild>
-    <slot />
-  </CollapsibleTrigger>
+	<CollapsibleTrigger asChild>
+		<slot />
+	</CollapsibleTrigger>
 </template>

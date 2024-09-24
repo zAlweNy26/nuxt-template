@@ -1,36 +1,36 @@
 export const useSettingsStore = defineStore('Settings', () => {
-  const colorMode = useColorMode()
-  const { locale, locales, setLocale, setLocaleCookie } = useI18n()
-  const switchLocalePath = useSwitchLocalePath()
+	const colorMode = useColorMode()
+	const { locale, locales, setLocale, setLocaleCookie } = useI18n()
+	const switchLocalePath = useSwitchLocalePath()
 
 	const storage = useLocalStorage('settings', {
-    pageSize: 25,
-  }, { mergeDefaults: true })
+		pageSize: 25,
+	}, { mergeDefaults: true })
 
 	const isDark = computed(() => colorMode.value === 'dark')
-  const isLight = computed(() => colorMode.value === 'light')
+	const isLight = computed(() => colorMode.value === 'light')
 
-  const direction = useTextDirection({ initialValue: 'ltr' })
-  const textDirection = computed(() => direction.value === 'rtl' ? 'rtl' : 'ltr')
+	const direction = useTextDirection({ initialValue: 'ltr' })
+	const textDirection = computed(() => direction.value === 'rtl' ? 'rtl' : 'ltr')
 
-  const toggleTheme = () => {
-    colorMode.preference = colorMode.value === 'light' ? 'dark' : 'light'
-  }
+	const toggleTheme = () => {
+		colorMode.preference = colorMode.value === 'light' ? 'dark' : 'light'
+	}
 
-  const changeLocale = (e: string) => {
-    switchLocalePath(e)
-    setLocaleCookie(e)
-    setLocale(e)
-  }
+	const changeLocale = (e: string) => {
+		switchLocalePath(e)
+		setLocaleCookie(e)
+		setLocale(e)
+	}
 
-  return {
-    storage,
-    isDark,
-    isLight,
-    locale,
-    locales,
-    textDirection,
-    toggleTheme,
-    changeLocale,
-  }
+	return {
+		storage,
+		isDark,
+		isLight,
+		locale,
+		locales,
+		textDirection,
+		toggleTheme,
+		changeLocale,
+	}
 })

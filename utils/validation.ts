@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import { z } from "zod"
+import { z } from 'zod'
 
 /**
  * Retrieves the default values for a given Zod schema.
@@ -15,6 +15,7 @@ export function getZodDefaults<T extends z.ZodTypeAny>(schema: T, discriminant?:
 	}
 	else if (schema instanceof z.ZodObject) {
 		const shape = schema._def.shape()
+		// eslint-disable-next-line ts/no-explicit-any
 		const result: Record<string, any> = {}
 		for (const key in shape) {
 			const value = getZodDefaults(shape[key], discriminant)

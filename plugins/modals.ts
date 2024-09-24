@@ -1,14 +1,14 @@
 export default defineNuxtPlugin((nuxtApp) => {
-    const modalState = shallowRef<ModalState>({
-        component: 'div',
-        props: {}
-    })
+	const modalState = shallowRef<ModalState>({
+		component: 'div',
+		props: {},
+	})
 
-    nuxtApp.vueApp.provide(modalInjectionKey, modalState)
+	nuxtApp.vueApp.provide(modalInjectionKey, modalState)
 
-    return {
-        provide: {
-            modal: useModal()
-        }
-    }
+	return {
+		provide: {
+			modal: useModal(),
+		},
+	}
 })

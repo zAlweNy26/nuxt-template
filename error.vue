@@ -2,15 +2,15 @@
 import type { H3Error } from 'h3'
 import { ConfigProvider, useId as useRadixId } from 'radix-vue'
 
+const props = defineProps<{
+	error: H3Error
+}>()
+
 const { title } = useAppConfig()
 
 useHead({
 	titleTemplate: t => t ? `${t} - ${title}` : title,
 })
-
-const props = defineProps<{
-	error: H3Error
-}>()
 
 const { error } = toRefs(props)
 const { textDirection } = storeToRefs(useSettingsStore())

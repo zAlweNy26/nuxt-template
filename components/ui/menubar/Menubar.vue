@@ -5,16 +5,16 @@ const props = defineProps<MenubarRootProps & { class?: ClassValue }>()
 const emits = defineEmits<MenubarRootEmits>()
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
+	const { class: _, ...delegated } = props
+	return delegated
 })
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
-  <MenubarRoot v-bind="forwarded" 
-    :class="cn('flex h-9 items-center space-x-1 rounded-md border bg-background p-1 shadow-sm', props.class)">
-    <slot />
-  </MenubarRoot>
+	<MenubarRoot v-bind="forwarded"
+		:class="cn('flex h-9 items-center space-x-1 rounded-md border bg-background p-1 shadow-sm', props.class)">
+		<slot />
+	</MenubarRoot>
 </template>

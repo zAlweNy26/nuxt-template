@@ -1,3 +1,3 @@
 export default defineAppConfig({
-    title: 'Template'
+	title: 'Template',
 })

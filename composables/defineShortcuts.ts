@@ -1,175 +1,173 @@
+/* eslint-disable ts/no-use-before-define */
+/* eslint-disable regexp/no-super-linear-backtracking */
+/* eslint-disable security/detect-unsafe-regex */
 type Handler = (e?: KeyboardEvent) => void
 
 export interface ShortcutConfig {
-  handler: Handler
-  usingInput?: string | boolean
+	handler: Handler
+	usingInput?: string | boolean
 }
 
 export interface ShortcutsConfig {
-  [key: string]: ShortcutConfig | Handler | false | null | undefined
+	[key: string]: ShortcutConfig | Handler | false | null | undefined
 }
 
 export interface ShortcutsOptions {
-  chainDelay?: number
+	chainDelay?: number
 }
 
 interface Shortcut {
-  handler: Handler
-  enabled: boolean
-  chained: boolean
-  // KeyboardEvent attributes
-  key: string
-  ctrlKey: boolean
-  metaKey: boolean
-  shiftKey: boolean
-  altKey: boolean
-  // code?: string
-  // keyCode?: number
+	handler: Handler
+	enabled: boolean
+	chained: boolean
+	// KeyboardEvent attributes
+	key: string
+	ctrlKey: boolean
+	metaKey: boolean
+	shiftKey: boolean
+	altKey: boolean
+	// code?: string
+	// keyCode?: number
 }
 
-const chainedShortcutRegex = /^[^-]+.*-.*[^-]+$/
-const combinedShortcutRegex = /^[^_]+.*_.*[^_]+$/
+const chainedShortcutRegex = /^[^-]+(?:-.*)?-.*(?:[\n\r\u2028\u2029][^-]*|[^-\n\r\u2028\u2029])$/
+const combinedShortcutRegex = /^[^_]+(?:_.*)?_.*(?:[\n\r\u2028\u2029][^_]*|[^\n\r_\u2028\u2029])$/
 
 export function defineShortcuts(config: MaybeRefOrGetter<ShortcutsConfig>, options: ShortcutsOptions = {}) {
-  const chainedInputs = ref<string[]>([])
-  const clearChainedInput = () => {
-    chainedInputs.value.splice(0, chainedInputs.value.length)
-  }
-  const debouncedClearChainedInput = useDebounceFn(clearChainedInput, options.chainDelay ?? 800)
+	const chainedInputs = ref<string[]>([])
+	const clearChainedInput = () => {
+		chainedInputs.value.splice(0, chainedInputs.value.length)
+	}
+	const debouncedClearChainedInput = useDebounceFn(clearChainedInput, options.chainDelay ?? 800)
 
-  const { macOS } = useShortcut()
-  const activeElement = useActiveElement<HTMLInputElement | HTMLTextAreaElement>()
+	const { macOS } = useShortcut()
+	const activeElement = useActiveElement<HTMLInputElement | HTMLTextAreaElement>()
 
-  const onKeyDown = (e: KeyboardEvent) => {
-    // Input autocomplete triggers a keydown event
-    if (!e.key) return
+	const onKeyDown = (e: KeyboardEvent) => {
+		// Input autocomplete triggers a keydown event
+		if (!e.key) return
 
-    const alphabeticalKey = /^[a-z]{1}$/i.test(e.key)
+		const alphabeticalKey = /^[a-z]$/i.test(e.key)
 
-    let chainedKey
-    chainedInputs.value.push(e.key)
-    // try matching a chained shortcut
-    if (chainedInputs.value.length >= 2) {
-      chainedKey = chainedInputs.value.slice(-2).join('-')
+		let chainedKey
+		chainedInputs.value.push(e.key)
+		// try matching a chained shortcut
+		if (chainedInputs.value.length >= 2) {
+			chainedKey = chainedInputs.value.slice(-2).join('-')
 
-      for (const shortcut of shortcuts.value.filter(s => s.chained)) {
-        if (shortcut.key !== chainedKey) {
-          continue
-        }
+			for (const shortcut of shortcuts.value.filter(s => s.chained)) {
+				if (shortcut.key !== chainedKey)
+					continue
 
-        if (shortcut.enabled) {
-          e.preventDefault()
-          shortcut.handler(e)
-        }
-        clearChainedInput()
-        return
-      }
-    }
+				if (shortcut.enabled) {
+					e.preventDefault()
+					shortcut.handler(e)
+				}
+				clearChainedInput()
+				return
+			}
+		}
 
-    // try matching a standard shortcut
-    for (const shortcut of shortcuts.value.filter(s => !s.chained)) {
-      if (e.key.toLowerCase() !== shortcut.key) continue
-      if (e.metaKey !== shortcut.metaKey) continue
-      if (e.ctrlKey !== shortcut.ctrlKey) continue
-      // shift modifier is only checked in combination with alphabetical keys
-      // (shift with non-alphabetical keys would change the key)
-      if (alphabeticalKey && e.shiftKey !== shortcut.shiftKey) continue
-      // alt modifier changes the combined key anyways
-      // if (e.altKey !== shortcut.altKey) { continue }
+		// try matching a standard shortcut
+		for (const shortcut of shortcuts.value.filter(s => !s.chained)) {
+			if (e.key.toLowerCase() !== shortcut.key) continue
+			if (e.metaKey !== shortcut.metaKey) continue
+			if (e.ctrlKey !== shortcut.ctrlKey) continue
+			// shift modifier is only checked in combination with alphabetical keys
+			// (shift with non-alphabetical keys would change the key)
+			if (alphabeticalKey && e.shiftKey !== shortcut.shiftKey) continue
+			// alt modifier changes the combined key anyways
+			// if (e.altKey !== shortcut.altKey) { continue }
 
-      if (shortcut.enabled) {
-        e.preventDefault()
-        shortcut.handler()
-      }
-      
-      clearChainedInput()
-      return
-    }
+			if (shortcut.enabled) {
+				e.preventDefault()
+				shortcut.handler()
+			}
 
-    debouncedClearChainedInput()
-  }
+			clearChainedInput()
+			return
+		}
 
-  const usingInput = computed(() => {
-    const tagName = activeElement.value?.tagName
-    const contentEditable = activeElement.value?.contentEditable
+		debouncedClearChainedInput()
+	}
 
-    const usingInput = !!(tagName === 'INPUT' || tagName === 'TEXTAREA' || contentEditable === 'true' || contentEditable === 'plaintext-only')
+	const usingInput = computed(() => {
+		const tagName = activeElement.value?.tagName
+		const contentEditable = activeElement.value?.contentEditable
 
-    if (usingInput) {
-      return (activeElement.value?.name as string) || true
-    }
+		const usingInput = !!(tagName === 'INPUT' || tagName === 'TEXTAREA' || contentEditable === 'true' || contentEditable === 'plaintext-only')
 
-    return false
-  })
+		if (usingInput)
+			return (activeElement.value?.name as string) || true
 
-  // Map config to full detailled shortcuts
-  const shortcuts = computed<Shortcut[]>(() => {
-    return Object.entries(toValue(config)).map(([key, shortcutConfig]) => {
-      if (!shortcutConfig) {
-        return null
-      }
+		return false
+	})
 
-      // Parse key and modifiers
-      let shortcut: Partial<Shortcut>
+	// Map config to full detailled shortcuts
+	const shortcuts = computed<Shortcut[]>(() => {
+		return Object.entries(toValue(config)).map(([key, shortcutConfig]) => {
+			if (!shortcutConfig)
+				return null
 
-      if (key.includes('-') && key !== '-' && !key.match(chainedShortcutRegex)?.length) {
-        console.trace(`[Shortcut] Invalid key: "${key}"`)
-      }
+			// Parse key and modifiers
+			let shortcut: Partial<Shortcut>
 
-      if (key.includes('_') && key !== '_' && !key.match(combinedShortcutRegex)?.length) {
-        console.trace(`[Shortcut] Invalid key: "${key}"`)
-      }
+			if (key.includes('-') && key !== '-' && !key.match(chainedShortcutRegex)?.length)
+				console.trace(`[Shortcut] Invalid key: "${key}"`)
 
-      const chained = key.includes('-') && key !== '-'
-      if (chained) {
-        shortcut = {
-          key: key.toLowerCase(),
-          metaKey: false,
-          ctrlKey: false,
-          shiftKey: false,
-          altKey: false
-        }
-      } else {
-        const keySplit = key.toLowerCase().split('_').map(k => k)
-        shortcut = {
-          key: keySplit.filter(k => !['meta', 'command', 'ctrl', 'shift', 'alt', 'option'].includes(k)).join('_'),
-          metaKey: keySplit.includes('meta') || keySplit.includes('command'),
-          ctrlKey: keySplit.includes('ctrl'),
-          shiftKey: keySplit.includes('shift'),
-          altKey: keySplit.includes('alt') || keySplit.includes('option')
-        }
-      }
-      shortcut.chained = chained
+			if (key.includes('_') && key !== '_' && !key.match(combinedShortcutRegex)?.length)
+				console.trace(`[Shortcut] Invalid key: "${key}"`)
 
-      // Convert Meta to Ctrl for non-MacOS
-      if (!macOS.value && shortcut.metaKey && !shortcut.ctrlKey) {
-        shortcut.metaKey = false
-        shortcut.ctrlKey = true
-      }
+			const chained = key.includes('-') && key !== '-'
+			if (chained) {
+				shortcut = {
+					key: key.toLowerCase(),
+					metaKey: false,
+					ctrlKey: false,
+					shiftKey: false,
+					altKey: false,
+				}
+			}
+			else {
+				const keySplit = key.toLowerCase().split('_').map(k => k)
+				shortcut = {
+					key: keySplit.filter(k => !['meta', 'command', 'ctrl', 'shift', 'alt', 'option'].includes(k)).join('_'),
+					metaKey: keySplit.includes('meta') || keySplit.includes('command'),
+					ctrlKey: keySplit.includes('ctrl'),
+					shiftKey: keySplit.includes('shift'),
+					altKey: keySplit.includes('alt') || keySplit.includes('option'),
+				}
+			}
+			shortcut.chained = chained
 
-      // Retrieve handler function
-      if (typeof shortcutConfig === 'function') {
-        shortcut.handler = shortcutConfig
-      } else if (typeof shortcutConfig === 'object') {
-        shortcut = { ...shortcut, handler: shortcutConfig.handler }
-      }
+			// Convert Meta to Ctrl for non-MacOS
+			if (!macOS.value && shortcut.metaKey && !shortcut.ctrlKey) {
+				shortcut.metaKey = false
+				shortcut.ctrlKey = true
+			}
 
-      if (!shortcut.handler) {
-        console.trace('[Shortcut] Invalid value')
-        return null
-      }
+			// Retrieve handler function
+			if (typeof shortcutConfig === 'function')
+				shortcut.handler = shortcutConfig
+			else if (typeof shortcutConfig === 'object')
+				shortcut = { ...shortcut, handler: shortcutConfig.handler }
 
-      let enabled = true
-      if (!(shortcutConfig as ShortcutConfig).usingInput) {
-        enabled = !usingInput.value
-      } else if (typeof (shortcutConfig as ShortcutConfig).usingInput === 'string') {
-        enabled = usingInput.value === (shortcutConfig as ShortcutConfig).usingInput
-      }
-      shortcut.enabled = enabled
+			if (!shortcut.handler) {
+				console.trace('[Shortcut] Invalid value')
+				return null
+			}
 
-      return shortcut
-    }).filter(Boolean) as Shortcut[]
-  })
+			let enabled = true
+			if (!(shortcutConfig as ShortcutConfig).usingInput)
+				enabled = !usingInput.value
+			else if (typeof (shortcutConfig as ShortcutConfig).usingInput === 'string')
+				enabled = usingInput.value === (shortcutConfig as ShortcutConfig).usingInput
 
-  useEventListener('keydown', onKeyDown)
+			shortcut.enabled = enabled
+
+			return shortcut
+		}).filter(Boolean) as Shortcut[]
+	})
+
+	useEventListener('keydown', onKeyDown)
 }

@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { ProgressIndicator, ProgressRoot, useForwardPropsEmits, type ProgressRootEmits, type ProgressRootProps } from 'radix-vue'
+import { ProgressIndicator, ProgressRoot, type ProgressRootEmits, type ProgressRootProps, useForwardPropsEmits } from 'radix-vue'
 
-const props = defineProps<ProgressRootProps & { 
-  class?: ClassValue
-  animation?: 'carousel' | 'carousel-inverse' | 'swing' | 'elastic'
-  indicatorClass?: ClassValue
+const props = defineProps<ProgressRootProps & {
+	class?: ClassValue
+	animation?: 'carousel' | 'carousel-inverse' | 'swing' | 'elastic'
+	indicatorClass?: ClassValue
 }>()
 
 const emits = defineEmits<ProgressRootEmits>()
 
 const delegatedProps = computed(() => {
-  const { class: _, indicatorClass, animation, ...delegated } = props
-  return delegated
+	const { class: _, indicatorClass, animation, ...delegated } = props
+	return delegated
 })
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
@@ -21,20 +21,20 @@ const relativeValue = computed(() => (100 * (props.modelValue ?? 0)) / (props.ma
 const isIndeterminate = computed(() => props.modelValue === undefined || props.modelValue === null)
 
 const animation = computed(() => {
-  if (!isIndeterminate.value) return ''
-  if (props.animation === 'carousel-inverse') return 'bar-animation-carousel-inverse'
-  if (props.animation === 'swing') return 'bar-animation-swing'
-  if (props.animation === 'elastic') return 'bar-animation-elastic'
-  return 'bar-animation-carousel'
+	if (!isIndeterminate.value) return ''
+	if (props.animation === 'carousel-inverse') return 'bar-animation-carousel-inverse'
+	if (props.animation === 'swing') return 'bar-animation-swing'
+	if (props.animation === 'elastic') return 'bar-animation-elastic'
+	return 'bar-animation-carousel'
 })
 </script>
 
 <template>
-  <ProgressRoot v-bind="forwarded"
-    :class="cn('relative h-2 w-full overflow-hidden rounded-full bg-primary/20', props.class)">
-    <ProgressIndicator :class="cn('size-full flex-1 bg-primary transition-all', animation, props.indicatorClass)"
-      :style="animation ? undefined : `transform: translateX(-${100 - relativeValue}%);`" />
-  </ProgressRoot>
+	<ProgressRoot v-bind="forwarded"
+		:class="cn('relative h-2 w-full overflow-hidden rounded-full bg-primary/20', props.class)">
+		<ProgressIndicator :class="cn('size-full flex-1 bg-primary transition-all', animation, props.indicatorClass)"
+			:style="animation ? undefined : `transform: translateX(-${100 - relativeValue}%);`" />
+	</ProgressRoot>
 </template>
 
 <style scoped>

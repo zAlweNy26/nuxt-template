@@ -1,41 +1,41 @@
 {
-    "aria": {
-        "toggle": "Toggle",
-        "more": "More"
-    },
-    "theme": {
-        "light": "Light",
-        "dark": "Dark",
-        "toggle": "@:aria.toggle theme"
-    },
-    "language": {
-        "toggle": "@:aria.toggle language"
-    },
-    "headers": {
-        "home": "Home"
-    },
-    "errors": {
-        "routes": {
-            "notAccessible": "Page not accessible",
-            "fallback": "An error occurred while trying to access this page.\nPlease try again later.",
-            "401": "You are not authenticated, so you cannot access this page.",
-            "403": "You are not authorized to access this page.",
-            "404": "The page you are looking for does not exist.",
-            "500": "Something went wrong. Please try again later."
-        }
-    },
-    "button": {
-        "backHome": "Go back to @:headers.home",
-        "close": "Close"
-    },
-    "input": {
-        "date": "Pick a date",
-        "dateRange": "Pick a range of dates"
-    },
-    "table": {
-        "pagination": "Showing {0} to {1} of {2} results",
-        "noData": "No data available",
-        "noResults": "No results found",
-        "loading": "Loading data..."
-    }
+	"aria": {
+		"toggle": "Toggle",
+		"more": "More"
+	},
+	"theme": {
+		"light": "Light",
+		"dark": "Dark",
+		"toggle": "@:aria.toggle theme"
+	},
+	"language": {
+		"toggle": "@:aria.toggle language"
+	},
+	"headers": {
+		"home": "Home"
+	},
+	"errors": {
+		"routes": {
+			"notAccessible": "Page not accessible",
+			"fallback": "An error occurred while trying to access this page.\nPlease try again later.",
+			"401": "You are not authenticated, so you cannot access this page.",
+			"403": "You are not authorized to access this page.",
+			"404": "The page you are looking for does not exist.",
+			"500": "Something went wrong. Please try again later."
+		}
+	},
+	"button": {
+		"backHome": "Go back to @:headers.home",
+		"close": "Close"
+	},
+	"input": {
+		"date": "Pick a date",
+		"dateRange": "Pick a range of dates"
+	},
+	"table": {
+		"pagination": "Showing {0} to {1} of {2} results",
+		"noData": "No data available",
+		"noResults": "No results found",
+		"loading": "Loading data..."
+	}
 }

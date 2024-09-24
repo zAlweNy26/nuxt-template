@@ -4,11 +4,11 @@ import { DropdownMenuSeparator, type DropdownMenuSeparatorProps } from 'radix-vu
 const props = defineProps<DropdownMenuSeparatorProps & { class?: ClassValue }>()
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-  return delegated
+	const { class: _, ...delegated } = props
+	return delegated
 })
 </script>
 
 <template>
-  <DropdownMenuSeparator v-bind="delegatedProps" :class="cn('-mx-1 my-1 h-px bg-muted', props.class)" />
+	<DropdownMenuSeparator v-bind="delegatedProps" :class="cn('-mx-1 my-1 h-px bg-muted', props.class)" />
 </template>
