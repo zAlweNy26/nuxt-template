@@ -10,28 +10,28 @@ export default defineNuxtConfig({
 	css: ['~/assets/globals.css'],
 	devtools: { enabled: true },
 	modules: [
-		"shadcn-nuxt",
-		"nuxt-api-party",
-		"nuxt-lodash",
-		"nuxt-security",
-		"nuxt-zod-i18n",
-		"@nuxtjs/i18n",
-		"@nuxtjs/tailwindcss",
-		"@nuxtjs/color-mode",
+		'shadcn-nuxt',
+		'nuxt-api-party',
+		'nuxt-lodash',
+		'nuxt-security',
+		'nuxt-zod-i18n',
+		'@nuxtjs/i18n',
+		'@nuxtjs/tailwindcss',
+		'@nuxtjs/color-mode',
 		'@nuxtjs/seo',
-		"@nuxt/test-utils",
-		"@nuxt/image",
-		"@nuxt/eslint",
-		"@nuxt/fonts",
-		"@nuxt/icon",
+		'@nuxt/test-utils',
+		'@nuxt/image',
+		'@nuxt/eslint',
+		'@nuxt/fonts',
+		'@nuxt/icon',
 		'@nuxt/scripts',
-		"@vueuse/nuxt",
-		"@pinia/nuxt",
-		"@formkit/auto-animate/nuxt",
+		'@vueuse/nuxt',
+		'@pinia/nuxt',
+		'@formkit/auto-animate/nuxt',
 	],
 	vite: {
 		optimizeDeps: {
-			include: ["lodash-es"],
+			include: ['lodash-es'],
 		},
 	},
 	components: [
@@ -40,8 +40,13 @@ export default defineNuxtConfig({
 			pathPrefix: false,
 		},
 	],
+	eslint: {
+		config: {
+			standalone: false,
+		},
+	},
 	colorMode: {
-		classSuffix: ''
+		classSuffix: '',
 	},
 	lodash: {
 		prefix: '_',
@@ -51,23 +56,23 @@ export default defineNuxtConfig({
 		csrf: true,
 	},
 	ogImage: {
-		enabled: false
+		enabled: false,
 	},
 	apiParty: {
 		endpoints: {
 			api: {
 				url: process.env.API_URL,
 				headers: {
-					Authorization: `Bearer ${process.env.API_TOKEN}`
+					Authorization: `Bearer ${process.env.API_TOKEN}`,
 				},
-				//schema: './schema.yaml'
-			}
-		}
+				// schema: './schema.yaml'
+			},
+		},
 	},
 	fonts: {
 		families: [
-			{ name: 'Poppins', global: true, provider: 'google', weights: [400, 500, 600, 700, 800] }
-		]
+			{ name: 'Poppins', global: true, provider: 'google', weights: [400, 500, 600, 700, 800] },
+		],
 	},
 	zodI18n: {
 		dateFormat: {
@@ -97,8 +102,8 @@ export default defineNuxtConfig({
 				language: 'it-IT',
 				name: 'Italiano',
 				dir: 'ltr',
-				domain: '🇮🇹'
-			}
+				domain: '🇮🇹',
+			},
 		],
 		defaultLocale: 'en',
 		strategy: 'prefix_except_default',
@@ -125,15 +130,15 @@ export default defineNuxtConfig({
 		security: {
 			headers: {
 				crossOriginEmbedderPolicy: 'unsafe-none',
-				contentSecurityPolicy: false
-			}
+				contentSecurityPolicy: false,
+			},
 		},
 	},
 	$production: {
 		security: {
 			headers: {
 				crossOriginEmbedderPolicy: 'require-corp',
-			}
+			},
 		},
-	}
+	},
 })
