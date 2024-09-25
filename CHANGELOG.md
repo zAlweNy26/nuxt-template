@@ -1,6 +1,48 @@
 # Changelog
 
 
+## v0.1.0
+
+[compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.13...v0.1.0)
+
+### 🚀 Enhancements
+
+- Improve error page ([92de8c3](https://github.com/zAlweNy26/nuxt-template/commit/92de8c3))
+- Add generic Ellipsis component ([281ed9c](https://github.com/zAlweNy26/nuxt-template/commit/281ed9c))
+- ⚠️  Remove CollapsibleTrigger component ([f653a5d](https://github.com/zAlweNy26/nuxt-template/commit/f653a5d))
+- Use `reactiveOmit` in components ([cd926a4](https://github.com/zAlweNy26/nuxt-template/commit/cd926a4))
+- **Checkbox:** ⚠️  Add indeterminate value and improve props ([e132bc6](https://github.com/zAlweNy26/nuxt-template/commit/e132bc6))
+- **Component:** Add Tree ([eccf552](https://github.com/zAlweNy26/nuxt-template/commit/eccf552))
+
+### 🩹 Fixes
+
+- **NavigationMenu:** Fix hydration mismatch error ([e359a25](https://github.com/zAlweNy26/nuxt-template/commit/e359a25))
+
+### 🏡 Chore
+
+- Save text direction in store ([dfe5275](https://github.com/zAlweNy26/nuxt-template/commit/dfe5275))
+- Update deps ([fe42a68](https://github.com/zAlweNy26/nuxt-template/commit/fe42a68))
+
+### 🎨 Styles
+
+- Fix eslint config ([1a9f86b](https://github.com/zAlweNy26/nuxt-template/commit/1a9f86b))
+- Apply lint and format fixes ([3c174b1](https://github.com/zAlweNy26/nuxt-template/commit/3c174b1))
+- Improve some components and scrollbar ([f74b94f](https://github.com/zAlweNy26/nuxt-template/commit/f74b94f))
+- Format components ([c2690c2](https://github.com/zAlweNy26/nuxt-template/commit/c2690c2))
+
+### 🤖 CI
+
+- Fix lockfile ([3818dd1](https://github.com/zAlweNy26/nuxt-template/commit/3818dd1))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Remove CollapsibleTrigger component ([f653a5d](https://github.com/zAlweNy26/nuxt-template/commit/f653a5d))
+- **Checkbox:** ⚠️  Add indeterminate value and improve props ([e132bc6](https://github.com/zAlweNy26/nuxt-template/commit/e132bc6))
+
+### ❤️ Contributors
+
+- Dany <zdanymc@gmail.com>
+
 ## v0.0.13
 
 [compare changes](https://github.com/zAlweNy26/nuxt-template/compare/v0.0.12...v0.0.13)

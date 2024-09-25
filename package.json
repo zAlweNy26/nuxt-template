@@ -1,7 +1,7 @@
 {
 	"name": "nuxt-template",
 	"type": "module",
-	"version": "0.0.13",
+	"version": "0.1.0",
 	"private": true,
 	"author": "zAlweNy26",
 	"license": "Apache-2.0",
