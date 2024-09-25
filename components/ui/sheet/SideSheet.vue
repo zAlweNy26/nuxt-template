@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { DialogClose, DialogContent, DialogDescription, DialogOverlay,
-	DialogPortal, DialogRoot, DialogTitle, DialogTrigger } from 'radix-vue'
+import {
+	DialogClose, DialogContent, DialogDescription, DialogOverlay,
+	DialogPortal, DialogRoot, DialogTitle, DialogTrigger,
+} from 'radix-vue'
 import { type SheetProps, type SheetVariants, sheetVariants } from '.'
 
 defineOptions({ inheritAttrs: false })
@@ -38,7 +40,7 @@ const open = defineModel<boolean>()
 					</slot>
 					<slot name="close">
 						<DialogClose
-							class="grid place-content-center rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+							class="grid place-content-center rounded-sm opacity-70 ring-offset-background transition-opacity data-[state=open]:bg-accent data-[state=open]:text-muted-foreground hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
 							<Icon name="ph:x-bold" class="size-4" />
 							<span class="sr-only">{{ $t('button.close') }}</span>
 						</DialogClose>

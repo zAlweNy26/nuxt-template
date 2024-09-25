@@ -19,15 +19,16 @@ onMounted(() => {
 </script>
 
 <template>
-	<TabsRoot v-model="model" v-bind="props.root" :class="cn('flex gap-2', { 'flex-col': props.root?.orientation === 'horizontal' })">
+	<TabsRoot v-model="model" v-bind="props.root"
+		:class="cn('flex gap-2', { 'flex-col': props.root?.orientation === 'horizontal' })">
 		<TabsList :loop :class="cn(
 			'inline-flex relative items-center justify-center transition-colors gap-1 rounded-lg bg-muted p-1 text-muted-foreground',
 			props.root?.orientation === 'vertical' ? 'flex-col' : '',
 		)">
 			<TabsIndicator :class="cn(
-				'absolute transition-[width,transform] duration-200', props.root?.orientation === 'vertical'
-					? 'w-full left-0 top-0 px-1 h-[--radix-tabs-indicator-size] translate-y-[--radix-tabs-indicator-position]'
-					: 'h-full translate-x-[--radix-tabs-indicator-position] py-1 bottom-0 left-0 w-[--radix-tabs-indicator-size]',
+				'absolute left-0 transition-[width,transform] duration-200', props.root?.orientation === 'vertical'
+					? 'w-full top-0 px-1 h-[--radix-tabs-indicator-size] translate-y-[--radix-tabs-indicator-position]'
+					: 'h-full translate-x-[--radix-tabs-indicator-position] py-1 bottom-0 w-[--radix-tabs-indicator-size]',
 			)">
 				<div class="size-full rounded-md bg-background shadow" />
 			</TabsIndicator>

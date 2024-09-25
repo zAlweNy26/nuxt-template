@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ContextMenuPortal, ContextMenuSub, ContextMenuSubContent, type ContextMenuSubEmits,
-	type ContextMenuSubProps, ContextMenuSubTrigger, useForwardPropsEmits } from 'radix-vue'
+import {
+	ContextMenuPortal, ContextMenuSub, ContextMenuSubContent, type ContextMenuSubEmits,
+	type ContextMenuSubProps, ContextMenuSubTrigger, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = defineProps<ContextMenuSubProps & {
 	class?: ClassValue

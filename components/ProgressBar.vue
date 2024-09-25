@@ -55,46 +55,62 @@ const animation = computed(() => {
 }
 
 @keyframes carousel {
-  0%, 100% {
+
+  0%,
+  100% {
     width: 50%
   }
+
   0% {
     transform: translateX(-100%)
   }
+
   100% {
     transform: translateX(200%)
   }
 }
 
 @keyframes carousel-inverse {
-  0%, 100% {
+
+  0%,
+  100% {
     width: 50%
   }
+
   0% {
     transform: translateX(200%)
   }
+
   100% {
     transform: translateX(-100%)
   }
 }
 
 @keyframes swing {
-  0%, 100% {
+
+  0%,
+  100% {
     width: 50%
   }
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(-25%)
   }
+
   50% {
     transform: translateX(125%)
   }
 }
 
 @keyframes elastic {
-  0%, 100% {
+
+  0%,
+  100% {
     width: 50%;
     margin-left: 25%;
   }
+
   50% {
     width: 90%;
     margin-left: 5%

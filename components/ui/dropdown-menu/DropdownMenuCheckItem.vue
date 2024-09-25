@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { DropdownMenuCheckboxItem, type DropdownMenuCheckboxItemEmits, type DropdownMenuCheckboxItemProps,
-	DropdownMenuItemIndicator, useForwardPropsEmits } from 'radix-vue'
+import {
+	DropdownMenuCheckboxItem, type DropdownMenuCheckboxItemEmits, type DropdownMenuCheckboxItemProps,
+	DropdownMenuItemIndicator, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = defineProps<DropdownMenuCheckboxItemProps & { class?: ClassValue }>()
 

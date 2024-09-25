@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import type { ButtonProps } from './ui/button'
-import { PaginationEllipsis, PaginationFirst, PaginationLast, PaginationList,
-	PaginationListItem, PaginationNext, PaginationPrev, PaginationRoot, type PaginationRootProps } from 'radix-vue'
+import {
+	PaginationEllipsis, PaginationFirst, PaginationLast, PaginationList,
+	PaginationListItem, PaginationNext, PaginationPrev, PaginationRoot, type PaginationRootProps,
+} from 'radix-vue'
 
 const props = withDefaults(defineProps<Omit<PaginationRootProps, 'as' | 'asChild' | 'page'> & {
 	size?: ButtonProps['size']
@@ -56,7 +58,8 @@ const pageTo = computed(() => Math.min(model.value * props.itemsPerPage, props.t
 					</PaginationPrev>
 					<template v-for="(item, index) in items">
 						<PaginationListItem v-if="item.type === 'page'" :key="index" :value="item.value" as-child>
-							<Button square :size :variant="item.value === page ? 'primary' : 'outline'" @click="$emit('update', item.value)">
+							<Button square :size :variant="item.value === page ? 'primary' : 'outline'"
+								@click="$emit('update', item.value)">
 								{{ item.value }}
 							</Button>
 						</PaginationListItem>

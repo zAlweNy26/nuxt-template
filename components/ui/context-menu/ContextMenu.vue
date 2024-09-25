@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { ContextMenuRootEmits, ContextMenuRootProps } from 'radix-vue'
-import { ContextMenuContent, ContextMenuPortal, ContextMenuRoot,
-	ContextMenuTrigger, useForwardPropsEmits } from 'radix-vue'
+import {
+	ContextMenuContent, ContextMenuPortal, ContextMenuRoot,
+	ContextMenuTrigger, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = defineProps<ContextMenuRootProps & {
 	disabled?: boolean

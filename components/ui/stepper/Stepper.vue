@@ -32,13 +32,11 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 	)" v-bind="forwarded">
 		<div :class="cn('flex gap-2', props.orientation === 'vertical' && 'flex-col')">
 			<StepperItem v-for="(item, index) in items" :key="index + 1" :step="index + 1" :disabled="item.disabled"
-				:completed="item.completed"
-				:class="cn(
+				:completed="item.completed" :class="cn(
 					'flex shrink-0 items-center gap-2 group data-[disabled]:pointer-events-none',
 					props.orientation === 'vertical' && 'flex-col',
 					item.class,
-				)"
-				:style="{ flexBasis: `${100 / items.length}%` }">
+				)" :style="{ flexBasis: `${100 / items.length}%` }">
 				<StepperTrigger class="flex shrink-0 flex-col items-center gap-2 rounded-md text-center">
 					<StepperIndicator :class="cn(
 						'grid place-content-center shrink-0 rounded-full transition-colors hover:bg-accent text-muted-foreground/50 w-8 h-8',

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { MenubarCheckboxItem, type MenubarCheckboxItemEmits, type MenubarCheckboxItemProps,
-	MenubarItemIndicator, useForwardPropsEmits } from 'radix-vue'
+import {
+	MenubarCheckboxItem, type MenubarCheckboxItemEmits, type MenubarCheckboxItemProps,
+	MenubarItemIndicator, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = defineProps<MenubarCheckboxItemProps & { class?: ClassValue }>()
 const emits = defineEmits<MenubarCheckboxItemEmits>()

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { TooltipArrow, TooltipContent, type TooltipContentProps, TooltipPortal, TooltipProvider, type TooltipProviderProps, TooltipRoot,
-	type TooltipRootEmits, type TooltipRootProps, TooltipTrigger, useForwardPropsEmits } from 'radix-vue'
+import {
+	TooltipArrow, TooltipContent, type TooltipContentProps, TooltipPortal, TooltipProvider, type TooltipProviderProps, TooltipRoot,
+	type TooltipRootEmits, type TooltipRootProps, TooltipTrigger, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = defineProps<{
 	class?: ClassValue

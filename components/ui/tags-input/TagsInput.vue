@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { TagsInputInput, type TagsInputInputProps, TagsInputItem, TagsInputItemDelete, TagsInputItemText, TagsInputRoot,
-	type TagsInputRootEmits, type TagsInputRootProps, useForwardPropsEmits } from 'radix-vue'
+import {
+	TagsInputInput, type TagsInputInputProps, TagsInputItem, TagsInputItemDelete, TagsInputItemText, TagsInputRoot,
+	type TagsInputRootEmits, type TagsInputRootProps, useForwardPropsEmits,
+} from 'radix-vue'
 import { type TagsInputVariants, tagsInputVariants } from '.'
 
 const props = defineProps<{
@@ -22,13 +24,12 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
-	<TagsInputRoot v-bind="forwarded"
-		:class="cn(tagsInputVariants({ size, color }), props.class)">
+	<TagsInputRoot v-bind="forwarded" :class="cn(tagsInputVariants({ size, color }), props.class)">
 		<TagsInputItem v-for="item in items" :key="item" :value="item" :disabled
 			class="flex h-6 items-center gap-1 rounded-md bg-secondary p-1 ring-offset-background data-[state=active]:ring-2 data-[state=active]:ring-ring data-[state=active]:ring-offset-2">
 			<TagsInputItemText class="rounded bg-transparent" />
 			<TagsInputItemDelete class="flex rounded bg-transparent">
-				<Icon name="ph:x-bold" class="size-4 bg-red-500" />
+				<Icon name="ph:x-bold" class="size-4 bg-error" />
 			</TagsInputItemDelete>
 		</TagsInputItem>
 		<TagsInputInput v-bind="props.input" :disabled

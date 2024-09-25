@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { MenubarContent, type MenubarContentProps, MenubarMenu,
-	type MenubarMenuProps, MenubarPortal, MenubarTrigger } from 'radix-vue'
+import {
+	MenubarContent, type MenubarContentProps, MenubarMenu,
+	type MenubarMenuProps, MenubarPortal, MenubarTrigger,
+} from 'radix-vue'
 
 const props = defineProps<MenubarMenuProps & {
 	disabled?: boolean

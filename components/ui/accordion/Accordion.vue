@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { AccordionItems } from '.'
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, type AccordionRootEmits,
-	type AccordionRootProps, AccordionTrigger, useForwardPropsEmits } from 'radix-vue'
+import {
+	AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, type AccordionRootEmits,
+	type AccordionRootProps, AccordionTrigger, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = withDefaults(defineProps<AccordionRootProps & {
 	items: AccordionItems
@@ -36,11 +38,13 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 						<span>{{ item.label }}</span>
 					</slot>
 					<slot name="icon">
-						<Icon name="ph:caret-down-bold" class="accordion-icon size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+						<Icon name="ph:caret-down-bold"
+							class="accordion-icon size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
 					</slot>
 				</AccordionTrigger>
 			</AccordionHeader>
-			<AccordionContent class="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+			<AccordionContent
+				class="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
 				<slot :name="`${item.id}-content`" />
 			</AccordionContent>
 		</AccordionItem>

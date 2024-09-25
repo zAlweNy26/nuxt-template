@@ -1,8 +1,12 @@
 <script lang="ts" setup generic="TData, TValue">
-import type { AccessorKeyColumnDef, ColumnDef, ColumnFiltersState, ColumnPinningState,
-	ExpandedState, RowSelectionState, SortingState, Updater, VisibilityState } from '@tanstack/vue-table'
-import { FlexRender, getCoreRowModel, getExpandedRowModel, getFilteredRowModel,
-	getPaginationRowModel, getSortedRowModel, useVueTable } from '@tanstack/vue-table'
+import type {
+	AccessorKeyColumnDef, ColumnDef, ColumnFiltersState, ColumnPinningState,
+	ExpandedState, RowSelectionState, SortingState, Updater, VisibilityState,
+} from '@tanstack/vue-table'
+import {
+	FlexRender, getCoreRowModel, getExpandedRowModel, getFilteredRowModel,
+	getPaginationRowModel, getSortedRowModel, useVueTable,
+} from '@tanstack/vue-table'
 
 export type DataColumnDef<D, V = unknown> = ColumnDef<D, V> & {
 	pinned?: 'left' | 'right'
@@ -96,16 +100,18 @@ defineExpose({ table })
 			</caption>
 			<thead class="[&_tr]:border-b">
 				<tr v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id"
-					class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-					<th v-for="header in headerGroup.headers" :key="header.id" :data-pinned="header.column.getIsPinned()"
-						:class="cn(
+					class="border-b transition-colors data-[state=selected]:bg-muted hover:bg-muted/50">
+					<th v-for="header in headerGroup.headers" :key="header.id"
+						:data-pinned="header.column.getIsPinned()" :class="cn(
 							'h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
 							{ 'sticky bg-background/95': header.column.getIsPinned() },
 							header.column.getIsPinned() === 'left' ? 'left-0' : 'right-0',
 							(header.column.columnDef as DataColumnDef<TData>).headerClass,
 						)">
-						<slot v-if="$slots[`${header.id}-column`]" :name="`${header.id}-column`" v-bind="header.getContext()" />
-						<FlexRender v-else-if="!header.isPlaceholder" :render="header.column.columnDef.header" :props="header.getContext()" />
+						<slot v-if="$slots[`${header.id}-column`]" :name="`${header.id}-column`"
+							v-bind="header.getContext()" />
+						<FlexRender v-else-if="!header.isPlaceholder" :render="header.column.columnDef.header"
+							:props="header.getContext()" />
 					</th>
 				</tr>
 			</thead>
@@ -114,19 +120,20 @@ defineExpose({ table })
 					<template v-for="row in table.getRowModel().rows" :key="row.id">
 						<tr :data-state="row.getIsSelected() ? 'selected' : undefined"
 							:class="cn('border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted', rowClass)">
-							<td v-for="cell in row.getVisibleCells()" :key="cell.id" :data-pinned="cell.column.getIsPinned()"
-								:class="cn(
+							<td v-for="cell in row.getVisibleCells()" :key="cell.id"
+								:data-pinned="cell.column.getIsPinned()" :class="cn(
 									'p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
 									{ 'sticky bg-background/95': cell.column.getIsPinned() },
 									cell.column.getIsPinned() === 'left' ? 'left-0' : 'right-0',
 									(cell.column.columnDef as DataColumnDef<TData>).cellClass,
 								)">
-								<slot v-if="$slots[`${cell.column.id}-row`]" :name="`${cell.column.id}-row`" :context="cell.getContext()" />
+								<slot v-if="$slots[`${cell.column.id}-row`]" :name="`${cell.column.id}-row`"
+									:context="cell.getContext()" />
 								<FlexRender v-else :render="cell.column.columnDef.cell" :props="cell.getContext()" />
 							</td>
 						</tr>
 						<tr v-if="row.getIsExpanded() && $slots.expanded"
-							class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+							class="border-b transition-colors data-[state=selected]:bg-muted hover:bg-muted/50">
 							<td :colspan="row.getAllCells().length"
 								class="p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5">
 								<slot name="expanded" :row />
@@ -135,7 +142,7 @@ defineExpose({ table })
 					</template>
 				</template>
 				<template v-else-if="loading">
-					<tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+					<tr class="border-b transition-colors data-[state=selected]:bg-muted hover:bg-muted/50">
 						<td :colspan="columns.length"
 							class="h-24 p-2 text-center align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5">
 							<slot name="loading">
@@ -150,7 +157,7 @@ defineExpose({ table })
 					</tr>
 				</template>
 				<template v-else>
-					<tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+					<tr class="border-b transition-colors data-[state=selected]:bg-muted hover:bg-muted/50">
 						<slot name="empty">
 							<td :colspan="columns.length"
 								class="h-24 p-2 text-center align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5">

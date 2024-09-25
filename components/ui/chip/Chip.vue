@@ -26,7 +26,8 @@ const props = withDefaults(defineProps<{
 	<div class="relative inline-flex h-fit shrink-0 items-center justify-center">
 		<slot />
 		<template v-if="show">
-			<span v-if="animation" :class="cn(chipVariants({ color, position, size, translate: inset ? null : position }), 'animate-ping', props.class)" />
+			<span v-if="animation"
+				:class="cn(chipVariants({ color, position, size, translate: inset ? null : position }), 'animate-ping', props.class)" />
 			<span :class="cn(chipVariants({ color, position, size, translate: inset ? null : position }), props.class)">
 				<slot name="content">
 					{{ text }}

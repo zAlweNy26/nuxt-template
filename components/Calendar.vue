@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { type DateValue, getLocalTimeZone, today } from '@internationalized/date'
-import { CalendarCell, CalendarCellTrigger, CalendarGrid,
+import {
+	CalendarCell, CalendarCellTrigger, CalendarGrid,
 	CalendarGridBody, CalendarGridHead, CalendarGridRow,
 	CalendarHeadCell, CalendarHeader, CalendarHeading, CalendarNext,
-	CalendarPrev, CalendarRoot, type CalendarRootEmits, type CalendarRootProps, useForwardPropsEmits } from 'radix-vue'
+	CalendarPrev, CalendarRoot, type CalendarRootEmits, type CalendarRootProps, useForwardPropsEmits,
+} from 'radix-vue'
 // import { createDecade, createYear, toDate } from 'radix-vue/date'
 // import type { SelectItems } from './ui/select'
 import { buttonVariants } from './ui/button'
@@ -35,14 +37,14 @@ const placeholder = defineModel<DateValue>({ default: today(getLocalTimeZone()) 
 
 const monthItems = (date: DateValue) =>
   createYear({ dateObj: date }).map((d) => ({
-    value: d.month.toString(),
-    label: _StartCase(formatter.custom(toDate(d), { month: 'long' })),
+	value: d.month.toString(),
+	label: _StartCase(formatter.custom(toDate(d), { month: 'long' })),
   })) as SelectItems
 
 const yearItems = (date: DateValue) =>
   createDecade({ dateObj: date, startIndex: -10, endIndex: 10 }).map((d) => ({
-    value: d.year.toString(),
-    label: d.year.toString(),
+	value: d.year.toString(),
+	label: d.year.toString(),
   })) as SelectItems */
 </script>
 
@@ -50,7 +52,8 @@ const yearItems = (date: DateValue) =>
 	<CalendarRoot v-slot="{ grid, weekDays }" v-model:placeholder="placeholder" v-bind="{ ...forwarded, locale }"
 		:class="cn('rounded-lg border p-2', props.class)">
 		<CalendarHeader class="relative flex w-full items-center justify-between pt-1">
-			<CalendarPrev :class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
+			<CalendarPrev
+				:class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
 				<Icon name="ph:caret-left-bold" class="size-4" />
 			</CalendarPrev>
 			<CalendarHeading v-slot="{ headingValue }" class="text-sm font-medium">
@@ -58,7 +61,8 @@ const yearItems = (date: DateValue) =>
 					{{ _StartCase(headingValue) }}
 				</slot>
 			</CalendarHeading>
-			<CalendarNext :class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
+			<CalendarNext
+				:class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
 				<Icon name="ph:caret-right-bold" class="size-4" />
 			</CalendarNext>
 			<!-- <CalendarHeading class="flex w-full text-sm font-medium items-center justify-between gap-2">
@@ -87,7 +91,8 @@ const yearItems = (date: DateValue) =>
 					</CalendarGridRow>
 				</CalendarGridHead>
 				<CalendarGridBody class="grid space-y-1">
-					<CalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`" class="flex gap-1">
+					<CalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`"
+						class="flex gap-1">
 						<CalendarCell v-for="weekDate in weekDates" :key="weekDate.toString()" :date="weekDate"
 							class="relative size-8 p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([data-selected])]:rounded-md [&:has([data-selected])]:bg-accent [&:has([data-selected][data-outside-view])]:bg-accent/50">
 							<CalendarCellTrigger :day="weekDate" :month="month.value" :class="cn(

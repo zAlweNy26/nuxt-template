@@ -22,12 +22,11 @@ const context = computedInject(ToggleGroupKey, s => s?.value)
 </script>
 
 <template>
-	<ToggleGroupItem ref="item" v-bind="forwarded"
-		:class="cn(buttonVariants({
-			variant: context?.state === forwarded.value ? 'secondary' : 'outline',
-			size: context?.size || size,
-			square: square ? (context?.size || size) : undefined,
-		}), props.class)">
+	<ToggleGroupItem ref="item" v-bind="forwarded" :class="cn(buttonVariants({
+		variant: context?.state === forwarded.value ? 'secondary' : 'outline',
+		size: context?.size || size,
+		square: square ? (context?.size || size) : undefined,
+	}), props.class)">
 		<slot />
 	</ToggleGroupItem>
 </template>

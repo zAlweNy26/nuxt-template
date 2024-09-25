@@ -17,10 +17,9 @@ const model = defineModel<boolean>()
 </script>
 
 <template>
-	<Toggle v-model:pressed="model" v-bind="forwarded"
-		:class="cn(buttonVariants({
-			variant: model ? 'secondary' : 'outline', size, square: square ? size : undefined,
-		}), props.class)">
+	<Toggle v-model:pressed="model" v-bind="forwarded" :class="cn(buttonVariants({
+		variant: model ? 'secondary' : 'outline', size, square: square ? size : undefined,
+	}), props.class)">
 		<slot />
 	</Toggle>
 </template>

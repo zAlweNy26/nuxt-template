@@ -23,8 +23,7 @@ const describedBy = computed(() => props.description ? `${props.name}-form-item-
 				<span v-if="label">{{ label }}</span>
 				<span v-if="description" :id="describedBy" class="text-muted-foreground">{{ description }}</span>
 			</Label>
-			<RadixSlot :id="name" :aria-describedby="describedBy"
-				:aria-invalid="!!errorMessage">
+			<RadixSlot :id="name" :aria-describedby="describedBy" :aria-invalid="!!errorMessage">
 				<slot v-bind="{ field: componentField, meta }" />
 			</RadixSlot>
 			<p v-if="help" class="text-sm text-muted-foreground">

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ContextMenuCheckboxItem, type ContextMenuCheckboxItemEmits,
-	type ContextMenuCheckboxItemProps, ContextMenuItemIndicator, useForwardPropsEmits } from 'radix-vue'
+import {
+	ContextMenuCheckboxItem, type ContextMenuCheckboxItemEmits,
+	type ContextMenuCheckboxItemProps, ContextMenuItemIndicator, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = defineProps<ContextMenuCheckboxItemProps & { class?: ClassValue }>()
 const emits = defineEmits<ContextMenuCheckboxItemEmits>()

@@ -29,9 +29,7 @@ defineExpose({
 
 <template>
 	<FormRoot ref="form" class="flex flex-col gap-2" :validationSchema="typedSchema"
-		:initialValues="getZodDefaults(props.schema)"
-		@submit="$emit('submit', $event)"
-		@invalidSubmit="onError"
+		:initialValues="getZodDefaults(props.schema)" @submit="$emit('submit', $event)" @invalidSubmit="onError"
 		@reset="$emit('reset')">
 		<slot />
 	</FormRoot>

@@ -26,13 +26,13 @@ const dateText = computed(() => {
 
 <template>
 	<Popover class="w-auto border-none p-0">
-		<Button variant="outline" :class="cn('w-72 justify-start text-left font-normal', !model.start && 'text-muted-foreground')">
+		<Button variant="outline"
+			:class="cn('w-72 justify-start text-left font-normal', !model.start && 'text-muted-foreground')">
 			<Icon name="ph:calendar-dots" class="mr-2 size-4" />
 			{{ dateText }}
 		</Button>
 		<template #content>
-			<RangeCalendar v-model="model" initialFocus
-				@update:startValue="(startDate) => model.start = startDate" />
+			<RangeCalendar v-model="model" initialFocus @update:startValue="(startDate) => model.start = startDate" />
 		</template>
 	</Popover>
 </template>

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { ContextRadioItems } from '.'
-import { ContextMenuItemIndicator, ContextMenuRadioGroup, type ContextMenuRadioGroupEmits,
-	type ContextMenuRadioGroupProps, ContextMenuRadioItem, useForwardPropsEmits } from 'radix-vue'
+import {
+	ContextMenuItemIndicator, ContextMenuRadioGroup, type ContextMenuRadioGroupEmits,
+	type ContextMenuRadioGroupProps, ContextMenuRadioItem, useForwardPropsEmits,
+} from 'radix-vue'
 
 const props = defineProps<ContextMenuRadioGroupProps & {
 	class?: ClassValue

@@ -10,7 +10,8 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-	<ContextMenuLabel v-bind="delegatedProps" :class="cn('px-2 py-1.5 text-sm font-semibold text-foreground', props.class)">
+	<ContextMenuLabel v-bind="delegatedProps"
+		:class="cn('px-2 py-1.5 text-sm font-semibold text-foreground', props.class)">
 		<slot />
 	</ContextMenuLabel>
 </template>
