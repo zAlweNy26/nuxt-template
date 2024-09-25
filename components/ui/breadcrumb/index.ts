@@ -1,5 +1,4 @@
 export { default as Breadcrumb } from './Breadcrumb.vue'
-export { default as BreadcrumbEllipsis } from './BreadcrumbEllipsis.vue'
 
 export interface BreadcrumbItem {
 	label: string

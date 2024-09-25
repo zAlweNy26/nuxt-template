@@ -60,9 +60,9 @@ const pageTo = computed(() => Math.min(model.value * props.itemsPerPage, props.t
 								{{ item.value }}
 							</Button>
 						</PaginationListItem>
-						<PaginationEllipsis v-else :key="item.type" :index="index" class="grid size-8 place-content-center">
+						<PaginationEllipsis v-else :key="item.type" :index="index" as-child>
 							<slot name="ellipsis">
-								<Icon name="ph:dots-three-bold" class="size-6" />
+								<Ellipsis />
 							</slot>
 						</PaginationEllipsis>
 					</template>
