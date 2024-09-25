@@ -10,6 +10,7 @@ import type { CommandItems } from '~/components/ui/command'
 import type { RadioItems } from '~/components/ui/radio-group'
 import type { SelectItems } from '~/components/ui/select'
 import type { TabItems } from '~/components/ui/tabs'
+import type { TreeItems } from '~/components/ui/tree'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
@@ -123,6 +124,33 @@ const navigationItems = [
 		description:
 			'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
 	},
+]
+
+const treeItems: TreeItems<{ title: string }> = [
+	{
+		title: 'composables',
+		icon: 'lucide:folder',
+		children: [
+			{ title: 'useAuth.ts', icon: 'vscode-icons:file-type-typescript' },
+			{ title: 'useUser.ts', icon: 'vscode-icons:file-type-typescript' },
+		],
+	},
+	{
+		title: 'components',
+		icon: 'lucide:folder',
+		children: [
+			{
+				title: 'Home',
+				icon: 'lucide:folder',
+				children: [
+					{ title: 'Card.vue', icon: 'vscode-icons:file-type-vue' },
+					{ title: 'Button.vue', icon: 'vscode-icons:file-type-vue' },
+				],
+			},
+		],
+	},
+	{ title: 'app.vue', icon: 'vscode-icons:file-type-vue' },
+	{ title: 'nuxt.config.ts', icon: 'vscode-icons:file-type-nuxt' },
 ]
 
 const progress = ref(50)
@@ -480,7 +508,7 @@ onMounted(async () => {
 		<Card>
 			<template #header>
 				<Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
-				<Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
+				<Checkbox id="terms2" checked="indeterminate" size="sm" text="Accept terms and conditions" />
 				<Checkbox id="terms3" size="md" text="Accept terms and conditions" />
 				<Checkbox id="terms4" size="lg" text="Accept terms and conditions" />
 			</template>
@@ -514,6 +542,15 @@ onMounted(async () => {
 				<Icon name="ph:text-underline-bold" class="size-4" />
 			</ToggleGroupItem>
 		</ToggleGroup>
+		<Tree :items="treeItems" :getKey="item => item.title">
+			<template #item="{ hasChildren, value, isExpanded }">
+				<Icon v-if="hasChildren" name="ph:caret-right" :class="cn('size-4 transition-transform', isExpanded && 'rotate-90')" />
+				<Icon v-else :name="value.icon || 'ph:file'" class="size-4" />
+				<div class="pl-2">
+					{{ value.title }}
+				</div>
+			</template>
+		</Tree>
 		<DatePicker />
 		<DateRangePicker />
 		<ComboGroup>
