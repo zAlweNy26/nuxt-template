@@ -9,10 +9,7 @@ const props = withDefaults(defineProps<Omit<ToggleGroupItemProps, 'pressed'> & O
 	class: undefined,
 })
 
-const delegatedProps = computed(() => {
-	const { class: _, size, square, ...rest } = props
-	return rest
-})
+const delegatedProps = reactiveOmit(props, 'size', 'square', 'class')
 
 const forwarded = useForwardProps(delegatedProps)
 

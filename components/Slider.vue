@@ -5,11 +5,7 @@ import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits
 const props = defineProps<SliderRootProps & { class?: ClassValue }>()
 const emits = defineEmits<SliderRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

@@ -7,10 +7,7 @@ import {
 const props = defineProps<ContextMenuCheckboxItemProps & { class?: ClassValue }>()
 const emits = defineEmits<ContextMenuCheckboxItemEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

@@ -7,10 +7,7 @@ const props = defineProps<LabelProps & {
 	class?: ClassValue
 }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, size: __, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'size', 'class')
 </script>
 
 <template>

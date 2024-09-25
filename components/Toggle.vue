@@ -6,10 +6,7 @@ const props = withDefaults(defineProps<Omit<ToggleProps, 'pressed'> & Omit<Butto
 	size: 'md',
 })
 
-const delegatedProps = computed(() => {
-	const { class: _, size, square, ...rest } = props
-	return rest
-})
+const delegatedProps = reactiveOmit(props, 'size', 'square', 'class')
 
 const forwarded = useForwardProps(delegatedProps)
 

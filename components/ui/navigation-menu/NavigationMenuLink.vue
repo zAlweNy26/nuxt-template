@@ -6,10 +6,7 @@ import { NavigationMenuLink, type NavigationMenuLinkEmits, type NavigationMenuLi
 const props = defineProps<NavigationMenuLinkProps & NuxtLinkProps & { class?: ClassValue }>()
 const emits = defineEmits<NavigationMenuLinkEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

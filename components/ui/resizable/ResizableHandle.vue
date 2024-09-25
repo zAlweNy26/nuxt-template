@@ -4,10 +4,7 @@ import { SplitterResizeHandle, type SplitterResizeHandleEmits, type SplitterResi
 const props = defineProps<SplitterResizeHandleProps & { class?: ClassValue, withHandle?: boolean }>()
 const emits = defineEmits<SplitterResizeHandleEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'withHandle')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

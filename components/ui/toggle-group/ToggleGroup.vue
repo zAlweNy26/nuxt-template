@@ -16,10 +16,7 @@ const props = withDefaults(defineProps<ToggleGroupRootProps & {
 
 const emits = defineEmits<ToggleGroupRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, size, ...rest } = props
-	return rest
-})
+const delegatedProps = reactiveOmit(props, 'class', 'size')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 

@@ -18,10 +18,7 @@ const props = withDefaults(defineProps<AccordionRootProps & {
 
 const emits = defineEmits<AccordionRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { items: _, class: __, contentClass: ___, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'items', 'class', 'contentClass')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

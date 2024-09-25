@@ -10,10 +10,7 @@ const props = defineProps<PinInputRootProps & {
 
 const emits = defineEmits<PinInputRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, itemClass, digits, separator, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'digits', 'separator', 'itemClass', 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

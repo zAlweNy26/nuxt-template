@@ -3,10 +3,7 @@ import { DropdownMenuSeparator, type DropdownMenuSeparatorProps } from 'radix-vu
 
 const props = defineProps<DropdownMenuSeparatorProps & { class?: ClassValue }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>

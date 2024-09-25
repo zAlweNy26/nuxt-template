@@ -8,10 +8,7 @@ const props = defineProps<NavigationMenuRootProps & { class?: ClassValue }>()
 
 const emits = defineEmits<NavigationMenuRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

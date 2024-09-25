@@ -4,10 +4,7 @@ import { MenubarRoot, type MenubarRootEmits, type MenubarRootProps, useForwardPr
 const props = defineProps<MenubarRootProps & { class?: ClassValue }>()
 const emits = defineEmits<MenubarRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

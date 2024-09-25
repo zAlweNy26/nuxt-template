@@ -3,10 +3,7 @@ import { ContextMenuSeparator, type ContextMenuSeparatorProps } from 'radix-vue'
 
 const props = defineProps<ContextMenuSeparatorProps & { class?: ClassValue }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>

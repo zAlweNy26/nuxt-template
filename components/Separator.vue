@@ -8,10 +8,7 @@ const props = defineProps<SeparatorProps & {
 	dividerClass?: ClassValue
 }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, label, labelClass, dividerClass, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'label', 'labelClass', 'dividerClass')
 </script>
 
 <template>

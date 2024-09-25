@@ -16,10 +16,7 @@ const props = withDefaults(defineProps<StepperRootProps & {
 })
 const emits = defineEmits<StepperRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, items, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'items')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

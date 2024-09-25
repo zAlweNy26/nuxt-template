@@ -5,10 +5,7 @@ import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger, useForwardProp
 const props = defineProps<CollapsibleRootProps & CollapsibleContentProps>()
 const emits = defineEmits<CollapsibleRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { forceMount, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'forceMount')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

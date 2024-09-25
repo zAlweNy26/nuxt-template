@@ -4,10 +4,7 @@ import { SplitterGroup, type SplitterGroupEmits, type SplitterGroupProps, useFor
 const props = defineProps<SplitterGroupProps & { class?: ClassValue }>()
 const emits = defineEmits<SplitterGroupEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

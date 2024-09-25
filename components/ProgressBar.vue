@@ -9,10 +9,7 @@ const props = defineProps<ProgressRootProps & {
 
 const emits = defineEmits<ProgressRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, indicatorClass, animation, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'animation', 'indicatorClass')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 

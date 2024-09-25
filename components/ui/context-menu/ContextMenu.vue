@@ -11,10 +11,7 @@ const props = defineProps<ContextMenuRootProps & {
 }>()
 const emits = defineEmits<ContextMenuRootEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, disabled, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'disabled')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

@@ -3,10 +3,7 @@ import { ContextMenuLabel, type ContextMenuLabelProps } from 'radix-vue'
 
 const props = defineProps<ContextMenuLabelProps & { class?: ClassValue }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>

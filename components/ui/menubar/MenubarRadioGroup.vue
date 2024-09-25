@@ -13,10 +13,7 @@ const props = defineProps<MenubarRadioGroupProps & {
 
 const emits = defineEmits<MenubarRadioGroupEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, items, itemClass, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'items', 'itemClass')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

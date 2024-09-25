@@ -6,10 +6,7 @@ const props = defineProps<DropdownMenuItemProps & {
 	shortcuts?: Shortcuts
 }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, shortcuts, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'shortcuts')
 
 const forwardedProps = useForwardProps(delegatedProps)
 </script>

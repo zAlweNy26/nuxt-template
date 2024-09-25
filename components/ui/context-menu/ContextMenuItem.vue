@@ -7,10 +7,7 @@ const props = defineProps<ContextMenuItemProps & {
 }>()
 const emits = defineEmits<ContextMenuItemEmits>()
 
-const delegatedProps = computed(() => {
-	const { class: _, shortcuts, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'shortcuts')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

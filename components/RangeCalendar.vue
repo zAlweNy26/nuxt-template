@@ -8,7 +8,7 @@ import {
 } from 'radix-vue'
 import { buttonVariants } from './ui/button'
 
-const props = withDefaults(defineProps<RangeCalendarRootProps & { class?: ClassValue }>(), {
+const props = withDefaults(defineProps<Omit<RangeCalendarRootProps, 'locale'> & { class?: ClassValue }>(), {
 	class: undefined,
 	placeholder() {
 		return today(getLocalTimeZone())
@@ -21,10 +21,7 @@ const emits = defineEmits<RangeCalendarRootEmits>()
 
 const { locale } = storeToRefs(useSettingsStore())
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

@@ -24,10 +24,7 @@ const emits = defineEmits<CalendarRootEmits>()
 
 const { locale } = storeToRefs(useSettingsStore())
 
-const delegatedProps = computed(() => {
-	const { class: _, placeholder: __, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'placeholder')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 

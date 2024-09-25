@@ -7,10 +7,7 @@ const props = defineProps<NavigationMenuItemProps & {
 	disabled?: boolean
 }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, contentClass, disabled, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'contentClass', 'disabled')
 </script>
 
 <template>

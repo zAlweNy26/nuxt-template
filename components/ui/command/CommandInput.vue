@@ -9,10 +9,7 @@ const props = defineProps<Omit<ComboboxInputProps, 'asChild' | 'as'> & {
 	class?: ClassValue
 }>()
 
-const delegatedProps = computed(() => {
-	const { class: _, ...delegated } = props
-	return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 </script>
