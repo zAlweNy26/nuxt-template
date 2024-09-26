@@ -17,6 +17,9 @@ export default defineNuxtConfig({
 		'nuxt-api-party',
 		'nuxt-lodash',
 		'nuxt-security',
+		'nuxt-csurf',
+		'nuxt-auth-utils',
+		'nuxt-authorization',
 		'nuxt-zod-i18n',
 		'@nuxtjs/i18n',
 		'@nuxtjs/tailwindcss',
@@ -35,6 +38,11 @@ export default defineNuxtConfig({
 	vite: {
 		optimizeDeps: {
 			include: ['lodash-es'],
+		},
+	},
+	runtimeConfig: {
+		session: {
+			maxAge: 60 * 60 * 24 * 7, // 1 week
 		},
 	},
 	components: [
@@ -57,6 +65,9 @@ export default defineNuxtConfig({
 	security: {
 		nonce: true,
 		csrf: true,
+	},
+	csurf: {
+		enabled: true,
 	},
 	ogImage: {
 		enabled: false,

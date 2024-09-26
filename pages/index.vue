@@ -14,6 +14,7 @@ import type { TreeItems } from '~/components/ui/tree'
 
 const { t } = useI18n()
 const { storage, locale } = storeToRefs(useSettingsStore())
+const { loggedIn, user, session, clear } = useUserSession()
 
 useHead({
 	title: () => t('headers.home'),
@@ -287,6 +288,9 @@ async function getData(): Promise<Payment[]> {
 
 onMounted(async () => {
 	data.value = await getData()
+	console.log(await allows(listPosts))
+	console.log(await allows(createPost))
+	console.log(await allows(editPost, { authorId: '1' }))
 })
 </script>
 
@@ -334,6 +338,17 @@ onMounted(async () => {
 				<p>Example content</p>
 			</template>
 		</SideSheet>
+		<div v-if="loggedIn && user">
+			<h1>Welcome {{ user.id }}!</h1>
+			<p>Logged in since {{ session.loggedInAt }}</p>
+			<button @click="clear">
+				Logout
+			</button>
+		</div>
+		<div v-else>
+			<h1>Not logged in</h1>
+			<a href="/auth/github">Login with GitHub</a>
+		</div>
 		<Switch id="test-switch" label="Test Switch" />
 		<Separator class="my-4" label="Or" />
 		<ProgressBar v-model="progress" :max="60" />

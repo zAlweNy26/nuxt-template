@@ -9,16 +9,17 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 ## Features
 
 - 💨 Tailwind CSS
-- ✨ 50+ Vue components
-- 📏 Linting rules ([ESLint](https://nuxt.com/modules/eslint))
-- 🔔 Icon component for Iconify ([Icon](https://nuxt.com/modules/icon))
+- ✨ 50+ Vue Components
+- 📏 Linting Rules ([ESLint](https://nuxt.com/modules/eslint))
+- 🔔 Icon Component For Iconify ([Icon](https://nuxt.com/modules/icon))
 - 👀 Server Proxy ([Api Party](https://nuxt.com/modules/api-party))
-- 🧱 OWASP And Helmet security patterns ([Security](https://nuxt.com/modules/security))
+- 🧱 OWASP & Helmet Security Patterns ([Security](https://nuxt.com/modules/security))
 - 🛹 State & Store Management ([Pinia](https://nuxt.com/modules/pinia))
 - 📦 Vue Composition Collection ([VueUse](https://nuxt.com/modules/vueuse))
 - 🌙 Theme Switcher ([Color Mode](https://nuxt.com/modules/color-mode))
 - 🇬🇧 Language Switcher ([I18n](https://nuxt.com/modules/i18n))
-- 🔡 Font manager ([Fonts](https://nuxt.com/modules/fonts))
+- 🔡 Font Manager ([Fonts](https://nuxt.com/modules/fonts))
+- 🔐 Authentication & Authorization Management ([Auth Utils](https://nuxt.com/modules/auth-utils), [Authorization](https://nuxt.com/modules/authorization))
 
 ## Setup
 

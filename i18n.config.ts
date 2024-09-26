@@ -6,24 +6,21 @@ const i18n = defineI18nConfig(() => ({
 	locale: 'en',
 	allowComposition: true,
 	fallbackLocale: 'en',
-	datetimeFormats: {
-		// Add new languages here
-		...['en', 'it'].reduce((acc, locale) => ({
-			...acc,
-			[locale]: {
-				date: {
-					year: 'numeric', month: 'short', day: '2-digit',
-				},
-				time: {
-					hour: '2-digit', minute: '2-digit',
-				},
-				datetime: {
-					year: 'numeric', month: 'short', day: '2-digit',
-					hour: '2-digit', minute: '2-digit',
-				},
+	datetimeFormats: ['en', 'it'].reduce((acc, locale) => ({
+		...acc,
+		[locale]: {
+			date: {
+				year: 'numeric', month: 'short', day: '2-digit',
 			},
-		}), {}),
-	},
+			time: {
+				hour: '2-digit', minute: '2-digit',
+			},
+			datetime: {
+				year: 'numeric', month: 'short', day: '2-digit',
+				hour: '2-digit', minute: '2-digit',
+			},
+		},
+	}), {}),
 	messages: {
 		en: enGB,
 		it: itIT,
