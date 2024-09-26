@@ -1,11 +1,8 @@
 <script lang="ts" setup>
+import type { RangeCalendarRootEmits, RangeCalendarRootProps } from 'radix-vue'
 import { getLocalTimeZone, today } from '@internationalized/date'
-import {
-	RangeCalendarCell, RangeCalendarCellTrigger, RangeCalendarGrid,
-	RangeCalendarGridBody, RangeCalendarGridHead, RangeCalendarGridRow, RangeCalendarHeadCell,
-	RangeCalendarHeader, RangeCalendarHeading, RangeCalendarNext, RangeCalendarPrev,
-	RangeCalendarRoot, type RangeCalendarRootEmits, type RangeCalendarRootProps, useForwardPropsEmits,
-} from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
+import { RangeCalendar } from 'radix-vue/namespaced'
 import { buttonVariants } from './ui/button'
 
 const props = withDefaults(defineProps<Omit<RangeCalendarRootProps, 'locale'> & { class?: ClassValue }>(), {
@@ -27,40 +24,40 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
-	<RangeCalendarRoot v-slot="{ grid, weekDays }" v-bind="{ ...forwarded, locale }"
+	<RangeCalendar.Root v-slot="{ grid, weekDays }" v-bind="{ ...forwarded, locale }"
 		:class="cn('rounded-lg border p-2', props.class)">
-		<RangeCalendarHeader class="relative flex w-full items-center justify-between pt-1">
-			<RangeCalendarPrev
+		<RangeCalendar.Header class="relative flex w-full items-center justify-between pt-1">
+			<RangeCalendar.Prev
 				:class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
 				<Icon name="ph:caret-left-bold" class="size-4" />
-			</RangeCalendarPrev>
-			<RangeCalendarHeading v-slot="{ headingValue }" class="text-sm font-medium">
+			</RangeCalendar.Prev>
+			<RangeCalendar.Heading v-slot="{ headingValue }" class="text-sm font-medium">
 				<slot name="heading" :headingValue>
 					{{ _StartCase(headingValue) }}
 				</slot>
-			</RangeCalendarHeading>
-			<RangeCalendarNext
+			</RangeCalendar.Heading>
+			<RangeCalendar.Next
 				:class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
 				<Icon name="ph:caret-right-bold" class="size-4" />
-			</RangeCalendarNext>
-		</RangeCalendarHeader>
+			</RangeCalendar.Next>
+		</RangeCalendar.Header>
 		<div class="mt-4 flex flex-col gap-y-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
-			<RangeCalendarGrid v-for="month in grid" :key="month.value.toString()"
+			<RangeCalendar.Grid v-for="month in grid" :key="month.value.toString()"
 				class="w-full border-collapse space-y-2">
-				<RangeCalendarGridHead class="grid">
-					<RangeCalendarGridRow class="flex gap-1">
-						<RangeCalendarHeadCell v-for="day in weekDays" :key="day"
+				<RangeCalendar.GridHead class="grid">
+					<RangeCalendar.GridRow class="flex gap-1">
+						<RangeCalendar.HeadCell v-for="day in weekDays" :key="day"
 							class="w-8 rounded-md text-[0.8rem] font-normal text-muted-foreground">
 							{{ _StartCase(day) }}
-						</RangeCalendarHeadCell>
-					</RangeCalendarGridRow>
-				</RangeCalendarGridHead>
-				<RangeCalendarGridBody class="grid space-y-1">
-					<RangeCalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`"
+						</RangeCalendar.HeadCell>
+					</RangeCalendar.GridRow>
+				</RangeCalendar.GridHead>
+				<RangeCalendar.GridBody class="grid space-y-1">
+					<RangeCalendar.GridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`"
 						class="flex gap-1">
-						<RangeCalendarCell v-for="weekDate in weekDates" :key="weekDate.toString()" :date="weekDate"
+						<RangeCalendar.Cell v-for="weekDate in weekDates" :key="weekDate.toString()" :date="weekDate"
 							class="relative size-8 p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([data-selected])]:rounded-md [&:has([data-selected])]:bg-accent [&:has([data-selected][data-outside-view])]:bg-accent/50 [&:has([data-selected][data-selection-end])]:rounded-r-md [&:has([data-selected][data-selection-start])]:rounded-l-md">
-							<RangeCalendarCellTrigger :day="weekDate" :month="month.value" :class="cn(
+							<RangeCalendar.CellTrigger :day="weekDate" :month="month.value" :class="cn(
 								buttonVariants({ variant: 'ghost' }),
 								'size-8 p-0 font-normal data-[selected]:opacity-100',
 								'[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground data-[highlighted]:bg-accent',
@@ -75,10 +72,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 								// Unavailable
 								'data-[unavailable]:text-error-foreground data-[unavailable]:line-through',
 							)" />
-						</RangeCalendarCell>
-					</RangeCalendarGridRow>
-				</RangeCalendarGridBody>
-			</RangeCalendarGrid>
+						</RangeCalendar.Cell>
+					</RangeCalendar.GridRow>
+				</RangeCalendar.GridBody>
+			</RangeCalendar.Grid>
 		</div>
-	</RangeCalendarRoot>
+	</RangeCalendar.Root>
 </template>

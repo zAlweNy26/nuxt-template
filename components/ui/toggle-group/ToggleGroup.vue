@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import {
-	ToggleGroupRoot, type ToggleGroupRootEmits,
-	type ToggleGroupRootProps, useForwardPropsEmits,
-} from 'radix-vue'
+import { ToggleGroupRoot, type ToggleGroupRootEmits, type ToggleGroupRootProps, useForwardPropsEmits } from 'radix-vue'
 import { ToggleGroupKey } from '.'
 import { type GroupVariants, groupVariants } from '../combo-group'
 

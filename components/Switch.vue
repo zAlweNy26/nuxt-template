@@ -9,7 +9,7 @@ const props = defineProps<SwitchRootProps & {
 
 const emits = defineEmits<SwitchRootEmits>()
 
-const delegatedProps = reactiveOmit(props, 'class', 'id', 'label')
+const delegatedProps = reactiveOmit(props, 'class', 'label')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

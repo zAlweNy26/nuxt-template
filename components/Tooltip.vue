@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import {
-	TooltipArrow, TooltipContent, type TooltipContentProps, TooltipPortal, TooltipProvider, type TooltipProviderProps, TooltipRoot,
-	type TooltipRootEmits, type TooltipRootProps, TooltipTrigger, useForwardPropsEmits,
-} from 'radix-vue'
+import type { TooltipContentProps, TooltipProviderProps, TooltipRootEmits, TooltipRootProps } from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
+import { Tooltip } from 'radix-vue/namespaced'
 
 const props = defineProps<{
 	class?: ClassValue
@@ -22,13 +21,13 @@ const forwarded = useForwardPropsEmits(() => ({ delayDuration: 300, ...props.roo
 </script>
 
 <template>
-	<TooltipProvider v-bind="providerProps">
-		<TooltipRoot v-bind="forwarded">
-			<TooltipTrigger asChild>
+	<Tooltip.Provider v-bind="providerProps">
+		<Tooltip.Root v-bind="forwarded">
+			<Tooltip.Trigger asChild>
 				<slot />
-			</TooltipTrigger>
-			<TooltipPortal v-if="$slots.content">
-				<TooltipContent v-bind="contentProps" :class="cn(
+			</Tooltip.Trigger>
+			<Tooltip.Portal v-if="$slots.content">
+				<Tooltip.Content v-bind="contentProps" :class="cn(
 					'z-50 overflow-hidden rounded-md flex items-center gap-1 bg-accent px-3 py-1.5 text-xs text-accent-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
 					props.class,
 				)">
@@ -39,9 +38,9 @@ const forwarded = useForwardPropsEmits(() => ({ delayDuration: 300, ...props.roo
 							<Shortcut v-for="(k, i) in shortcuts" :key="i" :cap="k" />
 						</span>
 					</template>
-					<TooltipArrow :class="cn('fill-accent', arrowClass)" />
-				</TooltipContent>
-			</TooltipPortal>
-		</TooltipRoot>
-	</TooltipProvider>
+					<Tooltip.Arrow :class="cn('fill-accent', arrowClass)" />
+				</Tooltip.Content>
+			</Tooltip.Portal>
+		</Tooltip.Root>
+	</Tooltip.Provider>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PopoverContentProps, PopoverRootEmits, PopoverRootProps } from 'radix-vue'
-import { PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger, useForwardPropsEmits } from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
+import { Popover } from 'radix-vue/namespaced'
 
 const props = defineProps<{
 	root?: PopoverRootProps
@@ -16,17 +17,17 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
-	<PopoverRoot v-bind="forwarded">
-		<PopoverTrigger asChild>
+	<Popover.Root v-bind="forwarded">
+		<Popover.Trigger asChild>
 			<slot />
-		</PopoverTrigger>
-		<PopoverPortal v-if="$slots.content">
-			<PopoverContent v-bind="contentProps" :class="cn(
+		</Popover.Trigger>
+		<Popover.Portal v-if="$slots.content">
+			<Popover.Content v-bind="contentProps" :class="cn(
 				'z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
 				props.class,
 			)">
 				<slot name="content" />
-			</PopoverContent>
-		</PopoverPortal>
-	</PopoverRoot>
+			</Popover.Content>
+		</Popover.Portal>
+	</Popover.Root>
 </template>

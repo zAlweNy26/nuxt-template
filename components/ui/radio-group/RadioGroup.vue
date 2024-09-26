@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import {
-	RadioGroupIndicator, RadioGroupItem, RadioGroupRoot,
-	type RadioGroupRootEmits, type RadioGroupRootProps, useForwardPropsEmits,
-} from 'radix-vue'
+import type { RadioGroupRootEmits, RadioGroupRootProps } from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
+import { RadioGroup } from 'radix-vue/namespaced'
 import { type RadioItems, type RadioVariants, radioVariants } from '.'
 
 const props = withDefaults(defineProps<{
@@ -26,15 +25,15 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
-	<RadioGroupRoot :class="cn('grid gap-2', props.class)" v-bind="forwarded">
+	<RadioGroup.Root :class="cn('grid gap-2', props.class)" v-bind="forwarded">
 		<div v-for="i in items" :key="i.value" class="flex items-center space-x-2">
+			<RadioGroup.Item :id="i.value" :value="i.value"
+				:class="cn(radioVariants({ variant, size }), props.itemClass)">
+				<RadioGroup.Indicator class="flex items-center justify-center" />
+			</RadioGroup.Item>
 			<slot :value="i.value">
-				<RadioGroupItem :id="i.value" :value="i.value"
-					:class="cn(radioVariants({ variant, size }), props.itemClass)">
-					<RadioGroupIndicator class="flex items-center justify-center" />
-				</RadioGroupItem>
 				<Label :for="i.value">{{ i.name }}</Label>
 			</slot>
 		</div>
-	</RadioGroupRoot>
+	</RadioGroup.Root>
 </template>

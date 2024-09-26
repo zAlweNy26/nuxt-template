@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CollapsibleContentProps, CollapsibleRootEmits, CollapsibleRootProps } from 'radix-vue'
-import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger, useForwardPropsEmits } from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
+import { Collapsible } from 'radix-vue/namespaced'
 
 const props = defineProps<CollapsibleRootProps & CollapsibleContentProps>()
 const emits = defineEmits<CollapsibleRootEmits>()
@@ -11,13 +12,13 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
-	<CollapsibleRoot v-slot="{ open }" v-bind="forwarded">
-		<CollapsibleTrigger asChild>
+	<Collapsible.Root v-slot="{ open }" v-bind="forwarded">
+		<Collapsible.Trigger asChild>
 			<slot :open="open" />
-		</CollapsibleTrigger>
-		<CollapsibleContent :forceMount
+		</Collapsible.Trigger>
+		<Collapsible.Content :forceMount
 			class="overflow-hidden transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
 			<slot :open="open" name="content" />
-		</CollapsibleContent>
-	</CollapsibleRoot>
+		</Collapsible.Content>
+	</Collapsible.Root>
 </template>

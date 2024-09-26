@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import {
-	TagsInputInput, type TagsInputInputProps, TagsInputItem, TagsInputItemDelete, TagsInputItemText, TagsInputRoot,
-	type TagsInputRootEmits, type TagsInputRootProps, useForwardPropsEmits,
-} from 'radix-vue'
+import type { TagsInputInputProps, TagsInputRootEmits, TagsInputRootProps } from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
+import { TagsInput } from 'radix-vue/namespaced'
 import { type TagsInputVariants, tagsInputVariants } from '.'
 
 const props = defineProps<{
@@ -24,15 +23,15 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
-	<TagsInputRoot v-bind="forwarded" :class="cn(tagsInputVariants({ size, color }), props.class)">
-		<TagsInputItem v-for="item in items" :key="item" :value="item" :disabled
+	<TagsInput.Root v-bind="forwarded" :class="cn(tagsInputVariants({ size, color }), props.class)">
+		<TagsInput.Item v-for="item in items" :key="item" :value="item" :disabled
 			class="flex h-6 items-center gap-1 rounded-md bg-secondary p-1 ring-offset-background data-[state=active]:ring-2 data-[state=active]:ring-ring data-[state=active]:ring-offset-2">
-			<TagsInputItemText class="rounded bg-transparent" />
-			<TagsInputItemDelete class="flex rounded bg-transparent">
+			<TagsInput.ItemText class="rounded bg-transparent" />
+			<TagsInput.ItemDelete class="flex rounded bg-transparent">
 				<Icon name="ph:x-bold" class="size-4 bg-error" />
-			</TagsInputItemDelete>
-		</TagsInputItem>
-		<TagsInputInput v-bind="props.input" :disabled
+			</TagsInput.ItemDelete>
+		</TagsInput.Item>
+		<TagsInput.Input v-bind="props.input" :disabled
 			:class="cn('min-h-6 w-min max-w-96 focus:outline-none flex-1 bg-transparent px-1', props.inputClass)" />
-	</TagsInputRoot>
+	</TagsInput.Root>
 </template>

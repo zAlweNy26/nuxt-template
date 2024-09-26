@@ -1,11 +1,8 @@
 <script setup lang="ts">
+import type { CalendarRootEmits, CalendarRootProps } from 'radix-vue'
 import { type DateValue, getLocalTimeZone, today } from '@internationalized/date'
-import {
-	CalendarCell, CalendarCellTrigger, CalendarGrid,
-	CalendarGridBody, CalendarGridHead, CalendarGridRow,
-	CalendarHeadCell, CalendarHeader, CalendarHeading, CalendarNext,
-	CalendarPrev, CalendarRoot, type CalendarRootEmits, type CalendarRootProps, useForwardPropsEmits,
-} from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
+import { Calendar } from 'radix-vue/namespaced'
 // import { createDecade, createYear, toDate } from 'radix-vue/date'
 // import type { SelectItems } from './ui/select'
 import { buttonVariants } from './ui/button'
@@ -46,53 +43,53 @@ const yearItems = (date: DateValue) =>
 </script>
 
 <template>
-	<CalendarRoot v-slot="{ grid, weekDays }" v-model:placeholder="placeholder" v-bind="{ ...forwarded, locale }"
+	<Calendar.Root v-slot="{ grid, weekDays }" v-model:placeholder="placeholder" v-bind="{ ...forwarded, locale }"
 		:class="cn('rounded-lg border p-2', props.class)">
-		<CalendarHeader class="relative flex w-full items-center justify-between pt-1">
-			<CalendarPrev
+		<Calendar.Header class="relative flex w-full items-center justify-between pt-1">
+			<Calendar.Prev
 				:class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
 				<Icon name="ph:caret-left-bold" class="size-4" />
-			</CalendarPrev>
-			<CalendarHeading v-slot="{ headingValue }" class="text-sm font-medium">
+			</Calendar.Prev>
+			<Calendar.Heading v-slot="{ headingValue }" class="text-sm font-medium">
 				<slot name="heading" :headingValue>
 					{{ _StartCase(headingValue) }}
 				</slot>
-			</CalendarHeading>
-			<CalendarNext
+			</Calendar.Heading>
+			<Calendar.Next
 				:class="cn(buttonVariants({ variant: 'outline' }), 'size-7 bg-transparent p-0 opacity-50 hover:opacity-100')">
 				<Icon name="ph:caret-right-bold" class="size-4" />
-			</CalendarNext>
-			<!-- <CalendarHeading class="flex w-full text-sm font-medium items-center justify-between gap-2">
-        <SelectBox placeholder="Select month" aria-label="Select month" :root="{ defaultValue: placeholder.month.toString() }"
-          class="w-3/5" contentClass="h-52" :items="monthItems(date)" @update:modelValue="(v) => {
-            if (!v || !placeholder) return
-            if (Number(v) === placeholder?.month) return
-            placeholder = placeholder.set({ month: Number(v) })
-          }" />
-        <SelectBox placeholder="Select year" aria-label="Select year" :root="{ defaultValue: placeholder.year.toString() }"
-          class="w-2/5" contentClass="h-52" :items="yearItems(date)" @update:modelValue="(v) => {
-            if (!v || !placeholder) return
-            if (Number(v) === placeholder?.year) return
-            placeholder = placeholder.set({ year: Number(v) })
-          }" />
-      </CalendarHeading> -->
-		</CalendarHeader>
+			</Calendar.Next>
+			<!-- <Calendar.Heading class="flex w-full text-sm font-medium items-center justify-between gap-2">
+				<SelectBox placeholder="Select month" aria-label="Select month" :root="{ defaultValue: placeholder.month.toString() }"
+				class="w-3/5" contentClass="h-52" :items="monthItems(date)" @update:modelValue="(v) => {
+					if (!v || !placeholder) return
+					if (Number(v) === placeholder?.month) return
+					placeholder = placeholder.set({ month: Number(v) })
+				}" />
+				<SelectBox placeholder="Select year" aria-label="Select year" :root="{ defaultValue: placeholder.year.toString() }"
+				class="w-2/5" contentClass="h-52" :items="yearItems(date)" @update:modelValue="(v) => {
+					if (!v || !placeholder) return
+					if (Number(v) === placeholder?.year) return
+					placeholder = placeholder.set({ year: Number(v) })
+				}" />
+			</Calendar.Heading> -->
+		</Calendar.Header>
 		<div class="flex flex-col space-y-4 pt-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
-			<CalendarGrid v-for="month in grid" :key="month.value.toString()" class="w-full border-collapse space-y-2">
-				<CalendarGridHead class="grid">
-					<CalendarGridRow class="flex gap-1">
-						<CalendarHeadCell v-for="day in weekDays" :key="day"
+			<Calendar.Grid v-for="month in grid" :key="month.value.toString()" class="w-full border-collapse space-y-2">
+				<Calendar.GridHead class="grid">
+					<Calendar.GridRow class="flex gap-1">
+						<Calendar.HeadCell v-for="day in weekDays" :key="day"
 							class="w-8 rounded-md text-[0.8rem] font-normal text-muted-foreground">
 							{{ _StartCase(day) }}
-						</CalendarHeadCell>
-					</CalendarGridRow>
-				</CalendarGridHead>
-				<CalendarGridBody class="grid space-y-1">
-					<CalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`"
+						</Calendar.HeadCell>
+					</Calendar.GridRow>
+				</Calendar.GridHead>
+				<Calendar.GridBody class="grid space-y-1">
+					<Calendar.GridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`"
 						class="flex gap-1">
-						<CalendarCell v-for="weekDate in weekDates" :key="weekDate.toString()" :date="weekDate"
+						<Calendar.Cell v-for="weekDate in weekDates" :key="weekDate.toString()" :date="weekDate"
 							class="relative size-8 p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([data-selected])]:rounded-md [&:has([data-selected])]:bg-accent [&:has([data-selected][data-outside-view])]:bg-accent/50">
-							<CalendarCellTrigger :day="weekDate" :month="month.value" :class="cn(
+							<Calendar.CellTrigger :day="weekDate" :month="month.value" :class="cn(
 								buttonVariants({ variant: 'ghost' }),
 								'size-8 p-0 font-normal',
 								'[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',
@@ -105,10 +102,10 @@ const yearItems = (date: DateValue) =>
 								// Outside months
 								'data-[outside-view]:text-muted-foreground data-[outside-view]:opacity-50 [&[data-outside-view][data-selected]]:bg-accent/50 [&[data-outside-view][data-selected]]:text-muted-foreground [&[data-outside-view][data-selected]]:opacity-30',
 							)" />
-						</CalendarCell>
-					</CalendarGridRow>
-				</CalendarGridBody>
-			</CalendarGrid>
+						</Calendar.Cell>
+					</Calendar.GridRow>
+				</Calendar.GridBody>
+			</Calendar.Grid>
 		</div>
-	</CalendarRoot>
+	</Calendar.Root>
 </template>

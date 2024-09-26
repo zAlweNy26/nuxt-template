@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { AvatarFallback, type AvatarFallbackProps, AvatarImage, type AvatarImageProps, AvatarRoot } from 'radix-vue'
+import type { AvatarFallbackProps, AvatarImageProps } from 'radix-vue'
+import { Avatar } from 'radix-vue/namespaced'
 import { avatarVariant, type AvatarVariants } from '.'
 
 const props = defineProps<AvatarImageProps & AvatarFallbackProps & {
@@ -10,10 +11,10 @@ const props = defineProps<AvatarImageProps & AvatarFallbackProps & {
 </script>
 
 <template>
-	<AvatarRoot :class="cn(avatarVariant({ size, shape }), props.class)">
-		<AvatarImage :src class="size-full object-cover" />
-		<AvatarFallback :delayMs asChild>
+	<Avatar.Root :class="cn(avatarVariant({ size, shape }), props.class)">
+		<Avatar.Image :src class="size-full object-cover" />
+		<Avatar.Fallback :delayMs asChild>
 			<slot />
-		</AvatarFallback>
-	</AvatarRoot>
+		</Avatar.Fallback>
+	</Avatar.Root>
 </template>
