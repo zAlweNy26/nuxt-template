@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { MenubarRoot, type MenubarRootEmits, type MenubarRootProps, useForwardPropsEmits } from 'radix-vue'
 
+defineOptions({ inheritAttrs: false })
+
 const props = defineProps<MenubarRootProps & { class?: ClassValue }>()
 const emits = defineEmits<MenubarRootEmits>()
 

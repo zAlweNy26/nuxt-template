@@ -4,9 +4,7 @@ import { useForwardPropsEmits } from 'radix-vue'
 import { Select } from 'radix-vue/namespaced'
 import { type SelectItems, type SelectVariants, selectVariants } from '.'
 
-defineOptions({
-	inheritAttrs: false,
-})
+defineOptions({ inheritAttrs: false })
 
 const props = defineProps<{
 	root?: SelectRootProps

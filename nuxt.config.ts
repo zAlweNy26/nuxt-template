@@ -8,7 +8,10 @@ export default defineNuxtConfig({
 	compatibilityDate: '2024-07-03',
 	ssr: true,
 	css: ['~/assets/globals.css'],
-	devtools: { enabled: true },
+	devtools: {
+		enabled: true,
+		componentInspector: false,
+	},
 	modules: [
 		'shadcn-nuxt',
 		'nuxt-api-party',

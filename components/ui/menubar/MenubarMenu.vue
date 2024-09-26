@@ -2,6 +2,8 @@
 import type { MenubarContentProps, MenubarMenuProps } from 'radix-vue'
 import { Menubar } from 'radix-vue/namespaced'
 
+defineOptions({ inheritAttrs: false })
+
 const props = defineProps<MenubarMenuProps & {
 	disabled?: boolean
 	contentClass?: ClassValue

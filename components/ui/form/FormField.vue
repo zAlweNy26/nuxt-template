@@ -2,9 +2,7 @@
 import { Slot as RadixSlot } from 'radix-vue'
 import { ErrorMessage as FormError, Field as FormGroup } from 'vee-validate'
 
-defineOptions({
-	inheritAttrs: false,
-})
+defineOptions({ inheritAttrs: false })
 
 const props = defineProps<{
 	name: string
