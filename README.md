@@ -9,13 +9,16 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 ## Features
 
 - 💨 Tailwind CSS
-- 📏 ESLint rules
-- ✨ Shadcn & Radix Vue components
-- 🔔 Nuxt Icon component
-- 🛹 State & Store Management (Pinia)
-- 📦 Vue Composition Collection (VueUse)
-- 🌙 Theme Switcher (Color Mode)
-- 🇬🇧 Language Switcher (i18n)
+- ✨ 50+ Vue components
+- 📏 Linting rules ([ESLint](https://nuxt.com/modules/eslint))
+- 🔔 Icon component for Iconify ([Icon](https://nuxt.com/modules/icon))
+- 👀 Server Proxy ([Api Party](https://nuxt.com/modules/api-party))
+- 🧱 OWASP And Helmet security patterns ([Security](https://nuxt.com/modules/security))
+- 🛹 State & Store Management ([Pinia](https://nuxt.com/modules/pinia))
+- 📦 Vue Composition Collection ([VueUse](https://nuxt.com/modules/vueuse))
+- 🌙 Theme Switcher ([Color Mode](https://nuxt.com/modules/color-mode))
+- 🇬🇧 Language Switcher ([I18n](https://nuxt.com/modules/i18n))
+- 🔡 Font manager ([Fonts](https://nuxt.com/modules/fonts))
 
 ## Setup
 
@@ -55,5 +58,4 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - [Tailwind CSS](https://tailwindcss.com)
 - [Shadcn Vue](https://www.shadcn-vue.com)
 - [Radix Vue](https://www.radix-vue.com)
-- [VueUse](https://vueuse.org)
 - [Nuxt UI](https://ui.nuxt.com)
