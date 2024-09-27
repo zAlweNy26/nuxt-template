@@ -2,7 +2,7 @@
 import { ConfigProvider, useId as useRadixId } from 'radix-vue'
 
 const { title } = useAppConfig()
-const { textDirection } = storeToRefs(useSettingsStore())
+const { textDirection, isDark } = storeToRefs(useSettingsStore())
 
 useHead({
 	titleTemplate: t => t ? `${t} - ${title}` : title,
@@ -17,6 +17,6 @@ const useIdFn = () => useId() ?? useRadixId()
 			<NuxtPage />
 		</NuxtLayout>
 		<Modals />
-		<Toasts />
+		<Toasts :theme="isDark ? 'dark' : 'light'" richColors />
 	</ConfigProvider>
 </template>

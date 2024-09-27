@@ -578,6 +578,9 @@ onMounted(async () => {
 			<Button variant="info" @click="$toast.info('Toast info')">
 				Info
 			</Button>
+			<Button variant="error" @click="$toast.error('Toast error')">
+				Error
+			</Button>
 			<Button variant="secondary" @click="$modal.open(Avatar, {
 				src: 'https://github.com/radix-vue.png',
 			}, {
