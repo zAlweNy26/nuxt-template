@@ -1,4 +1,4 @@
-import type { DialogContentProps } from 'radix-vue'
+import type { DialogContentProps } from 'reka-ui'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 export { default as SideSheet } from './SideSheet.vue'

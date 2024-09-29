@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { SliderRootEmits, SliderRootProps } from 'radix-vue'
-import { useForwardPropsEmits } from 'radix-vue'
-import { Slider } from 'radix-vue/namespaced'
+import type { SliderRootEmits, SliderRootProps } from 'reka-ui'
+import { useForwardPropsEmits } from 'reka-ui'
+import { Slider } from 'reka-ui/namespaced'
 
 const props = defineProps<SliderRootProps & { class?: ClassValue }>()
 const emits = defineEmits<SliderRootEmits>()

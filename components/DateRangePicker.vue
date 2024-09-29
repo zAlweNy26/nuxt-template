@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DateRange } from 'radix-vue'
+import type { DateRange } from 'reka-ui'
 import { DateFormatter, getLocalTimeZone } from '@internationalized/date'
 
 const { locale } = storeToRefs(useSettingsStore())

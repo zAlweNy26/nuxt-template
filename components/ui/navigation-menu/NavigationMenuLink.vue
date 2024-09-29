@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NuxtLinkProps } from '#app'
 import { NuxtLinkLocale } from '#components'
-import { NavigationMenuLink, type NavigationMenuLinkEmits, type NavigationMenuLinkProps, useForwardPropsEmits } from 'radix-vue'
+import { NavigationMenuLink, type NavigationMenuLinkEmits, type NavigationMenuLinkProps, useForwardPropsEmits } from 'reka-ui'
 
 const props = defineProps<NavigationMenuLinkProps & NuxtLinkProps & { class?: ClassValue }>()
 const emits = defineEmits<NavigationMenuLinkEmits>()

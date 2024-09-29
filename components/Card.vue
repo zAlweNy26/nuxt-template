@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Primitive } from 'radix-vue'
+import { Primitive } from 'reka-ui'
 </script>
 
 <template>

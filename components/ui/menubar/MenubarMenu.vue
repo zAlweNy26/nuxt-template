@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { MenubarContentProps, MenubarMenuProps } from 'radix-vue'
-import { Menubar } from 'radix-vue/namespaced'
+import type { MenubarContentProps, MenubarMenuProps } from 'reka-ui'
+import { Menubar } from 'reka-ui/namespaced'
 
 defineOptions({ inheritAttrs: false })
 
@@ -22,7 +22,7 @@ const contentProps = computed<MenubarContentProps>(() => ({
 <template>
 	<Menubar.Menu :value>
 		<Menubar.Trigger :class="cn(
-			'flex justify-between cursor-pointer gap-2 select-none items-center rounded-sm px-3 py-1 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
+			'flex justify-between transition-colors cursor-pointer gap-2 select-none items-center rounded-sm px-3 py-1 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
 			props.class,
 		)">
 			<slot />

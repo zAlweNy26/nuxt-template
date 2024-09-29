@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { BreadcrumbItems } from '.'
-import { Primitive } from 'radix-vue'
+import { Primitive } from 'reka-ui'
 
 defineProps<{
 	listClass?: ClassValue

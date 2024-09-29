@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SortingState } from '@tanstack/vue-table'
+import type { CheckboxCheckedState } from 'reka-ui'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 import { Avatar, Button, Checkbox, DataTable, Icon } from '#components'
 import { z } from 'zod'
@@ -39,7 +40,7 @@ const tabsItems: TabItems = [
 	{ id: 'third', label: 'Third' },
 ]
 
-const selectItems: SelectItems = [
+const selectItems: SelectItems<string> = [
 	{ label: 'Text', value: 'text' },
 	{ label: 'Example', value: 'example' },
 	{ label: 'Bar', value: 'bar' },
@@ -89,7 +90,7 @@ const carouselItems = [
 	},
 ]
 
-const navigationItems = [
+/* const navigationItems = [
 	{
 		title: 'Alert Dialog',
 		href: '/docs/primitives/alert-dialog',
@@ -125,7 +126,7 @@ const navigationItems = [
 		description:
 			'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
 	},
-]
+] */
 
 const treeItems: TreeItems<{ title: string }> = [
 	{
@@ -155,8 +156,10 @@ const treeItems: TreeItems<{ title: string }> = [
 ]
 
 const progress = ref(50)
+const toggle = ref(false)
 const slider = ref([50])
 const tags = ref<string[]>([])
+const checkbox = ref<CheckboxCheckedState>('indeterminate')
 
 const zodSchema = z.object({
 	username: z.string().min(3).describe('This is your public display name.'),
@@ -175,13 +178,13 @@ const columns: DataColumnDef<Payment>[] = [
 		accessorKey: 'select',
 		pinned: 'left',
 		header: ({ table }) => h(Checkbox, {
-			'checked': table.getIsAllPageRowsSelected(),
-			'onUpdate:checked': value => table.toggleAllPageRowsSelected(!!value),
+			'modelValue': table.getIsAllPageRowsSelected(),
+			'onUpdate:modelValue': value => table.toggleAllPageRowsSelected(!!value),
 			'ariaLabel': 'Select all',
 		}),
 		cell: ({ row }) => h(Checkbox, {
-			'checked': row.getIsSelected(),
-			'onUpdate:checked': (value: boolean) => row.toggleSelected(!!value),
+			'modelValue': row.getIsSelected(),
+			'onUpdate:modelValue': value => row.toggleSelected(!!value),
 			'ariaLabel': 'Select row',
 		}),
 		enableSorting: false,
@@ -407,8 +410,8 @@ onMounted(async () => {
 				<p>Accordion 3 content</p>
 			</template>
 		</Accordion>
-		<TagsInput v-model="tags" />
-		<Textarea />
+		<TagsInput v-model="tags" :input="{ placeholder: 'Add tags...' }" />
+		<Textarea placeholder="Write some text..." />
 		<DropdownMenu :content="{ align: 'end' }">
 			<Button variant="outline" class="ml-auto">
 				Dropdown Menu
@@ -482,8 +485,8 @@ onMounted(async () => {
 					</Button>
 					<template #content>
 						<DropdownMenuCheckItem v-for="col in columnsItems" :key="col.value"
-							:checked="selectedColumns.includes(col.value)" class="capitalize"
-							@update:checked="(v) => exampleTable?.table.getColumn(col.value)?.toggleVisibility(v)">
+							:modelValue="selectedColumns.includes(col.value)" class="capitalize"
+							@update:modelValue="(v) => exampleTable?.table.getColumn(col.value)?.toggleVisibility(v)">
 							{{ col.label }}
 						</DropdownMenuCheckItem>
 					</template>
@@ -518,13 +521,13 @@ onMounted(async () => {
 				<p>Example content</p>
 			</template>
 		</Collapsible>
-		<Command :items="commandItems" noGroupAsFirst />
-		<ComboBox placeholder="Select an item..." :items="commandItems" />
+		<Command placeholder="Search an item" :items="commandItems" noGroupAsFirst />
+		<ComboBox placeholder="Select an item" searchPlaceholder="Search an item" :items="commandItems" />
 		<Card>
 			<template #header>
 				<Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
-				<Checkbox id="terms2" checked="indeterminate" size="sm" text="Accept terms and conditions" />
-				<Checkbox id="terms3" size="md" text="Accept terms and conditions" />
+				<Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
+				<Checkbox id="terms3" v-model="checkbox" size="md" text="Accept terms and conditions" />
 				<Checkbox id="terms4" size="lg" text="Accept terms and conditions" />
 			</template>
 			<InputBox label="Username" color="primary" size="xs" />
@@ -532,7 +535,7 @@ onMounted(async () => {
 			<InputBox label="Username" color="warning" size="md" />
 			<InputBox label="Username" color="success" size="lg" />
 			<template #footer>
-				<Toggle square>
+				<Toggle v-model="toggle" square>
 					<Icon name="ph:text-b-bold" class="size-4" />
 				</Toggle>
 				<Button variant="ghost">
@@ -569,25 +572,28 @@ onMounted(async () => {
 		<DatePicker />
 		<DateRangePicker />
 		<ComboGroup>
-			<Button variant="warning" @click="$toast.warning('Toast warning')">
+			<Button variant="secondary" @click="$toast('Toast secondary', { closeButton: true })">
+				Secondary
+			</Button>
+			<Button variant="warning" @click="$toast.warning('Toast warning', { action: { label: 'Action', onClick: () => console.log('Action') } })">
 				Warning
 			</Button>
 			<Button variant="success" @click="$toast.success('Toast success')">
 				Success
 			</Button>
-			<Button variant="info" @click="$toast.info('Toast info')">
+			<Button variant="info" @click="$toast.info('Toast info', { invert: true })">
 				Info
 			</Button>
-			<Button variant="error" @click="$toast.error('Toast error')">
+			<Button variant="error" @click="$toast.error('Toast error', { invert: true })">
 				Error
 			</Button>
-			<Button variant="secondary" @click="$modal.open(Avatar, {
+			<Button variant="outline" @click="$modal.open(Avatar, {
 				src: 'https://github.com/radix-vue.png',
 			}, {
 				title: 'Modal title',
 				description: 'Modal description',
 			})">
-				Secondary
+				Outline
 			</Button>
 		</ComboGroup>
 		<NumberInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
@@ -683,7 +689,7 @@ onMounted(async () => {
 				View
 				<template #content>
 					<MenubarCheckItem>Always Show Bookmarks Bar</MenubarCheckItem>
-					<MenubarCheckItem checked>
+					<MenubarCheckItem modelValue>
 						Always Show Full URLs
 					</MenubarCheckItem>
 					<MenubarSeparator />
@@ -722,7 +728,7 @@ onMounted(async () => {
 				</template>
 			</MenubarMenu>
 		</Menubar>
-		<NavigationMenu>
+		<!-- <NavigationMenu>
 			<NavigationMenuItem>
 				Getting started
 				<template #content>
@@ -789,7 +795,7 @@ onMounted(async () => {
 			<NavigationMenuLink to="/docs">
 				Documentation
 			</NavigationMenuLink>
-		</NavigationMenu>
+		</NavigationMenu> -->
 		<ContextMenu class="w-64">
 			<Card class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
 				Right click here
@@ -817,7 +823,7 @@ onMounted(async () => {
 					</template>
 				</ContextMenuSub>
 				<ContextMenuSeparator />
-				<ContextMenuCheckItem checked>
+				<ContextMenuCheckItem modelValue>
 					Show Bookmarks Bar
 				</ContextMenuCheckItem>
 				<ContextMenuCheckItem>Show Full URLs</ContextMenuCheckItem>

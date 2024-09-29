@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { H3Error } from 'h3'
-import { ConfigProvider, useId as useRadixId } from 'radix-vue'
+import { ConfigProvider, useId as useRekaId } from 'reka-ui'
 
 const props = defineProps<{
 	error: H3Error
@@ -20,7 +20,7 @@ const errorMsg = computed(() => `errors.routes.${error.value.statusCode}`)
 
 const handleError = () => clearError({ redirect: localePath('/') })
 
-const useIdFn = () => useId() ?? useRadixId()
+const useIdFn = () => useId() ?? useRekaId()
 </script>
 
 <template>

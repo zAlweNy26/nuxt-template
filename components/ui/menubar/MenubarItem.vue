@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenubarItem, type MenubarItemEmits, type MenubarItemProps, useForwardPropsEmits } from 'radix-vue'
+import { MenubarItem, type MenubarItemEmits, type MenubarItemProps, useForwardPropsEmits } from 'reka-ui'
 
 const props = defineProps<MenubarItemProps & {
 	class?: ClassValue
