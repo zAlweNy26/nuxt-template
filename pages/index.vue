@@ -131,28 +131,28 @@ const carouselItems = [
 const treeItems: TreeItems<{ title: string }> = [
 	{
 		title: 'composables',
-		icon: 'lucide:folder',
+		icon: 'ph:folder',
 		children: [
-			{ title: 'useAuth.ts', icon: 'vscode-icons:file-type-typescript' },
-			{ title: 'useUser.ts', icon: 'vscode-icons:file-type-typescript' },
+			{ title: 'useAuth.ts', icon: 'ph:file' },
+			{ title: 'useUser.ts', icon: 'ph:file' },
 		],
 	},
 	{
 		title: 'components',
-		icon: 'lucide:folder',
+		icon: 'ph:folder',
 		children: [
 			{
 				title: 'Home',
-				icon: 'lucide:folder',
+				icon: 'ph:folder',
 				children: [
-					{ title: 'Card.vue', icon: 'vscode-icons:file-type-vue' },
-					{ title: 'Button.vue', icon: 'vscode-icons:file-type-vue' },
+					{ title: 'Card.vue', icon: 'ph:file' },
+					{ title: 'Button.vue', icon: 'ph:file' },
 				],
 			},
 		],
 	},
-	{ title: 'app.vue', icon: 'vscode-icons:file-type-vue' },
-	{ title: 'nuxt.config.ts', icon: 'vscode-icons:file-type-nuxt' },
+	{ title: 'app.vue', icon: 'ph:file' },
+	{ title: 'nuxt.config.ts', icon: 'ph:file' },
 ]
 
 const progress = ref(50)
@@ -357,11 +357,11 @@ onMounted(async () => {
 		<ProgressBar v-model="progress" :max="60" />
 		<Slider v-model="slider" :max="100" :min="10" />
 		<SelectBox placeholder="Select an item" :items="selectItems" />
-		<Avatar src="https://github.com/radix-vue.png" size="xs" />
-		<Avatar src="https://github.com/radix-vue.png" size="sm" />
-		<Avatar src="https://github.com/radix-vue.png" size="md" />
+		<Avatar src="https://reka-ui.com/logo.svg" size="xs" />
+		<Avatar src="https://reka-ui.com/logo.svg" size="sm" />
+		<Avatar src="https://reka-ui.com/logo.svg" size="md" />
 		<Chip size="lg">
-			<Avatar src="https://github.com/radix-vue.png" size="lg" />
+			<Avatar src="https://reka-ui.com/logo.svg" size="lg" />
 		</Chip>
 		<Form :schema="zodSchema" @submit="(e) => console.log('valid', e)" @error="(e) => console.log('error', e)"
 			@reset="() => console.log('reset')">
@@ -588,7 +588,7 @@ onMounted(async () => {
 				Error
 			</Button>
 			<Button variant="outline" @click="$modal.open(Avatar, {
-				src: 'https://github.com/radix-vue.png',
+				src: 'https://reka-ui.com/logo.svg',
 			}, {
 				title: 'Modal title',
 				description: 'Modal description',
@@ -736,12 +736,12 @@ onMounted(async () => {
 						<li class="row-span-3">
 							<a class="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
 								href="/">
-								<img src="https://www.radix-vue.com/logo.svg" class="size-6">
+								<img src="https://reka-ui.com/logo.svg" class="size-6">
 								<div class="mb-2 mt-4 text-lg font-medium">
 									shadcn/ui
 								</div>
 								<p class="text-sm leading-tight text-muted-foreground">
-									Beautifully designed components built with Radix UI and
+									Beautifully designed components built with Reka UI and
 									Tailwind CSS.
 								</p>
 							</a>
@@ -751,7 +751,7 @@ onMounted(async () => {
 								class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
 								<div class="text-sm font-medium leading-none">Introduction</div>
 								<p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-									Re-usable components built using Radix UI and Tailwind CSS.
+									Re-usable components built using Reka UI and Tailwind CSS.
 								</p>
 							</a>
 						</li>

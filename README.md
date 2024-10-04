@@ -58,6 +58,5 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 - [Nuxt 3](https://nuxt.com)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Shadcn Vue](https://www.shadcn-vue.com)
-- [Radix Vue](https://www.radix-vue.com)
 - [Reka UI](https://reka-ui.com)
 - [Nuxt UI](https://ui.nuxt.com)
