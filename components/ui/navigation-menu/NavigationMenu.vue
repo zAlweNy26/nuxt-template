@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { NavigationMenuRootEmits, NavigationMenuRootProps } from 'radix-vue'
-import { useForwardPropsEmits } from 'radix-vue'
-import { NavigationMenu } from 'radix-vue/namespaced'
+import type { NavigationMenuRootEmits, NavigationMenuRootProps } from 'reka-ui'
+import { useForwardPropsEmits } from 'reka-ui'
+import { NavigationMenu } from 'reka-ui/namespaced'
 
 const props = defineProps<NavigationMenuRootProps & { class?: ClassValue }>()
 
@@ -29,10 +29,9 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 					:class="cn('relative size-2 rotate-45 rounded-tl-sm bg-border shadow-md', orientation === 'vertical' ? 'left-[60%]' : 'top-[60%]')" />
 			</NavigationMenu.Indicator>
 		</NavigationMenu.List>
-		<div
-			:class="cn('absolute flex justify-center', orientation === 'vertical' ? 'top-0 left-full' : 'left-0 top-full')">
+		<div :class="cn('absolute flex justify-center', orientation === 'vertical' ? 'top-0 left-full' : 'left-0 top-full')">
 			<NavigationMenu.Viewport :class="cn(
-				'relative h-[--radix-navigation-menu-viewport-height] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[--radix-navigation-menu-viewport-width]',
+				'relative h-[--reka-navigation-menu-viewport-height] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[--reka-navigation-menu-viewport-width]',
 				orientation === 'vertical' ? 'ms-1.5' : 'mt-1.5',
 			)" />
 		</div>

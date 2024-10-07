@@ -1,4 +1,4 @@
-import type { PrimitiveProps } from 'radix-vue'
+import type { PrimitiveProps } from 'reka-ui'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 export { default as Button } from './Button.vue'

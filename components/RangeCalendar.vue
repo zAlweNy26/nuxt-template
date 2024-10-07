@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { RangeCalendarRootEmits, RangeCalendarRootProps } from 'radix-vue'
+import type { RangeCalendarRootEmits, RangeCalendarRootProps } from 'reka-ui'
 import { getLocalTimeZone, today } from '@internationalized/date'
-import { useForwardPropsEmits } from 'radix-vue'
-import { RangeCalendar } from 'radix-vue/namespaced'
+import { useForwardPropsEmits } from 'reka-ui'
+import { RangeCalendar } from 'reka-ui/namespaced'
 import { buttonVariants } from './ui/button'
 
 const props = withDefaults(defineProps<Omit<RangeCalendarRootProps, 'locale'> & { class?: ClassValue }>(), {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { TabsRootProps } from 'radix-vue'
+import type { TabsRootProps } from 'reka-ui'
 import type { TabItems } from '.'
-import { Tabs } from 'radix-vue/namespaced'
+import { Tabs } from 'reka-ui/namespaced'
 
 const props = defineProps<{
 	root?: TabsRootProps
@@ -28,8 +28,8 @@ onMounted(() => {
 		)">
 			<Tabs.Indicator :class="cn(
 				'absolute left-0 transition-[width,transform] duration-200', props.root?.orientation === 'vertical'
-					? 'w-full top-0 px-1 h-[--radix-tabs-indicator-size] translate-y-[--radix-tabs-indicator-position]'
-					: 'h-full translate-x-[--radix-tabs-indicator-position] py-1 bottom-0 w-[--radix-tabs-indicator-size]',
+					? 'w-full top-0 px-1 h-[--reka-tabs-indicator-size] translate-y-[--reka-tabs-indicator-position]'
+					: 'h-full translate-x-[--reka-tabs-indicator-position] py-1 bottom-0 w-[--reka-tabs-indicator-size]',
 			)">
 				<div class="size-full rounded-md bg-background shadow" />
 			</Tabs.Indicator>

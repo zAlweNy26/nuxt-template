@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenubarLabel } from 'radix-vue'
+import { MenubarLabel } from 'reka-ui'
 
 const props = defineProps<{ class?: ClassValue }>()
 </script>

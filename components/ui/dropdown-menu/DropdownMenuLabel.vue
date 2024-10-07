@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DropdownMenuLabel } from 'radix-vue'
+import { DropdownMenuLabel } from 'reka-ui'
 
 const props = defineProps<{ class?: ClassValue }>()
 </script>

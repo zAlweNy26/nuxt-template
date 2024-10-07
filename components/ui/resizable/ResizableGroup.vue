@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SplitterGroup, type SplitterGroupEmits, type SplitterGroupProps, useForwardPropsEmits } from 'radix-vue'
+import { SplitterGroup, type SplitterGroupEmits, type SplitterGroupProps, useForwardPropsEmits } from 'reka-ui'
 
 const props = defineProps<SplitterGroupProps & { class?: ClassValue }>()
 const emits = defineEmits<SplitterGroupEmits>()

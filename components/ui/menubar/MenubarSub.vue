@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { MenubarSubEmits, MenubarSubProps } from 'radix-vue'
-import { useForwardPropsEmits } from 'radix-vue'
-import { Menubar } from 'radix-vue/namespaced'
+import type { MenubarSubEmits, MenubarSubProps } from 'reka-ui'
+import { useForwardPropsEmits } from 'reka-ui'
+import { Menubar } from 'reka-ui/namespaced'
 
 const props = defineProps<MenubarSubProps & {
 	class?: ClassValue

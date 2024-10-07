@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Dialog } from 'radix-vue/namespaced'
+import { Dialog } from 'reka-ui/namespaced'
 import { type SheetProps, type SheetVariants, sheetVariants } from '.'
 
 defineOptions({ inheritAttrs: false })

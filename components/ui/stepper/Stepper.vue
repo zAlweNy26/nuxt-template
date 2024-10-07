@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { StepperRootEmits, StepperRootProps } from 'radix-vue'
+import type { StepperRootEmits, StepperRootProps } from 'reka-ui'
 import type { StepperItems } from '.'
-import { Primitive, useForwardPropsEmits } from 'radix-vue'
-import { Stepper } from 'radix-vue/namespaced'
+import { Primitive, useForwardPropsEmits } from 'reka-ui'
+import { Stepper } from 'reka-ui/namespaced'
 
 const props = withDefaults(defineProps<StepperRootProps & {
 	class?: ClassValue

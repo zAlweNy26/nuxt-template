@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SwitchRoot, type SwitchRootEmits, type SwitchRootProps, SwitchThumb, useForwardPropsEmits } from 'radix-vue'
+import { SwitchRoot, type SwitchRootEmits, type SwitchRootProps, SwitchThumb, useForwardPropsEmits } from 'reka-ui'
 
 const props = defineProps<SwitchRootProps & {
 	class?: ClassValue

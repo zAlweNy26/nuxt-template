@@ -2,7 +2,7 @@
 import {
 	MenubarCheckboxItem, type MenubarCheckboxItemEmits, type MenubarCheckboxItemProps,
 	MenubarItemIndicator, useForwardPropsEmits,
-} from 'radix-vue'
+} from 'reka-ui'
 
 const props = defineProps<MenubarCheckboxItemProps & { class?: ClassValue }>()
 const emits = defineEmits<MenubarCheckboxItemEmits>()

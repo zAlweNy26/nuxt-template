@@ -1,18 +1,21 @@
 <script setup lang="ts" generic="T extends AcceptableValue">
-import type { AcceptableValue, CommandItems } from './ui/command'
+import type { AcceptableValue } from 'reka-ui'
+import type { CommandItems } from './ui/command'
 
 defineProps<{
 	placeholder: string
 	searchPlaceholder?: string
+	displayValue?: (value: T) => string
 	items: CommandItems<T>
 }>()
 
 const open = ref(false)
-const value = ref<T>()
+const value = defineModel<T>()
+const search = defineModel<string>('search')
 </script>
 
 <template>
-	<Popover v-model:open="open" class="w-[--radix-popper-anchor-width] max-w-full p-0">
+	<Popover v-model:open="open" class="w-[--reka-popper-anchor-width] max-w-full p-0">
 		<slot>
 			<Button variant="outline" role="combobox" :aria-expanded="open" class="w-48 justify-between">
 				{{ value ? items.find((item) => item.value === value)?.label : placeholder }}
@@ -20,7 +23,8 @@ const value = ref<T>()
 			</Button>
 		</slot>
 		<template #content>
-			<Command v-model="value" v-model:open="open" :items itemClass="justify-between">
+			<Command v-model="value" v-model:open="open" v-model:search="search" :items :displayValue
+				:input="{ autoFocus: false }" :placeholder="searchPlaceholder" itemClass="justify-between">
 				<template v-if="$slots.empty" #empty>
 					<slot name="empty" />
 				</template>

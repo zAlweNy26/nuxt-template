@@ -1,31 +1,35 @@
-<script lang="ts" setup>
-import type { SelectRootEmits, SelectRootProps } from 'radix-vue'
-import { useForwardPropsEmits } from 'radix-vue'
-import { Select } from 'radix-vue/namespaced'
+<script lang="ts" setup generic="T extends AcceptableValue">
+import type { AcceptableValue, SelectRootEmits, SelectRootProps } from 'reka-ui'
+import { useForwardPropsEmits } from 'reka-ui'
+import { Select } from 'reka-ui/namespaced'
 import { type SelectItems, type SelectVariants, selectVariants } from '.'
 
 defineOptions({ inheritAttrs: false })
 
 const props = defineProps<{
-	root?: SelectRootProps
+	root?: Omit<SelectRootProps, 'modelValue'>
 	class?: ClassValue
 	color?: SelectVariants['color']
 	size?: SelectVariants['size']
 	contentClass?: ClassValue
 	placeholder: string
 	disabled?: boolean
-	items: SelectItems
+	items: SelectItems<T>
 }>()
 
-const emits = defineEmits<SelectRootEmits>()
+const emits = defineEmits<SelectRootEmits<T>>()
+
+const model = defineModel<T | Array<T>>()
 
 const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 </script>
 
 <template>
-	<Select.Root v-bind="forwarded">
+	<Select.Root v-model="model" v-bind="forwarded">
 		<Select.Trigger v-bind="$attrs" :class="cn(selectVariants({ color, size }), props.class)">
-			<Select.Value :placeholder />
+			<Select.Value aria-label="value">
+				{{ items.find((item) => item.value === model)?.label || placeholder }}
+			</Select.Value>
 			<Select.Icon asChild>
 				<Icon name="ph:caret-up-down" class="size-4 opacity-50" />
 			</Select.Icon>
@@ -39,22 +43,20 @@ const forwarded = useForwardPropsEmits(() => props.root ?? {}, emits)
 					<Icon name="ph:caret-up" class="size-4" />
 				</Select.ScrollUpButton>
 				<Select.Viewport
-					class="h-[--radix-select-trigger-height] w-full min-w-[--radix-select-trigger-width] p-1">
+					class="h-[--reka-select-trigger-height] w-full min-w-[--reka-select-trigger-width] p-1">
 					<Select.Group class="w-full p-1">
-						<Select.Item v-for="item in props.items" :key="item.value" :value="item.value"
-							class="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-accent focus:text-accent-foreground">
-							<span class="absolute right-2 flex size-3.5 items-center justify-center">
-								<Select.ItemIndicator>
-									<slot name="icon">
-										<Icon name="ph:check-bold" class="size-4" />
-									</slot>
-								</Select.ItemIndicator>
-							</span>
+						<Select.Item v-for="(item, index) in props.items" :key="`si-${index}`" :value="item.value"
+							class="relative flex w-full cursor-default select-none items-center justify-between gap-2 rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-accent focus:text-accent-foreground">
 							<slot :item>
 								<Select.ItemText>
 									{{ item.label }}
 								</Select.ItemText>
 							</slot>
+							<Select.ItemIndicator asChild>
+								<slot name="icon">
+									<Icon name="ph:check-bold" class="size-4" />
+								</slot>
+							</Select.ItemIndicator>
 						</Select.Item>
 					</Select.Group>
 				</Select.Viewport>

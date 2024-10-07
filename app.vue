@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ConfigProvider, useId as useRadixId } from 'radix-vue'
+import { ConfigProvider, useId as useRekaId } from 'reka-ui'
 
 const { title } = useAppConfig()
 const { textDirection, isDark } = storeToRefs(useSettingsStore())
@@ -8,7 +8,7 @@ useHead({
 	titleTemplate: t => t ? `${t} - ${title}` : title,
 })
 
-const useIdFn = () => useId() ?? useRadixId()
+const useIdFn = () => useId() ?? useRekaId()
 </script>
 
 <template>

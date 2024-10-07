@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { AccordionRootEmits, AccordionRootProps } from 'radix-vue'
+import type { AccordionRootEmits, AccordionRootProps } from 'reka-ui'
 import type { AccordionItems } from '.'
-import { useForwardPropsEmits } from 'radix-vue'
-import { Accordion } from 'radix-vue/namespaced'
+import { useForwardPropsEmits } from 'reka-ui'
+import { Accordion } from 'reka-ui/namespaced'
 
 const props = withDefaults(defineProps<AccordionRootProps & {
 	items: AccordionItems

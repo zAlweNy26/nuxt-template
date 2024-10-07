@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { AvatarFallbackProps, AvatarImageProps } from 'radix-vue'
-import { Avatar } from 'radix-vue/namespaced'
+import type { AvatarFallbackProps, AvatarImageProps } from 'reka-ui'
+import { Avatar } from 'reka-ui/namespaced'
 import { avatarVariant, type AvatarVariants } from '.'
 
 const props = defineProps<AvatarImageProps & AvatarFallbackProps & {

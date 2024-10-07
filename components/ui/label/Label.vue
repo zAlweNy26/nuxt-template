@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Label, type LabelProps } from 'radix-vue'
+import { Label, type LabelProps } from 'reka-ui'
 import { type LabelVariants, labelVariants } from '.'
 
 const props = defineProps<LabelProps & {

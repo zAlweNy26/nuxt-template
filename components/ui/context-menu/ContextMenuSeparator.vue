@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ContextMenuSeparator, type ContextMenuSeparatorProps } from 'radix-vue'
+import { ContextMenuSeparator, type ContextMenuSeparatorProps } from 'reka-ui'
 
 const props = defineProps<ContextMenuSeparatorProps & { class?: ClassValue }>()
 

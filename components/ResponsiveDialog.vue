@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { SheetProps } from './ui/sheet'
-import { useForwardPropsEmits } from 'radix-vue'
+import { useForwardPropsEmits } from 'reka-ui'
 
 const props = withDefaults(defineProps<SheetProps>(), {
 	closable: true,

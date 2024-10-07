@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { MenubarRadioGroupEmits, MenubarRadioGroupProps } from 'radix-vue'
+import type { MenubarRadioGroupEmits, MenubarRadioGroupProps } from 'reka-ui'
 import type { MenuRadioItems } from '.'
-import { useForwardPropsEmits } from 'radix-vue'
-import { Menubar } from 'radix-vue/namespaced'
+import { useForwardPropsEmits } from 'reka-ui'
+import { Menubar } from 'reka-ui/namespaced'
 
 const props = defineProps<MenubarRadioGroupProps & {
 	class?: ClassValue

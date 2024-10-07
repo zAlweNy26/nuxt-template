@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { PaginationRootProps } from 'radix-vue'
+import type { PaginationRootProps } from 'reka-ui'
 import type { ButtonProps } from './ui/button'
-import { Pagination } from 'radix-vue/namespaced'
+import { Pagination } from 'reka-ui/namespaced'
 
 const props = withDefaults(defineProps<Omit<PaginationRootProps, 'as' | 'asChild' | 'page'> & {
 	size?: ButtonProps['size']
@@ -12,7 +12,6 @@ const props = withDefaults(defineProps<Omit<PaginationRootProps, 'as' | 'asChild
 	defaultPage: 1,
 	siblingCount: 1,
 	showEdges: true,
-	itemsPerPage: 10,
 	showText: false,
 	size: 'sm',
 })
@@ -44,35 +43,35 @@ const pageTo = computed(() => Math.min(model.value * props.itemsPerPage, props.t
 			</slot>
 			<Pagination.Root v-slot="{ page }" v-model:page="model" v-bind="$props">
 				<Pagination.List v-slot="{ items }" class="flex items-center gap-1">
-					<Pagination.First as-child>
+					<Pagination.First asChild>
 						<Button square variant="outline" :size @click="$emit('first')">
 							<Icon name="ph:caret-double-left-bold" class="size-4" />
 						</Button>
 					</Pagination.First>
-					<Pagination.Prev as-child>
+					<Pagination.Prev asChild>
 						<Button square variant="outline" :size @click="$emit('prev')">
 							<Icon name="ph:caret-left-bold" class="size-4" />
 						</Button>
 					</Pagination.Prev>
 					<template v-for="(item, index) in items">
-						<Pagination.ListItem v-if="item.type === 'page'" :key="index" :value="item.value" as-child>
+						<Pagination.ListItem v-if="item.type === 'page'" :key="index" :value="item.value" asChild>
 							<Button square :size :variant="item.value === page ? 'primary' : 'outline'"
 								@click="$emit('update', item.value)">
 								{{ item.value }}
 							</Button>
 						</Pagination.ListItem>
-						<Pagination.Ellipsis v-else :key="item.type" :index="index" as-child>
+						<Pagination.Ellipsis v-else :key="item.type" :index="index" asChild>
 							<slot name="ellipsis">
 								<Ellipsis />
 							</slot>
 						</Pagination.Ellipsis>
 					</template>
-					<Pagination.Next as-child>
+					<Pagination.Next asChild>
 						<Button square variant="outline" :size @click="$emit('next')">
 							<Icon name="ph:caret-right-bold" class="size-4" />
 						</Button>
 					</Pagination.Next>
-					<Pagination.Last as-child>
+					<Pagination.Last asChild>
 						<Button square variant="outline" :size @click="$emit('last')">
 							<Icon name="ph:caret-double-right-bold" class="size-4" />
 						</Button>
