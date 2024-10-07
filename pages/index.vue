@@ -90,7 +90,7 @@ const carouselItems = [
 	},
 ]
 
-/* const navigationItems = [
+const navigationItems = [
 	{
 		title: 'Alert Dialog',
 		href: '/docs/primitives/alert-dialog',
@@ -126,7 +126,7 @@ const carouselItems = [
 		description:
 			'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
 	},
-] */
+]
 
 const treeItems: TreeItems<{ title: string }> = [
 	{
@@ -728,7 +728,7 @@ onMounted(async () => {
 				</template>
 			</MenubarMenu>
 		</Menubar>
-		<!-- <NavigationMenu>
+		<NavigationMenu>
 			<NavigationMenuItem>
 				Getting started
 				<template #content>
@@ -795,7 +795,7 @@ onMounted(async () => {
 			<NavigationMenuLink to="/docs">
 				Documentation
 			</NavigationMenuLink>
-		</NavigationMenu> -->
+		</NavigationMenu>
 		<ContextMenu class="w-64">
 			<Card class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
 				Right click here

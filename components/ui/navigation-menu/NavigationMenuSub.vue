@@ -23,7 +23,6 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 			<slot />
 		</NavigationMenu.List>
 		<div :class="cn('absolute flex justify-center', orientation === 'vertical' ? 'top-0 left-full' : 'left-0 top-full')">
-			<!-- TODO: Fix Component <Anonymous> is missing template or render function. -->
 			<NavigationMenu.Viewport :class="cn(
 				'relative h-[--reka-navigation-menu-viewport-height] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[--reka-navigation-menu-viewport-width]',
 				orientation === 'vertical' ? 'ms-1.5' : 'mt-1.5',
