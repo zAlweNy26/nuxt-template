@@ -1,4 +1,4 @@
-import type { RadioGroupItemProps } from 'radix-vue'
+import type { RadioGroupItemProps } from 'reka-ui'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 export { default as RadioGroup } from './RadioGroup.vue'

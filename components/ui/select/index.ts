@@ -1,3 +1,4 @@
+import type { AcceptableValue } from 'reka-ui'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 export { default as SelectBox } from './SelectBox.vue'
@@ -28,11 +29,11 @@ export const selectVariants = cva(
 	},
 )
 
-export interface SelectItem {
+export interface SelectItem<T extends AcceptableValue> {
 	label: string
-	value: string
+	value: T
 }
 
-export type SelectItems = [SelectItem, ...SelectItem[]]
+export type SelectItems<T extends AcceptableValue> = [SelectItem<T>, ...SelectItem<T>[]]
 
 export type SelectVariants = VariantProps<typeof selectVariants>

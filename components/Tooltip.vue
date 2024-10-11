@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { TooltipContentProps, TooltipProviderProps, TooltipRootEmits, TooltipRootProps } from 'radix-vue'
-import { useForwardPropsEmits } from 'radix-vue'
-import { Tooltip } from 'radix-vue/namespaced'
+import type { TooltipContentProps, TooltipProviderProps, TooltipRootEmits, TooltipRootProps } from 'reka-ui'
+import { useForwardPropsEmits } from 'reka-ui'
+import { Tooltip } from 'reka-ui/namespaced'
 
 const props = defineProps<{
 	class?: ClassValue

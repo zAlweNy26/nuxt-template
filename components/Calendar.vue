@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { CalendarRootEmits, CalendarRootProps } from 'radix-vue'
+import type { CalendarRootEmits, CalendarRootProps } from 'reka-ui'
 import { type DateValue, getLocalTimeZone, today } from '@internationalized/date'
-import { useForwardPropsEmits } from 'radix-vue'
-import { Calendar } from 'radix-vue/namespaced'
-// import { createDecade, createYear, toDate } from 'radix-vue/date'
+import { useForwardPropsEmits } from 'reka-ui'
+import { Calendar } from 'reka-ui/namespaced'
+// import { createDecade, createYear, toDate } from 'reka-ui/date'
 // import type { SelectItems } from './ui/select'
 import { buttonVariants } from './ui/button'
 

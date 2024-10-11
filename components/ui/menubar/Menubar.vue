@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenubarRoot, type MenubarRootEmits, type MenubarRootProps, useForwardPropsEmits } from 'radix-vue'
+import { MenubarRoot, type MenubarRootEmits, type MenubarRootProps, useForwardPropsEmits } from 'reka-ui'
 
 defineOptions({ inheritAttrs: false })
 

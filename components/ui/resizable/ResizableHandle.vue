@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SplitterResizeHandle, type SplitterResizeHandleEmits, type SplitterResizeHandleProps, useForwardPropsEmits } from 'radix-vue'
+import { SplitterResizeHandle, type SplitterResizeHandleEmits, type SplitterResizeHandleProps, useForwardPropsEmits } from 'reka-ui'
 
 const props = defineProps<SplitterResizeHandleProps & { class?: ClassValue, withHandle?: boolean }>()
 const emits = defineEmits<SplitterResizeHandleEmits>()

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Slot as RadixSlot } from 'radix-vue'
+import { Slot as RekaSlot } from 'reka-ui'
 import { ErrorMessage as FormError, Field as FormGroup } from 'vee-validate'
 
 defineOptions({ inheritAttrs: false })
@@ -21,9 +21,9 @@ const describedBy = computed(() => props.description ? `${props.name}-form-item-
 				<span v-if="label">{{ label }}</span>
 				<span v-if="description" :id="describedBy" class="text-muted-foreground">{{ description }}</span>
 			</Label>
-			<RadixSlot :id="name" :aria-describedby="describedBy" :aria-invalid="!!errorMessage">
+			<RekaSlot :id="name" :aria-describedby="describedBy" :aria-invalid="!!errorMessage">
 				<slot v-bind="{ field: componentField, meta }" />
-			</RadixSlot>
+			</RekaSlot>
 			<p v-if="help" class="text-sm text-muted-foreground">
 				{{ help }}
 			</p>

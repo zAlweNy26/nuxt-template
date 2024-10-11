@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SortingState } from '@tanstack/vue-table'
+import type { CheckboxCheckedState } from 'reka-ui'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 import { Avatar, Button, Checkbox, DataTable, Icon } from '#components'
 import { z } from 'zod'
@@ -39,7 +40,7 @@ const tabsItems: TabItems = [
 	{ id: 'third', label: 'Third' },
 ]
 
-const selectItems: SelectItems = [
+const selectItems: SelectItems<string> = [
 	{ label: 'Text', value: 'text' },
 	{ label: 'Example', value: 'example' },
 	{ label: 'Bar', value: 'bar' },
@@ -130,33 +131,35 @@ const navigationItems = [
 const treeItems: TreeItems<{ title: string }> = [
 	{
 		title: 'composables',
-		icon: 'lucide:folder',
+		icon: 'ph:folder',
 		children: [
-			{ title: 'useAuth.ts', icon: 'vscode-icons:file-type-typescript' },
-			{ title: 'useUser.ts', icon: 'vscode-icons:file-type-typescript' },
+			{ title: 'useAuth.ts', icon: 'ph:file' },
+			{ title: 'useUser.ts', icon: 'ph:file' },
 		],
 	},
 	{
 		title: 'components',
-		icon: 'lucide:folder',
+		icon: 'ph:folder',
 		children: [
 			{
 				title: 'Home',
-				icon: 'lucide:folder',
+				icon: 'ph:folder',
 				children: [
-					{ title: 'Card.vue', icon: 'vscode-icons:file-type-vue' },
-					{ title: 'Button.vue', icon: 'vscode-icons:file-type-vue' },
+					{ title: 'Card.vue', icon: 'ph:file' },
+					{ title: 'Button.vue', icon: 'ph:file' },
 				],
 			},
 		],
 	},
-	{ title: 'app.vue', icon: 'vscode-icons:file-type-vue' },
-	{ title: 'nuxt.config.ts', icon: 'vscode-icons:file-type-nuxt' },
+	{ title: 'app.vue', icon: 'ph:file' },
+	{ title: 'nuxt.config.ts', icon: 'ph:file' },
 ]
 
 const progress = ref(50)
+const toggle = ref(false)
 const slider = ref([50])
 const tags = ref<string[]>([])
+const checkbox = ref<CheckboxCheckedState>('indeterminate')
 
 const zodSchema = z.object({
 	username: z.string().min(3).describe('This is your public display name.'),
@@ -175,13 +178,13 @@ const columns: DataColumnDef<Payment>[] = [
 		accessorKey: 'select',
 		pinned: 'left',
 		header: ({ table }) => h(Checkbox, {
-			'checked': table.getIsAllPageRowsSelected(),
-			'onUpdate:checked': value => table.toggleAllPageRowsSelected(!!value),
+			'modelValue': table.getIsAllPageRowsSelected(),
+			'onUpdate:modelValue': value => table.toggleAllPageRowsSelected(!!value),
 			'ariaLabel': 'Select all',
 		}),
 		cell: ({ row }) => h(Checkbox, {
-			'checked': row.getIsSelected(),
-			'onUpdate:checked': (value: boolean) => row.toggleSelected(!!value),
+			'modelValue': row.getIsSelected(),
+			'onUpdate:modelValue': value => row.toggleSelected(!!value),
 			'ariaLabel': 'Select row',
 		}),
 		enableSorting: false,
@@ -354,11 +357,11 @@ onMounted(async () => {
 		<ProgressBar v-model="progress" :max="60" />
 		<Slider v-model="slider" :max="100" :min="10" />
 		<SelectBox placeholder="Select an item" :items="selectItems" />
-		<Avatar src="https://github.com/radix-vue.png" size="xs" />
-		<Avatar src="https://github.com/radix-vue.png" size="sm" />
-		<Avatar src="https://github.com/radix-vue.png" size="md" />
+		<Avatar src="https://reka-ui.com/logo.svg" size="xs" />
+		<Avatar src="https://reka-ui.com/logo.svg" size="sm" />
+		<Avatar src="https://reka-ui.com/logo.svg" size="md" />
 		<Chip size="lg">
-			<Avatar src="https://github.com/radix-vue.png" size="lg" />
+			<Avatar src="https://reka-ui.com/logo.svg" size="lg" />
 		</Chip>
 		<Form :schema="zodSchema" @submit="(e) => console.log('valid', e)" @error="(e) => console.log('error', e)"
 			@reset="() => console.log('reset')">
@@ -407,8 +410,8 @@ onMounted(async () => {
 				<p>Accordion 3 content</p>
 			</template>
 		</Accordion>
-		<TagsInput v-model="tags" />
-		<Textarea />
+		<TagsInput v-model="tags" :input="{ placeholder: 'Add tags...' }" />
+		<Textarea placeholder="Write some text..." />
 		<DropdownMenu :content="{ align: 'end' }">
 			<Button variant="outline" class="ml-auto">
 				Dropdown Menu
@@ -482,8 +485,8 @@ onMounted(async () => {
 					</Button>
 					<template #content>
 						<DropdownMenuCheckItem v-for="col in columnsItems" :key="col.value"
-							:checked="selectedColumns.includes(col.value)" class="capitalize"
-							@update:checked="(v) => exampleTable?.table.getColumn(col.value)?.toggleVisibility(v)">
+							:modelValue="selectedColumns.includes(col.value)" class="capitalize"
+							@update:modelValue="(v) => exampleTable?.table.getColumn(col.value)?.toggleVisibility(v)">
 							{{ col.label }}
 						</DropdownMenuCheckItem>
 					</template>
@@ -518,13 +521,13 @@ onMounted(async () => {
 				<p>Example content</p>
 			</template>
 		</Collapsible>
-		<Command :items="commandItems" noGroupAsFirst />
-		<ComboBox placeholder="Select an item..." :items="commandItems" />
+		<Command placeholder="Search an item" :items="commandItems" noGroupAsFirst />
+		<ComboBox placeholder="Select an item" searchPlaceholder="Search an item" :items="commandItems" />
 		<Card>
 			<template #header>
 				<Checkbox id="terms1" size="xs" text="Accept terms and conditions" />
-				<Checkbox id="terms2" checked="indeterminate" size="sm" text="Accept terms and conditions" />
-				<Checkbox id="terms3" size="md" text="Accept terms and conditions" />
+				<Checkbox id="terms2" size="sm" text="Accept terms and conditions" />
+				<Checkbox id="terms3" v-model="checkbox" size="md" text="Accept terms and conditions" />
 				<Checkbox id="terms4" size="lg" text="Accept terms and conditions" />
 			</template>
 			<InputBox label="Username" color="primary" size="xs" />
@@ -532,7 +535,7 @@ onMounted(async () => {
 			<InputBox label="Username" color="warning" size="md" />
 			<InputBox label="Username" color="success" size="lg" />
 			<template #footer>
-				<Toggle square>
+				<Toggle v-model="toggle" square>
 					<Icon name="ph:text-b-bold" class="size-4" />
 				</Toggle>
 				<Button variant="ghost">
@@ -569,25 +572,28 @@ onMounted(async () => {
 		<DatePicker />
 		<DateRangePicker />
 		<ComboGroup>
-			<Button variant="warning" @click="$toast.warning('Toast warning')">
+			<Button variant="secondary" @click="$toast('Toast secondary', { closeButton: true })">
+				Secondary
+			</Button>
+			<Button variant="warning" @click="$toast.warning('Toast warning', { action: { label: 'Action', onClick: () => console.log('Action') } })">
 				Warning
 			</Button>
 			<Button variant="success" @click="$toast.success('Toast success')">
 				Success
 			</Button>
-			<Button variant="info" @click="$toast.info('Toast info')">
+			<Button variant="info" @click="$toast.info('Toast info', { invert: true })">
 				Info
 			</Button>
-			<Button variant="error" @click="$toast.error('Toast error')">
+			<Button variant="error" @click="$toast.error('Toast error', { invert: true })">
 				Error
 			</Button>
-			<Button variant="secondary" @click="$modal.open(Avatar, {
-				src: 'https://github.com/radix-vue.png',
+			<Button variant="outline" @click="$modal.open(Avatar, {
+				src: 'https://reka-ui.com/logo.svg',
 			}, {
 				title: 'Modal title',
 				description: 'Modal description',
 			})">
-				Secondary
+				Outline
 			</Button>
 		</ComboGroup>
 		<NumberInput label="Quantity" :defaultValue="18" :min="3" :max="21" />
@@ -683,7 +689,7 @@ onMounted(async () => {
 				View
 				<template #content>
 					<MenubarCheckItem>Always Show Bookmarks Bar</MenubarCheckItem>
-					<MenubarCheckItem checked>
+					<MenubarCheckItem modelValue>
 						Always Show Full URLs
 					</MenubarCheckItem>
 					<MenubarSeparator />
@@ -730,12 +736,12 @@ onMounted(async () => {
 						<li class="row-span-3">
 							<a class="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
 								href="/">
-								<img src="https://www.radix-vue.com/logo.svg" class="size-6">
+								<img src="https://reka-ui.com/logo.svg" class="size-6">
 								<div class="mb-2 mt-4 text-lg font-medium">
 									shadcn/ui
 								</div>
 								<p class="text-sm leading-tight text-muted-foreground">
-									Beautifully designed components built with Radix UI and
+									Beautifully designed components built with Reka UI and
 									Tailwind CSS.
 								</p>
 							</a>
@@ -745,7 +751,7 @@ onMounted(async () => {
 								class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
 								<div class="text-sm font-medium leading-none">Introduction</div>
 								<p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-									Re-usable components built using Radix UI and Tailwind CSS.
+									Re-usable components built using Reka UI and Tailwind CSS.
 								</p>
 							</a>
 						</li>
@@ -817,7 +823,7 @@ onMounted(async () => {
 					</template>
 				</ContextMenuSub>
 				<ContextMenuSeparator />
-				<ContextMenuCheckItem checked>
+				<ContextMenuCheckItem modelValue>
 					Show Bookmarks Bar
 				</ContextMenuCheckItem>
 				<ContextMenuCheckItem>Show Full URLs</ContextMenuCheckItem>
@@ -834,43 +840,35 @@ onMounted(async () => {
 				</ContextMenuRadioGroup>
 			</template>
 		</ContextMenu>
-		<Marquee pauseOnHover :duration="3" class="w-[576px] [--gap:2rem]">
-			<MarqueeItem>
-				<div
-					class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-					<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
-					<h2 class="text-lg font-semibold">
-						Marquee Item 1
-					</h2>
-				</div>
-			</MarqueeItem>
-			<MarqueeItem>
-				<div
-					class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-					<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
-					<h2 class="text-lg font-semibold">
-						Marquee Item 2
-					</h2>
-				</div>
-			</MarqueeItem>
-			<MarqueeItem>
-				<div
-					class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-					<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
-					<h2 class="text-lg font-semibold">
-						Marquee Item 3
-					</h2>
-				</div>
-			</MarqueeItem>
-			<MarqueeItem>
-				<div
-					class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
-					<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
-					<h2 class="text-lg font-semibold">
-						Marquee Item 4
-					</h2>
-				</div>
-			</MarqueeItem>
+		<Marquee pauseOnHover :duration="10" class="w-[576px] [--gap:2rem]">
+			<div
+				class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+				<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
+				<h2 class="text-lg font-semibold">
+					Marquee Item 1
+				</h2>
+			</div>
+			<div
+				class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+				<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
+				<h2 class="text-lg font-semibold">
+					Marquee Item 2
+				</h2>
+			</div>
+			<div
+				class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+				<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
+				<h2 class="text-lg font-semibold">
+					Marquee Item 3
+				</h2>
+			</div>
+			<div
+				class="flex aspect-square select-none flex-col items-center justify-center overflow-hidden rounded-xl bg-accent text-center">
+				<img src="https://picsum.photos/800/400" alt="carousel image" class="size-48 object-cover">
+				<h2 class="text-lg font-semibold">
+					Marquee Item 4
+				</h2>
+			</div>
 		</Marquee>
 		<Stepper :items="[
 			{ title: 'First step', description: 'This is the first step', icon: 'ph:acorn-bold' },

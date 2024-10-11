@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { NumberFieldRootEmits, NumberFieldRootProps } from 'radix-vue'
-import { useForwardPropsEmits } from 'radix-vue'
-import { NumberField } from 'radix-vue/namespaced'
+import type { NumberFieldRootEmits, NumberFieldRootProps } from 'reka-ui'
+import { useForwardPropsEmits } from 'reka-ui'
+import { NumberField } from 'reka-ui/namespaced'
 import { type NumberInputVariants, numberInputVariants } from '.'
 
 const props = defineProps<{

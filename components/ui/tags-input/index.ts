@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 export { default as TagsInput } from './TagsInput.vue'
 
 export const tagsInputVariants = cva(
-	'flex h-min flex-wrap items-center gap-2 rounded-md border border-input bg-background px-2 py-1 transition-shadow has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50 has-[:focus-visible]:outline-none has-[:focus-visible]:ring-2',
+	'flex h-min flex-wrap items-center gap-2 rounded-md border border-input bg-background p-1 transition-shadow has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50 has-[:focus-visible]:outline-none has-[:focus-visible]:ring-2',
 	{
 		variants: {
 			color: {

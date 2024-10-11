@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ToggleGroupRoot, type ToggleGroupRootEmits, type ToggleGroupRootProps, useForwardPropsEmits } from 'radix-vue'
-import { ToggleGroupKey } from '.'
+import { ToggleGroupRoot, type ToggleGroupRootEmits, type ToggleGroupRootProps, useForwardPropsEmits } from 'reka-ui'
+import { ToggleGroupKey, type ToggleKey } from '.'
 import { type GroupVariants, groupVariants } from '../combo-group'
 
 const props = withDefaults(defineProps<ToggleGroupRootProps & {
@@ -17,9 +17,9 @@ const delegatedProps = reactiveOmit(props, 'class', 'size')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
-const context = ref({
+const context = ref<ToggleKey>({
 	size: props.size,
-	state: props.modelValue,
+	modelValue: props.modelValue,
 })
 
 provide(ToggleGroupKey, context)
@@ -27,7 +27,7 @@ provide(ToggleGroupKey, context)
 
 <template>
 	<ToggleGroupRoot v-bind="forwarded" :class="cn(groupVariants({ size }), props.class)"
-		@update:modelValue="(v) => context.state = v">
+		@update:modelValue="(v) => context.modelValue = v">
 		<slot />
 	</ToggleGroupRoot>
 </template>
